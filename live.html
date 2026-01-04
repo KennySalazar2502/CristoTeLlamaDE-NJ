@@ -1,95 +1,181 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
+  <meta charset="UTF-8">
   <title>Cristo Te Llama DE/NJ - Live</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  
+  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
+  
+  <style>
+    :root {
+      --primary-bg: #F6F1EB;
+      --secondary-bg: #fff;
+      --accent-color: #0084ff;
+      --text-color: #000;
+      --dark-bg: #121212;
+      --dark-text: #f0f0f0;
+    }
+
+    body {
+      margin: 0;
+      font-family: 'Playfair Display', serif;
+      background-color: var(--primary-bg);
+      color: var(--text-color);
+      transition: background 0.3s, color 0.3s;
+    }
+
+    body.dark-mode {
+      background-color: var(--dark-bg);
+      color: var(--dark-text);
+    }
+
+    nav {
+      background: var(--secondary-bg);
+      display: flex;
+      justify-content: center;
+      gap: 15px;
+      padding: 10px;
+      position: sticky;
+      top: 0;
+      z-index: 999;
+      border-bottom: 2px solid var(--accent-color);
+    }
+
+    nav a {
+      text-decoration: none;
+      font-weight: bold;
+      color: var(--text-color);
+      padding: 8px 15px;
+      border-radius: 12px;
+      border: 2px solid transparent;
+      transition: all 0.3s ease;
+      position: relative;
+    }
+
+    nav a::after {
+      content: "";
+      position: absolute;
+      width: 0%;
+      height: 2px;
+      background: var(--accent-color);
+      left: 0;
+      bottom: -2px;
+      transition: 0.3s;
+    }
+
+    nav a:hover::after {
+      width: 100%;
+    }
+
+    nav a:hover {
+      background: var(--accent-color);
+      color: #fff;
+      transform: scale(1.05);
+    }
+
+    section { padding: 50px 20px; text-align: center; }
+
+    h1, h2 { margin-bottom: 20px; }
+
+    .messenger-btn {
+      position: fixed;
+      bottom: 20px;
+      right: 20px;
+      background: var(--accent-color);
+      color: white;
+      padding: 15px 20px;
+      border-radius: 50px;
+      text-decoration: none;
+      z-index: 1000;
+      box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+      transition: transform 0.2s ease;
+    }
+
+    .messenger-btn:hover {
+      transform: scale(1.1);
+    }
+
+    .live-container {
+      max-width: 900px;
+      margin: 20px auto;
+      padding: 20px;
+      border: 2px solid var(--accent-color);
+      border-radius: 12px;
+      background: var(--secondary-bg);
+      transition: background 0.3s;
+    }
+
+    body.dark-mode .live-container {
+      background: #1e1e1e;
+    }
+
+    iframe {
+      width: 100%;
+      height: 500px;
+      border: none;
+      border-radius: 10px;
+    }
+
+    .dark-mode-toggle {
+      position: fixed;
+      top: 20px;
+      right: 20px;
+      background: var(--accent-color);
+      color: #fff;
+      padding: 8px 12px;
+      border-radius: 10px;
+      cursor: pointer;
+      font-weight: bold;
+      z-index: 1000;
+      transition: transform 0.2s ease;
+    }
+
+    .dark-mode-toggle:hover {
+      transform: scale(1.1);
+    }
+
+    @media (max-width: 600px) {
+      iframe { height: 300px; }
+      nav { flex-wrap: wrap; gap: 8px; }
+    }
+  </style>
 </head>
 <body>
 
-<!-- Top Navigation -->
-<nav class="nav-bar">
-  <ul class="nav-list">
-    <li><a href="index.html" class="nav-item">Home</a></li>
-    <li><a href="index.html#servicios" class="nav-item">Service Times</a></li>
-    <li><a href="index.html#eventos" class="nav-item">Events</a></li>
-    <li><a href="index.html#contacto" class="nav-item">Contact</a></li>
-    <li><a href="index.html#social" class="nav-item">Social</a></li>
-    <li><a href="live.html" class="nav-item active">Live</a></li>
-  </ul>
-  <button id="darkModeToggle">🌙</button>
+<!-- Dark Mode Toggle -->
+<div class="dark-mode-toggle" onclick="toggleDarkMode()">🌓 Dark Mode</div>
+
+<!-- Messenger Button -->
+<a href="https://m.me/IglesiaCristoTeLlamaDelaware" class="messenger-btn" target="_blank">💬 Messenger</a>
+
+<!-- Navigation -->
+<nav>
+  <a href="index.html#inicio">Home</a>
+  <a href="index.html#servicios">Service Times</a>
+  <a href="index.html#eventos">Events</a>
+  <a href="live.html">Live</a>
+  <a href="index.html#contacto">Contact</a>
+  <a href="index.html#social">Social</a>
 </nav>
 
-<!-- Hero Section -->
-<section class="hero fade-in">
+<!-- Live Section -->
+<section class="live-container">
   <h1>Watch Us Live</h1>
-  <p class="description">Join our live stream whenever we are broadcasting on Facebook.</p>
+  <p>Follow our Facebook Live stream below:</p>
+  <iframe 
+    src="https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/310457289629080/live&show_text=false&width=800" 
+    allowfullscreen
+    scrolling="no"
+    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"></iframe>
 </section>
-
-<!-- Live Video Section -->
-<section id="liveStream" class="fade-in">
-  <div id="fbLiveContainer">
-    <p id="liveMessage">Checking for live stream...</p>
-  </div>
-</section>
-
-<!-- Footer -->
-<footer>
-  <p>© 2026 Cristo Te Llama DE/NJ</p>
-</footer>
 
 <script>
-const PAGE_ID = "YOUR_FACEBOOK_PAGE_ID"; // <-- replace with your FB Page ID
-
-// Dark mode toggle
-const toggleBtn = document.getElementById('darkModeToggle');
-toggleBtn.addEventListener('click', () => {
-  document.body.classList.toggle('dark-mode');
-  toggleBtn.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
-});
-
-// Load Facebook SDK
-(function(d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) return;
-  js = d.createElement(s); js.id = id;
-  js.src = "https://connect.facebook.net/en_US/sdk.js";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-
-// Auto-detect if FB Live is active
-window.fbAsyncInit = function() {
-  FB.init({
-    appId      : 'YOUR_APP_ID', // Optional, for advanced usage
-    xfbml      : true,
-    version    : 'v17.0'
-  });
-
-  fetch(`https://graph.facebook.com/${PAGE_ID}/live_videos?status=LIVE&access_token=YOUR_ACCESS_TOKEN`)
-    .then(res => res.json())
-    .then(data => {
-      const container = document.getElementById('fbLiveContainer');
-      if (data.data && data.data.length > 0) {
-        // Get the first live video
-        const liveVideoId = data.data[0].id;
-        container.innerHTML = `
-          <div class="fb-video" 
-            data-href="https://www.facebook.com/${PAGE_ID}/videos/${liveVideoId}/"
-            data-width="500" 
-            data-show-text="false">
-          </div>`;
-        FB.XFBML.parse(container);
-      } else {
-        document.getElementById('liveMessage').textContent = "No Live Stream Right Now. Check back soon!";
-      }
-    })
-    .catch(err => {
-      document.getElementById('liveMessage').textContent = "Error loading live stream.";
-      console.error(err);
-    });
-};
+  // Dark mode toggle
+  function toggleDarkMode() {
+    document.body.classList.toggle('dark-mode');
+  }
 </script>
 
 </body>
