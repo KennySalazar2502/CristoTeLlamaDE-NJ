@@ -6,19 +6,39 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
 
   <style>
+    :root {
+      --bg-color: #F6F1EB;
+      --text-color: #000;
+      --nav-bg: #fff;
+      --nav-text: #000;
+      --button-bg: #0084ff;
+      --button-text: #fff;
+      --video-border: #e3d9cd;
+    }
+
+    [data-theme="dark"] {
+      --bg-color: #1e1e1e;
+      --text-color: #f6f1eb;
+      --nav-bg: #2c2c2c;
+      --nav-text: #f6f1eb;
+      --button-bg: #0055aa;
+      --button-text: #fff;
+      --video-border: #444;
+    }
+
     body {
       margin: 0;
       font-family: 'Playfair Display', serif;
-      background-color: #F6F1EB;
-      color: #000;
+      background-color: var(--bg-color);
+      color: var(--text-color);
       text-align: center;
+      transition: background 0.3s, color 0.3s;
     }
 
     nav {
-      background: #fff;
+      background: var(--nav-bg);
       padding: 15px;
       position: sticky;
       top: 0;
@@ -27,15 +47,16 @@
       gap: 15px;
       flex-wrap: wrap;
       z-index: 999;
+      transition: background 0.3s;
     }
 
     nav a {
       text-decoration: none;
       font-weight: bold;
-      color: black;
+      color: var(--nav-text);
       padding: 8px 16px;
       border-radius: 25px;
-      border: 2px solid #000;
+      border: 2px solid var(--nav-text);
       transition: all 0.3s ease;
     }
 
@@ -45,15 +66,27 @@
       box-shadow: 0 0 8px rgba(0,0,0,0.3);
     }
 
-    h1 { margin-top: 50px; }
+    h1 {
+      margin-top: 50px;
+      animation: fade 1.5s ease-in;
+    }
+
+    p {
+      max-width: 600px;
+      margin: 10px auto 30px auto;
+      line-height: 1.6;
+      animation: fade 1.5s ease-in;
+    }
 
     .fb-video-container {
       max-width: 720px;
-      margin: 40px auto;
-      border: 2px solid #e3d9cd;
+      margin: 0 auto 50px auto;
+      border: 2px solid var(--video-border);
       border-radius: 12px;
       padding: 10px;
-      background: #fff;
+      background: var(--bg-color);
+      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
+      animation: fade 1.5s ease-in;
     }
 
     iframe {
@@ -67,12 +100,63 @@
       position: fixed;
       bottom: 20px;
       right: 20px;
-      background: #0084ff;
-      color: white;
+      background: var(--button-bg);
+      color: var(--button-text);
       padding: 15px 20px;
       border-radius: 50px;
       text-decoration: none;
       z-index: 999;
+      transition: transform 0.2s ease, box-shadow 0.2s ease;
+    }
+
+    .messenger-btn:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+
+    .dark-toggle {
+      position: fixed;
+      top: 15px;
+      right: 15px;
+      background: var(--button-bg);
+      color: var(--button-text);
+      border: none;
+      padding: 10px 15px;
+      border-radius: 50px;
+      cursor: pointer;
+      z-index: 999;
+      transition: all 0.2s ease;
+    }
+
+    .dark-toggle:hover {
+      transform: scale(1.1);
+      box-shadow: 0 0 10px rgba(0,0,0,0.3);
+    }
+
+    @keyframes fade {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @media (max-width: 768px) {
+      .fb-video-container iframe {
+        height: 300px;
+      }
+
+      nav a {
+        padding: 6px 12px;
+        font-size: 0.9rem;
+      }
+    }
+
+    @media (max-width: 480px) {
+      .fb-video-container iframe {
+        height: 250px;
+      }
+
+      nav {
+        gap: 8px;
+      }
     }
   </style>
 </head>
@@ -87,8 +171,10 @@
   <a href="live.html">Live</a>
 </nav>
 
+<button class="dark-toggle" onclick="toggleDarkMode()">🌓 Dark Mode</button>
+
 <h1>Live Stream</h1>
-<p>Watch our Facebook Live below. It will automatically appear when we go live.</p>
+<p>Watch our Facebook Live here. It will automatically appear when we go live.</p>
 
 <div class="fb-video-container">
   <iframe 
@@ -99,6 +185,16 @@
 </div>
 
 <a href="https://m.me/IglesiaCristoTeLlamaDelaware" class="messenger-btn" target="_blank">💬 Messenger</a>
+
+<script>
+  function toggleDarkMode() {
+    if(document.documentElement.getAttribute("data-theme") === "dark") {
+      document.documentElement.removeAttribute("data-theme");
+    } else {
+      document.documentElement.setAttribute("data-theme", "dark");
+    }
+  }
+</script>
 
 </body>
 </html>
