@@ -1,126 +1,292 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Cristo Te Llama DE/NJ</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
-  <link rel="stylesheet" href="style.css">
-  <!-- PWA manifest -->
-  <link rel="manifest" href="manifest.json">
+<meta charset="UTF-8">
+<title>Cristo Te Llama DE/NJ</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+<style>
+:root {
+  --light-bg: #E8DFFB;
+  --light-bubble: #fff;
+  --light-bubble-hover: #6a0dad;
+  --dark-bg: #3A0CA3;
+  --dark-bubble: #fff;
+  --dark-bubble-hover: #9d4edd;
+  --text-light: #000;
+  --text-dark: #fff;
+  --calendar-bg: #f0eae2;
+  --calendar-event: #e3d9cd;
+  --calendar-women: #f2d6df;
+}
+
+body {
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+  background-color: var(--light-bg);
+  color: var(--text-light);
+  transition: background 0.5s, color 0.5s;
+}
+
+/* NAVIGATION */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
+
+nav a {
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 25px;
+  background-color: var(--light-bubble);
+  color: var(--text-light);
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
+
+nav a:hover {
+  background-color: var(--light-bubble-hover);
+  color: #fff;
+  transform: translateY(-3px);
+  box-shadow: 0 5px 10px rgba(0,0,0,0.3);
+}
+
+/* Dark mode nav */
+body.dark nav a {
+  background-color: var(--dark-bubble);
+  color: var(--text-dark);
+}
+body.dark nav a:hover {
+  background-color: var(--dark-bubble-hover);
+  color: #fff;
+}
+
+/* DARK MODE TOGGLE */
+#darkModeToggle {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+/* HERO SECTION */
+section.hero {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+/* CALENDAR */
+.calendar-container {
+  max-width: 720px;
+  margin: 20px auto;
+  padding: 15px;
+  border: 2px solid #6a0dad;
+  border-radius: 15px;
+  background-color: #fff;
+  text-align: center;
+}
+
+.calendar-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  margin-bottom: 15px;
+}
+
+.calendar-header h3 {
+  margin: 0;
+  font-size: 1.3rem;
+}
+
+.calendar-header button {
+  background: none;
+  border: 2px solid #6a0dad;
+  border-radius: 50%;
+  padding: 5px 12px;
+  font-size: 1.2rem;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.calendar-header button:hover {
+  background-color: #6a0dad;
+  color: #fff;
+}
+
+/* CALENDAR GRID */
+.calendar-grid {
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 5px;
+}
+
+.day-name { font-weight: bold; }
+
+.day {
+  background: var(--calendar-bg);
+  border-radius: 8px;
+  min-height: 70px;
+  position: relative;
+  padding: 5px;
+  transition: transform 0.2s;
+}
+
+.day span {
+  display: block;
+  font-weight: bold;
+}
+
+.day small {
+  display: block;
+  margin-top: 5px;
+  font-size: 0.75rem;
+}
+
+.day.event { background: var(--calendar-event); }
+.day.women { background: var(--calendar-women); }
+.day.empty { background: transparent; cursor: default; }
+
+.day:hover {
+  transform: scale(1.05);
+  z-index: 5;
+}
+
+/* MESSENGER BUTTON */
+.messenger-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #0084ff;
+  color: white;
+  padding: 15px 20px;
+  border-radius: 50px;
+  text-decoration: none;
+  box-shadow: 0 3px 6px rgba(0,0,0,0.3);
+}
+
+/* DARK MODE */
+body.dark {
+  background-color: #3A0CA3;
+  color: var(--text-dark);
+}
+
+/* DARK MODE calendar */
+body.dark .calendar-container { border-color: #9d4edd; }
+body.dark .calendar-header button { border-color: #9d4edd; }
+body.dark .calendar-header button:hover { background-color: #9d4edd; color:#fff; }
+
+/* POPUP */
+.popup {
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  justify-content: center;
+  align-items: center;
+}
+
+.popup-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 300px;
+}
+
+.close { cursor: pointer; float: right; }
+
+@media (max-width: 600px){
+  nav { justify-content: center; gap: 8px; }
+  .day { min-height: 50px; font-size: 0.75rem; }
+}
+</style>
 </head>
 <body>
 
-<!-- Top Navigation -->
-<nav class="nav-bar">
-  <ul class="nav-list">
-    <li><a href="#inicio" class="nav-item">Home</a></li>
-    <li><a href="#servicios" class="nav-item">Service Times</a></li>
-    <li><a href="#eventos" class="nav-item">Events</a></li>
-    <li><a href="#contacto" class="nav-item">Contact</a></li>
-    <li><a href="#social" class="nav-item">Social</a></li>
-    <li><a href="live.html" class="nav-item">Live</a></li>
-    <li><a href="#donate" class="nav-item">Give</a></li>
-    <li><a href="admin.html" class="nav-item">Admin</a></li>
-    <li><a href="#prayer" class="nav-item">Prayer</a></li>
-  </ul>
-  <button id="darkModeToggle">🌙</button>
+<!-- DARK MODE TOGGLE -->
+<div id="darkModeToggle">🌓</div>
+
+<!-- NAVIGATION -->
+<nav>
+  <a href="#inicio">Home</a>
+  <a href="#servicios">Service Times</a>
+  <a href="#eventos">Events</a>
+  <a href="#contacto">Contact</a>
+  <a href="#social">Social</a>
+  <a href="#live">Live</a>
 </nav>
 
-<!-- Messenger Button -->
-<a href="https://m.me/IglesiaCristoTeLlamaDelaware" class="messenger-btn" target="_blank">
-  <img src="images/facebook.svg" alt="Messenger" class="messenger-logo"> Messenger
-</a>
-
-<!-- Hero Section -->
-<section id="inicio" class="hero fade-in">
+<!-- HERO -->
+<section id="inicio" class="hero">
   <h1>Welcome to Cristo Te Llama DE/NJ</h1>
-  <p class="description">A Pentecostal church helping people grow in their walk with Jesus Christ.</p>
+  <p>A Pentecostal church helping people grow in their walk with Jesus Christ.</p>
 </section>
 
-<!-- Service Times -->
-<section id="servicios" class="fade-in">
+<!-- SERVICES -->
+<section id="servicios">
   <h2>Church Service Times</h2>
   <p><strong>Tuesday:</strong> 7:00 PM – 9:00 PM</p>
   <p><strong>Saturday:</strong> 7:00 PM – 9:00 PM</p>
   <p><strong>Sunday:</strong> 10:00 AM – 1:00 PM</p>
 </section>
 
-<!-- Events / Calendar -->
-<section id="eventos" class="fade-in">
+<!-- EVENTS / CALENDAR -->
+<section id="eventos">
   <h2>Upcoming Events</h2>
-  <div class="legend">
-    <span class="legend-box women"></span> Women’s Events
-  </div>
-  <div class="calendar-header">
-    <button id="prevMonth" class="arrow-btn">←</button>
-    <h3 id="monthTitle">January</h3>
-    <button id="nextMonth" class="arrow-btn">→</button>
-  </div>
-  <div class="calendar-wrapper">
-    <div class="calendar active" id="january"></div>
-    <div class="calendar" id="february"></div>
-    <div class="calendar" id="march"></div>
-    <div class="calendar" id="april"></div>
-    <div class="calendar" id="may"></div>
-    <div class="calendar" id="june"></div>
-    <div class="calendar" id="july"></div>
-    <div class="calendar" id="august"></div>
-    <div class="calendar" id="september"></div>
-    <div class="calendar" id="october"></div>
-    <div class="calendar" id="november"></div>
-    <div class="calendar" id="december"></div>
+  <div class="calendar-container">
+    <div class="calendar-header">
+      <button onclick="prevMonth()">←</button>
+      <h3 id="monthTitle">January 2026</h3>
+      <button onclick="nextMonth()">→</button>
+    </div>
+    <div class="calendar-grid" id="calendarGrid">
+      <!-- Days will be injected by JS -->
+    </div>
   </div>
 </section>
 
-<!-- Prayer Request Form -->
-<section id="prayer" class="fade-in">
-  <h2>Submit a Prayer Request</h2>
-  <form id="prayerForm">
-    <input type="text" name="name" placeholder="Your Name" required><br><br>
-    <input type="email" name="email" placeholder="Your Email" required><br><br>
-    <textarea name="prayer" placeholder="Your Prayer Request" required></textarea><br><br>
-    <button type="submit">Submit</button>
-  </form>
-  <p id="prayerMsg"></p>
-</section>
-
-<!-- Donations -->
-<section id="donate" class="fade-in">
-  <h2>Give / Donations</h2>
-  <p>You can give via Zelle:</p>
-  <p><strong>Zelle:</strong> [Add Number Here]</p>
-</section>
-
-<!-- Contact -->
-<section id="contacto" class="fade-in">
+<!-- CONTACT -->
+<section id="contacto">
   <h2>Contact</h2>
   <p><strong>📍 Address:</strong> 110 E Maple Ave, Penns Grove, NJ</p>
   <p><strong>📞 Pastor:</strong> 540-842-2846</p>
-  <iframe
-    src="https://www.google.com/maps?q=110+E+Maple+Ave,+Penns+Grove,+NJ&output=embed"
-    width="100%" height="300" style="border:0; border-radius:10px;" loading="lazy"></iframe>
+  <iframe src="https://www.google.com/maps?q=110+E+Maple+Ave,+Penns+Grove,+NJ&output=embed"
+          width="100%" height="300" style="border:0; border-radius:10px;" loading="lazy"></iframe>
 </section>
 
-<!-- Social Media -->
-<section id="social" class="fade-in">
+<!-- SOCIAL -->
+<section id="social">
   <h2>Social Media</h2>
   <div class="social-icons">
     <a href="https://facebook.com/IglesiaCristoTeLlamaDelaware" target="_blank">
-      <img src="images/facebook.svg">
+      <img src="images/facebook.svg" alt="Facebook">
     </a>
     <a href="https://www.youtube.com/@CristoTeLlama" target="_blank">
-      <img src="images/youtube.svg">
+      <img src="images/youtube.svg" alt="YouTube">
     </a>
   </div>
 </section>
 
-<!-- Footer -->
-<footer>
-  <p>© 2026 Cristo Te Llama DE/NJ</p>
-</footer>
+<!-- MESSENGER BUTTON -->
+<a href="https://m.me/IglesiaCristoTeLlamaDelaware" class="messenger-btn" target="_blank">💬 Messenger</a>
 
-<!-- Event Popup -->
+<!-- POPUP -->
 <div id="popup" class="popup">
   <div class="popup-content">
     <span onclick="closePopup()" class="close">&times;</span>
@@ -129,92 +295,70 @@
 </div>
 
 <script>
-// Dark mode toggle
-const toggleBtn = document.getElementById('darkModeToggle');
-toggleBtn.addEventListener('click', () => {
-  document.body.classList.toggle('dark-mode');
-  toggleBtn.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+// DARK MODE TOGGLE
+const darkModeToggle = document.getElementById('darkModeToggle');
+darkModeToggle.addEventListener('click', () => {
+  document.body.classList.toggle('dark');
 });
 
-// Calendar setup
+// CALENDAR LOGIC
 const months = [
-  'january','february','march','april','may','june','july','august','september','october','november','december'
+  {name:"January", days:31}, {name:"February", days:28}, {name:"March", days:31},
+  {name:"April", days:30}, {name:"May", days:31}, {name:"June", days:30},
+  {name:"July", days:31}, {name:"August", days:31}, {name:"September", days:30},
+  {name:"October", days:31}, {name:"November", days:30}, {name:"December", days:31}
 ];
-const monthNames = [
-  'January','February','March','April','May','June','July','August','September','October','November','December'
-];
-let currentMonth = 0;
 
-function generateCalendar(monthIndex) {
-  const calendarEl = document.getElementById(months[monthIndex]);
-  calendarEl.innerHTML = '<div class="calendar-grid"></div>';
-  const grid = calendarEl.querySelector('.calendar-grid');
-  const dayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+let currentMonth = 0;
+const year = 2026;
+
+function renderCalendar() {
+  const grid = document.getElementById('calendarGrid');
+  grid.innerHTML = '';
+
+  // Day names
+  const dayNames = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
   dayNames.forEach(d => {
-    const el = document.createElement('div');
-    el.className = 'day-name';
-    el.textContent = d;
-    grid.appendChild(el);
+    const div = document.createElement('div');
+    div.classList.add('day-name');
+    div.innerText = d;
+    grid.appendChild(div);
   });
-  for (let i=1;i<=30;i++){
+
+  // Empty slots for first day
+  const firstDay = new Date(year, currentMonth, 1).getDay();
+  for(let i=0;i<firstDay;i++){
+    const empty = document.createElement('div');
+    empty.classList.add('day','empty');
+    grid.appendChild(empty);
+  }
+
+  // Days
+  for(let i=1;i<=months[currentMonth].days;i++){
     const day = document.createElement('div');
-    day.className = 'day';
-    day.dataset.event = '';
+    day.classList.add('day');
     day.innerHTML = `<span>${i}</span>`;
     grid.appendChild(day);
   }
-}
-months.forEach((m,i)=>generateCalendar(i));
-function showMonth(index) {
-  months.forEach(m=>document.getElementById(m).classList.remove('active'));
-  document.getElementById(months[index]).classList.add('active');
-  document.getElementById('monthTitle').textContent = monthNames[index];
-}
-showMonth(currentMonth);
-document.getElementById('nextMonth').addEventListener('click', ()=> {
-  currentMonth = (currentMonth+1)%months.length;
-  showMonth(currentMonth);
-});
-document.getElementById('prevMonth').addEventListener('click', ()=> {
-  currentMonth = (currentMonth-1+months.length)%months.length;
-  showMonth(currentMonth);
-});
 
-// Popup events
-document.querySelectorAll(".day[data-event]").forEach(day=>{
-  day.addEventListener('click',()=>{
-    const text = day.dataset.event;
-    if(!text) return;
-    document.getElementById("popupText").textContent = text;
+  document.getElementById('monthTitle').innerText = `${months[currentMonth].name} ${year}`;
+}
+
+function nextMonth() { currentMonth = (currentMonth+1)%12; renderCalendar(); }
+function prevMonth() { currentMonth = (currentMonth+11)%12; renderCalendar(); }
+
+renderCalendar();
+
+// POPUP
+document.querySelectorAll(".day[data-event]").forEach(day => {
+  day.addEventListener("click", () => {
+    const text = day.getAttribute("data-event");
+    if (!text) return;
+    document.getElementById("popupText").innerText = text;
     document.getElementById("popup").style.display = "flex";
   });
 });
-function closePopup(){ document.getElementById("popup").style.display = "none"; }
-
-// Prayer form submission + push notification
-const prayerForm = document.getElementById('prayerForm');
-prayerForm.addEventListener('submit', (e)=>{
-  e.preventDefault();
-  document.getElementById('prayerMsg').textContent = "Thank you! Your prayer request has been submitted.";
-  prayerForm.reset();
-  if (Notification.permission === "granted") {
-    new Notification("Prayer Request Submitted", { body: "Thank you for submitting your prayer request!" });
-  } else if (Notification.permission !== "denied") {
-    Notification.requestPermission().then(p=>{
-      if(p==="granted") new Notification("Prayer Request Submitted", { body: "Thank you for submitting your prayer request!" });
-    });
-  }
-});
-
-// Swipe support for calendar
-let startX=0;
-document.addEventListener("touchstart",e=>startX=e.touches[0].clientX);
-document.addEventListener("touchend",e=>{
-  let diff=e.changedTouches[0].clientX-startX;
-  if(diff>50) currentMonth = (currentMonth-1+months.length)%months.length;
-  if(diff<-50) currentMonth = (currentMonth+1)%months.length;
-  showMonth(currentMonth);
-});
+function closePopup() { document.getElementById("popup").style.display = "none"; }
 </script>
 
 </body>
