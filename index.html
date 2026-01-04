@@ -6,6 +6,8 @@
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
+  <!-- PWA manifest -->
+  <link rel="manifest" href="manifest.json">
 </head>
 <body>
 
@@ -18,6 +20,9 @@
     <li><a href="#contacto" class="nav-item">Contact</a></li>
     <li><a href="#social" class="nav-item">Social</a></li>
     <li><a href="live.html" class="nav-item">Live</a></li>
+    <li><a href="#donate" class="nav-item">Give</a></li>
+    <li><a href="admin.html" class="nav-item">Admin</a></li>
+    <li><a href="#prayer" class="nav-item">Prayer</a></li>
   </ul>
   <button id="darkModeToggle">🌙</button>
 </nav>
@@ -44,20 +49,14 @@
 <!-- Events / Calendar -->
 <section id="eventos" class="fade-in">
   <h2>Upcoming Events</h2>
-
-  <!-- Legend -->
   <div class="legend">
     <span class="legend-box women"></span> Women’s Events
   </div>
-
-  <!-- Calendar Header -->
   <div class="calendar-header">
     <button id="prevMonth" class="arrow-btn">←</button>
     <h3 id="monthTitle">January</h3>
     <button id="nextMonth" class="arrow-btn">→</button>
   </div>
-
-  <!-- Calendar Wrapper with Border -->
   <div class="calendar-wrapper">
     <div class="calendar active" id="january"></div>
     <div class="calendar" id="february"></div>
@@ -72,6 +71,25 @@
     <div class="calendar" id="november"></div>
     <div class="calendar" id="december"></div>
   </div>
+</section>
+
+<!-- Prayer Request Form -->
+<section id="prayer" class="fade-in">
+  <h2>Submit a Prayer Request</h2>
+  <form id="prayerForm">
+    <input type="text" name="name" placeholder="Your Name" required><br><br>
+    <input type="email" name="email" placeholder="Your Email" required><br><br>
+    <textarea name="prayer" placeholder="Your Prayer Request" required></textarea><br><br>
+    <button type="submit">Submit</button>
+  </form>
+  <p id="prayerMsg"></p>
+</section>
+
+<!-- Donations -->
+<section id="donate" class="fade-in">
+  <h2>Give / Donations</h2>
+  <p>You can give via Zelle:</p>
+  <p><strong>Zelle:</strong> [Add Number Here]</p>
 </section>
 
 <!-- Contact -->
@@ -138,27 +156,21 @@ function generateCalendar(monthIndex) {
     el.textContent = d;
     grid.appendChild(el);
   });
-
-  // Days placeholder (30 days for simplicity)
   for (let i=1;i<=30;i++){
     const day = document.createElement('div');
     day.className = 'day';
-    day.dataset.event = ''; // empty placeholder, can be updated dynamically
+    day.dataset.event = '';
     day.innerHTML = `<span>${i}</span>`;
     grid.appendChild(day);
   }
 }
-
-// Generate all 12 months
 months.forEach((m,i)=>generateCalendar(i));
-
 function showMonth(index) {
   months.forEach(m=>document.getElementById(m).classList.remove('active'));
   document.getElementById(months[index]).classList.add('active');
   document.getElementById('monthTitle').textContent = monthNames[index];
 }
 showMonth(currentMonth);
-
 document.getElementById('nextMonth').addEventListener('click', ()=> {
   currentMonth = (currentMonth+1)%months.length;
   showMonth(currentMonth);
@@ -178,6 +190,23 @@ document.querySelectorAll(".day[data-event]").forEach(day=>{
   });
 });
 function closePopup(){ document.getElementById("popup").style.display = "none"; }
+
+// Prayer form submission
+const prayerForm = document.getElementById('prayerForm');
+prayerForm.addEventListener('submit', (e)=>{
+  e.preventDefault();
+  document.getElementById('prayerMsg').textContent = "Thank you! Your prayer request has been submitted.";
+  prayerForm.reset();
+
+  // Push notification
+  if (Notification.permission === "granted") {
+    new Notification("Prayer Request Submitted", { body: "Thank you for submitting your prayer request!" });
+  } else if (Notification.permission !== "denied") {
+    Notification.requestPermission().then(p=>{
+      if(p==="granted") new Notification("Prayer Request Submitted", { body: "Thank you for submitting your prayer request!" });
+    });
+  }
+});
 
 // Swipe support
 let startX=0;
