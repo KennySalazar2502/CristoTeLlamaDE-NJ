@@ -1,0 +1,108 @@
+index.html
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8" />
+  <title>Cristo Te Llama DE/NJ</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+
+  <!-- CSS -->
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+
+  <!-- Messenger Button -->
+  <a href="https://m.me/IglesiaCristoTeLlamaDelaware"
+     class="messenger-btn"
+     target="_blank"
+     rel="noopener">
+    💬 Messenger
+  </a>
+
+  <!-- Navigation -->
+  <nav>
+    <ul>
+      <li><a href="#inicio">Home</a></li>
+      <li><a href="#verso">Bible Verse</a></li>
+      <li><a href="#eventos">Events</a></li>
+      <li><a href="#contacto">Contact</a></li>
+      <li><a href="#social">Social</a></li>
+    </ul>
+  </nav>
+
+  <!-- Hero -->
+  <section id="inicio" class="hero fade-in">
+    <h1>Welcome to Cristo Te Llama DE/NJ</h1>
+
+    <p class="description">
+      We are a Pentecostal church committed to helping people grow
+      in their walk with God through Jesus Christ.
+    </p>
+
+    <!-- Slideshow -->
+    <div class="slideshow">
+      <img src="images/slide1.jpg" class="slide active" alt="Slide 1">
+      <img src="images/slide2.jpg" class="slide" alt="Slide 2">
+      <img src="images/slide3.jpg" class="slide" alt="Slide 3">
+    </div>
+  </section>
+
+  <!-- Bible Verse -->
+  <section id="verso" class="fade-in">
+    <h2>Bible Verse of the Week</h2>
+    <p id="bible-verse">Loading verse...</p>
+  </section>
+
+  <!-- Events -->
+  <section id="eventos" class="fade-in">
+    <h2>Upcoming Events</h2>
+    <p>🕊 Sunday Service – 11:00 AM</p>
+    <p>🙏 Wednesday Prayer – 7:00 PM</p>
+  </section>
+
+  <!-- Contact -->
+  <section id="contacto" class="fade-in">
+    <h2>Contact</h2>
+    <p><strong>Pastor Phone:</strong> 540-842-2846</p>
+
+    <iframe
+      src="https://www.google.com/maps?q=Delaware&output=embed"
+      width="100%"
+      height="300"
+      style="border:0;"
+      loading="lazy">
+    </iframe>
+  </section>
+
+  <!-- Social -->
+  <section id="social" class="fade-in">
+    <h2>Social Media</h2>
+
+    <a href="https://facebook.com/IglesiaCristoTeLlamaDelaware"
+       target="_blank"
+       rel="noopener">
+       Facebook
+    </a>
+
+    <br><br>
+
+    <iframe
+      width="100%"
+      height="315"
+      src="https://www.youtube.com/embed"
+      allowfullscreen>
+    </iframe>
+  </section>
+
+  <!-- Footer -->
+  <footer>
+    <p>© 2026 Cristo Te Llama DE/NJ</p>
+  </footer>
+
+  <!-- JS -->
+  <script src="script.js"></script>
+</body>
+</html>
