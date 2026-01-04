@@ -2,17 +2,64 @@ body {
   margin: 0;
   font-family: 'Playfair Display', serif;
   background-color: #F6F1EB;
+  color: #000;
 }
 
-section { padding: 50px 20px; text-align: center; }
+/* NAV */
+nav {
+  background: #fff;
+  padding: 15px;
+  position: sticky;
+  top: 0;
+  z-index: 10;
+}
 
+nav ul {
+  display: flex;
+  justify-content: center;
+  gap: 20px;
+  list-style: none;
+  padding: 0;
+  margin: 0;
+}
+
+nav a {
+  text-decoration: none;
+  font-weight: bold;
+  color: black;
+}
+
+/* SECTIONS */
+section {
+  padding: 50px 20px;
+  text-align: center;
+}
+
+/* CALENDAR HEADER */
+.calendar-header {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+}
+
+.calendar-header button {
+  background: none;
+  border: none;
+  font-size: 1.5rem;
+  cursor: pointer;
+}
+
+/* CALENDAR */
 .calendar {
   max-width: 720px;
   margin: 20px auto;
   display: none;
 }
 
-.calendar.active { display: block; }
+.calendar.active {
+  display: block;
+}
 
 .calendar-grid {
   display: grid;
@@ -20,6 +67,7 @@ section { padding: 50px 20px; text-align: center; }
   gap: 8px;
 }
 
+/* Placeholder calendar (Code A feature) */
 .calendar-grid.placeholder {
   display: flex;
   justify-content: center;
@@ -30,23 +78,49 @@ section { padding: 50px 20px; text-align: center; }
   font-style: italic;
 }
 
-.day-name { font-weight: bold; }
+/* DAYS */
+.day-name {
+  font-weight: bold;
+}
 
 .day {
   background: #f0eae2;
   border-radius: 8px;
   padding: 8px;
   min-height: 70px;
+  cursor: pointer;
 }
 
-.day.event { background: #e3d9cd; }
-.day.women { background: #f2d6df; }
-.day.empty { background: transparent; }
+.day span {
+  font-weight: bold;
+}
 
+.day small {
+  display: block;
+  margin-top: 5px;
+}
+
+.day.event {
+  background: #e3d9cd;
+}
+
+/* WOMEN EVENTS */
+.day.women {
+  background: #f2d6df;
+}
+
+.day.empty {
+  background: transparent;
+  cursor: default;
+}
+
+/* LEGEND */
 .legend {
   display: flex;
   justify-content: center;
+  align-items: center;
   gap: 8px;
+  margin-bottom: 10px;
 }
 
 .legend-box {
@@ -54,21 +128,70 @@ section { padding: 50px 20px; text-align: center; }
   height: 18px;
   border-radius: 4px;
 }
-.legend-box.women { background:#f2d6df; }
 
-/* Popup */
+.legend-box.women {
+  background: #f2d6df;
+}
+
+/* NO EVENTS TEXT */
+.no-events {
+  font-style: italic;
+  padding: 30px;
+}
+
+/* SOCIAL */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.social-icons img {
+  width: 48px;
+}
+
+/* MESSENGER BUTTON */
+.messenger-btn {
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #0084ff;
+  color: white;
+  padding: 15px 20px;
+  border-radius: 50px;
+  text-decoration: none;
+  font-weight: bold;
+}
+
+/* POPUP */
 .popup {
-  display:none;
-  position:fixed;
-  inset:0;
-  background:rgba(0,0,0,.5);
-  justify-content:center;
-  align-items:center;
+  display: none;
+  position: fixed;
+  inset: 0;
+  background: rgba(0,0,0,0.5);
+  justify-content: center;
+  align-items: center;
 }
-.popup-content {
-  background:#fff;
-  padding:20px;
-  border-radius:10px;
-}
-.close { cursor:pointer; float:right; }
 
+.popup-content {
+  background: #fff;
+  padding: 20px;
+  border-radius: 10px;
+  max-width: 300px;
+}
+
+.close {
+  cursor: pointer;
+  float: right;
+  font-size: 1.2rem;
+}
+
+/* ANIMATIONS */
+.fade-in {
+  animation: fade 1.5s ease-in;
+}
+
+@keyframes fade {
+  from { opacity: 0; }
+  to { opacity: 1; }
+}
