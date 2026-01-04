@@ -1,4 +1,3 @@
-index.html
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -27,6 +26,7 @@ index.html
     <ul>
       <li><a href="#inicio">Home</a></li>
       <li><a href="#verso">Bible Verse</a></li>
+      <li><a href="#servicios">Service Times</a></li>
       <li><a href="#eventos">Events</a></li>
       <li><a href="#contacto">Contact</a></li>
       <li><a href="#social">Social</a></li>
@@ -36,43 +36,118 @@ index.html
   <!-- Hero -->
   <section id="inicio" class="hero fade-in">
     <h1>Welcome to Cristo Te Llama DE/NJ</h1>
-
     <p class="description">
       We are a Pentecostal church committed to helping people grow
       in their walk with God through Jesus Christ.
     </p>
 
-    <!-- Slideshow -->
     <div class="slideshow">
-      <img src="images/slide1.jpg" class="slide active" alt="Slide 1">
-      <img src="images/slide2.jpg" class="slide" alt="Slide 2">
-      <img src="images/slide3.jpg" class="slide" alt="Slide 3">
+      <img src="images/slide1.jpg" class="slide active" alt="">
+      <img src="images/slide2.jpg" class="slide" alt="">
+      <img src="images/slide3.jpg" class="slide" alt="">
     </div>
   </section>
 
   <!-- Bible Verse -->
   <section id="verso" class="fade-in">
     <h2>Bible Verse of the Week</h2>
-    <p id="bible-verse">Loading verse...</p>
+    <p>Coming soon</p>
   </section>
 
-  <!-- Events -->
+  <!-- Service Times -->
+  <section id="servicios" class="fade-in">
+    <h2>Church Service Times</h2>
+    <p><strong>Every Tuesday:</strong> 7:00 PM – 9:00 PM</p>
+    <p><strong>Every Saturday:</strong> 7:00 PM – 9:00 PM</p>
+    <p><strong>Every Sunday:</strong> 10:00 AM – 1:00 PM</p>
+  </section>
+
+  <!-- Upcoming Events -->
   <section id="eventos" class="fade-in">
     <h2>Upcoming Events</h2>
-    <p>🕊 Sunday Service – 11:00 AM</p>
-    <p>🙏 Wednesday Prayer – 7:00 PM</p>
+
+    <div class="calendar">
+      <h3>January</h3>
+
+      <div class="calendar-grid">
+        <!-- Weekdays -->
+        <div class="day-name">Sun</div>
+        <div class="day-name">Mon</div>
+        <div class="day-name">Tue</div>
+        <div class="day-name">Wed</div>
+        <div class="day-name">Thu</div>
+        <div class="day-name">Fri</div>
+        <div class="day-name">Sat</div>
+
+        <!-- Empty days -->
+        <div class="day empty"></div>
+        <div class="day empty"></div>
+        <div class="day empty"></div>
+
+        <div class="day"><span>1</span></div>
+        <div class="day"><span>2</span></div>
+
+        <div class="day event">
+          <span>3</span>
+          <small>Servicio De Adoración</small>
+        </div>
+
+        <div class="day"><span>4</span></div>
+
+        <div class="day event"><span>6</span><small>Servicio De Adoración</small></div>
+        <div class="day"><span>7</span></div>
+
+        <div class="day event"><span>8</span><small>Oración De Damas 7:00PM</small></div>
+        <div class="day"><span>9</span></div>
+
+        <div class="day event"><span>10</span><small>Servicio De Adoración</small></div>
+        <div class="day event"><span>11</span><small>Ayuno Congregacional</small></div>
+
+        <div class="day event"><span>13</span><small>Servicio De Adoración</small></div>
+        <div class="day"><span>14</span></div>
+
+        <div class="day event"><span>15</span><small>Oración De Damas 7:00PM</small></div>
+        <div class="day"><span>16</span></div>
+
+        <div class="day event"><span>17</span><small>Servicio De Adoración</small></div>
+        <div class="day"><span>18</span></div>
+
+        <div class="day event"><span>20</span><small>Servicio De Adoración</small></div>
+        <div class="day"><span>21</span></div>
+
+        <div class="day event"><span>22</span><small>Oración De Damas 7:00PM</small></div>
+        <div class="day"><span>23</span></div>
+
+        <div class="day event">
+          <span>24</span>
+          <small>Servicio De Adoración<br>Retiro Y Servicio De Damas</small>
+        </div>
+
+        <div class="day"><span>25</span></div>
+
+        <div class="day event"><span>27</span><small>Servicio De Adoración</small></div>
+        <div class="day"><span>28</span></div>
+
+        <div class="day event"><span>29</span><small>Oración De Damas 7:00PM</small></div>
+
+        <div class="day event"><span>30</span><small>Gran Vigilia Congregacional</small></div>
+
+        <div class="day event"><span>31</span><small>Servicio De Adoración</small></div>
+      </div>
+    </div>
   </section>
 
   <!-- Contact -->
   <section id="contacto" class="fade-in">
     <h2>Contact</h2>
-    <p><strong>Pastor Phone:</strong> 540-842-2846</p>
+    <p><strong>📍 Address:</strong> 110 E Maple Ave, Penns Grove, NJ</p>
+    <p><strong>📞 Pastor Phone:</strong> 540-842-2846</p>
 
     <iframe
-      src="https://www.google.com/maps?q=Delaware&output=embed"
+      src="https://www.google.com/maps?q=110+E+Maple+Ave,+Penns+Grove,+NJ&output=embed"
       width="100%"
       height="300"
-      style="border:0;"
+      style="border:0; border-radius:10px;"
       loading="lazy">
     </iframe>
   </section>
@@ -80,29 +155,19 @@ index.html
   <!-- Social -->
   <section id="social" class="fade-in">
     <h2>Social Media</h2>
-
-    <a href="https://facebook.com/IglesiaCristoTeLlamaDelaware"
-       target="_blank"
-       rel="noopener">
-       Facebook
-    </a>
-
-    <br><br>
-
-    <iframe
-      width="100%"
-      height="315"
-      src="https://www.youtube.com/embed"
-      allowfullscreen>
-    </iframe>
+    <div class="social-icons">
+      <a href="https://facebook.com/IglesiaCristoTeLlamaDelaware" target="_blank">
+        <img src="images/facebook.svg" alt="Facebook">
+      </a>
+      <a href="https://www.youtube.com/@CristoTeLlama" target="_blank">
+        <img src="images/youtube.svg" alt="YouTube">
+      </a>
+    </div>
   </section>
 
-  <!-- Footer -->
   <footer>
     <p>© 2026 Cristo Te Llama DE/NJ</p>
   </footer>
 
-  <!-- JS -->
-  <script src="script.js"></script>
 </body>
 </html>
