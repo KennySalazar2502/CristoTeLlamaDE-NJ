@@ -24,9 +24,7 @@
 
 <section id="inicio" class="hero fade-in">
   <h1>Welcome to Cristo Te Llama DE/NJ</h1>
-  <p class="description">
-    A Pentecostal church helping people grow in their walk with Jesus Christ.
-  </p>
+  <p class="description">A Pentecostal church helping people grow in Christ.</p>
 </section>
 
 <section id="servicios" class="fade-in">
@@ -44,14 +42,14 @@
     <span class="legend-box women"></span> Women’s Events
   </div>
 
-  <!-- Month Switch -->
+  <!-- Month Header -->
   <div class="calendar-header">
     <button onclick="prevMonth()">←</button>
     <h3 id="monthTitle">January</h3>
     <button onclick="nextMonth()">→</button>
   </div>
 
-  <!-- JANUARY -->
+  <!-- JANUARY (WITH EVENTS) -->
   <div class="calendar active" id="january">
     <div class="calendar-grid">
       <div class="day-name">Sun</div><div class="day-name">Mon</div><div class="day-name">Tue</div>
@@ -59,8 +57,7 @@
       <div class="day-name">Sat</div>
 
       <div class="day empty"></div><div class="day empty"></div><div class="day empty"></div>
-      <div class="day" data-event=""><span>1</span></div>
-      <div class="day" data-event=""><span>2</span></div>
+      <div class="day"><span>1</span></div><div class="day"><span>2</span></div>
 
       <div class="day event" data-event="Servicio De Adoración"><span>3</span><small>Servicio De Adoración</small></div>
       <div class="day"><span>4</span></div>
@@ -90,8 +87,7 @@
       <div class="day"><span>23</span></div>
 
       <div class="day women" data-event="Servicio De Adoración / Retiro Y Servicio De Damas">
-        <span>24</span>
-        <small>Retiro Y Servicio De Damas</small>
+        <span>24</span><small>Retiro Y Servicio De Damas</small>
       </div>
 
       <div class="day"><span>25</span></div>
@@ -107,50 +103,32 @@
 
   <!-- FEBRUARY -->
   <div class="calendar" id="february">
-    <p class="no-events">February has no events yet.<br>Please check back at the end of the month.</p>
+    <div class="calendar-grid placeholder">
+      <p>February has no events yet.<br>Please check back at the end of the month.</p>
+    </div>
   </div>
 
   <!-- MARCH -->
   <div class="calendar" id="march">
-    <p class="no-events">March has no events yet.<br>Please check back at the end of the month.</p>
+    <div class="calendar-grid placeholder">
+      <p>March has no events yet.<br>Please check back at the end of the month.</p>
+    </div>
   </div>
 
   <!-- DECEMBER -->
   <div class="calendar" id="december">
-    <p class="no-events">December has no events yet.<br>Please check back at the end of the month.</p>
+    <div class="calendar-grid placeholder">
+      <p>December has no events yet.<br>Please check back at the end of the month.</p>
+    </div>
   </div>
 
-</section>
-
-<section id="contacto" class="fade-in">
-  <h2>Contact</h2>
-  <p><strong>📍 Address:</strong> 110 E Maple Ave, Penns Grove, NJ</p>
-  <p><strong>📞 Pastor:</strong> 540-842-2846</p>
-
-  <iframe
-    src="https://www.google.com/maps?q=110+E+Maple+Ave,+Penns+Grove,+NJ&output=embed"
-    width="100%" height="300"
-    style="border:0; border-radius:10px;"
-    loading="lazy"></iframe>
-</section>
-
-<section id="social" class="fade-in">
-  <h2>Social Media</h2>
-  <div class="social-icons">
-    <a href="https://facebook.com/IglesiaCristoTeLlamaDelaware" target="_blank">
-      <img src="images/facebook.svg">
-    </a>
-    <a href="https://www.youtube.com/@CristoTeLlama" target="_blank">
-      <img src="images/youtube.svg">
-    </a>
-  </div>
 </section>
 
 <footer>
   <p>© 2026 Cristo Te Llama DE/NJ</p>
 </footer>
 
-<!-- EVENT POPUP -->
+<!-- POPUP -->
 <div id="popup" class="popup">
   <div class="popup-content">
     <span onclick="closePopup()" class="close">&times;</span>
@@ -160,38 +138,32 @@
 
 <script>
 const months = ["january", "february", "march", "december"];
-const monthNames = ["January", "February", "March", "December"];
+const names = ["January", "February", "March", "December"];
 let current = 0;
 
 function showMonth() {
   months.forEach(m => document.getElementById(m).classList.remove("active"));
   document.getElementById(months[current]).classList.add("active");
-  document.getElementById("monthTitle").innerText = monthNames[current];
+  document.getElementById("monthTitle").innerText = names[current];
 }
-function nextMonth() { current = (current + 1) % months.length; showMonth(); }
-function prevMonth() { current = (current - 1 + months.length) % months.length; showMonth(); }
+function nextMonth(){ current=(current+1)%months.length; showMonth(); }
+function prevMonth(){ current=(current-1+months.length)%months.length; showMonth(); }
 
-// Swipe support
-let startX = 0;
-document.addEventListener("touchstart", e => startX = e.touches[0].clientX);
-document.addEventListener("touchend", e => {
-  let diff = e.changedTouches[0].clientX - startX;
-  if (diff > 50) prevMonth();
-  if (diff < -50) nextMonth();
+let startX=0;
+document.addEventListener("touchstart",e=>startX=e.touches[0].clientX);
+document.addEventListener("touchend",e=>{
+  let diff=e.changedTouches[0].clientX-startX;
+  if(diff>50)prevMonth();
+  if(diff<-50)nextMonth();
 });
 
-// Popup
-document.querySelectorAll(".day[data-event]").forEach(day => {
-  day.addEventListener("click", () => {
-    const text = day.getAttribute("data-event");
-    if (!text) return;
-    document.getElementById("popupText").innerText = text;
-    document.getElementById("popup").style.display = "flex";
-  });
+document.querySelectorAll(".day[data-event]").forEach(d=>{
+  d.onclick=()=>{
+    popupText.innerText=d.dataset.event;
+    popup.style.display="flex";
+  }
 });
-function closePopup() {
-  document.getElementById("popup").style.display = "none";
-}
+function closePopup(){ popup.style.display="none"; }
 </script>
 
 </body>
