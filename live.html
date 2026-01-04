@@ -1,167 +1,104 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8" />
-  <title>Cristo Te Llama DE/NJ - Live</title>
-  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+<meta charset="UTF-8">
+<title>Cristo Te Llama DE/NJ - Live</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+<style>
+body {
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+  background-color: #E8DFFB;
+  color: #000;
+  transition: background 0.5s, color 0.5s;
+}
 
-  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+body.dark {
+  background-color: #3A0CA3;
+  color: #fff;
+}
 
-  <style>
-    :root {
-      --bg-color: #F6F1EB;
-      --text-color: #000;
-      --nav-bg: #fff;
-      --nav-text: #000;
-      --button-bg: #0084ff;
-      --button-text: #fff;
-      --video-border: #e3d9cd;
-    }
+/* NAVIGATION */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+}
 
-    [data-theme="dark"] {
-      --bg-color: #1e1e1e;
-      --text-color: #f6f1eb;
-      --nav-bg: #2c2c2c;
-      --nav-text: #f6f1eb;
-      --button-bg: #0055aa;
-      --button-text: #fff;
-      --video-border: #444;
-    }
+nav a {
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 25px;
+  background-color: #fff;
+  color: #000;
+  transition: all 0.3s ease;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+}
 
-    body {
-      margin: 0;
-      font-family: 'Playfair Display', serif;
-      background-color: var(--bg-color);
-      color: var(--text-color);
-      text-align: center;
-      transition: background 0.3s, color 0.3s;
-    }
+nav a:hover {
+  background-color: #6a0dad;
+  color: #fff;
+  transform: translateY(-3px);
+}
 
-    nav {
-      background: var(--nav-bg);
-      padding: 15px;
-      position: sticky;
-      top: 0;
-      display: flex;
-      justify-content: center;
-      gap: 15px;
-      flex-wrap: wrap;
-      z-index: 999;
-      transition: background 0.3s;
-    }
+/* HERO */
+section.hero {
+  padding: 60px 20px;
+  text-align: center;
+}
 
-    nav a {
-      text-decoration: none;
-      font-weight: bold;
-      color: var(--nav-text);
-      padding: 8px 16px;
-      border-radius: 25px;
-      border: 2px solid var(--nav-text);
-      transition: all 0.3s ease;
-    }
+/* LIVE STREAM */
+#liveStream {
+  max-width: 720px;
+  margin: 30px auto;
+  padding: 20px;
+  border-radius: 15px;
+  background-color: #fff;
+  text-align: center;
+  border: 2px solid #6a0dad;
+}
 
-    nav a:hover {
-      background: #f2d6df;
-      transform: scale(1.1);
-      box-shadow: 0 0 8px rgba(0,0,0,0.3);
-    }
+#liveStream.dark { border-color: #9d4edd; }
 
-    h1 {
-      margin-top: 50px;
-      animation: fade 1.5s ease-in;
-    }
+#liveStream iframe {
+  width: 100%;
+  height: 400px;
+  border-radius: 10px;
+  border: none;
+}
 
-    p {
-      max-width: 600px;
-      margin: 10px auto 30px auto;
-      line-height: 1.6;
-      animation: fade 1.5s ease-in;
-    }
-
-    .fb-video-container {
-      max-width: 720px;
-      margin: 0 auto 50px auto;
-      border: 2px solid var(--video-border);
-      border-radius: 12px;
-      padding: 10px;
-      background: var(--bg-color);
-      box-shadow: 0 4px 12px rgba(0,0,0,0.15);
-      animation: fade 1.5s ease-in;
-    }
-
-    iframe {
-      width: 100%;
-      height: 400px;
-      border-radius: 10px;
-      border: none;
-    }
-
-    .messenger-btn {
-      position: fixed;
-      bottom: 20px;
-      right: 20px;
-      background: var(--button-bg);
-      color: var(--button-text);
-      padding: 15px 20px;
-      border-radius: 50px;
-      text-decoration: none;
-      z-index: 999;
-      transition: transform 0.2s ease, box-shadow 0.2s ease;
-    }
-
-    .messenger-btn:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
-    }
-
-    .dark-toggle {
-      position: fixed;
-      top: 15px;
-      right: 15px;
-      background: var(--button-bg);
-      color: var(--button-text);
-      border: none;
-      padding: 10px 15px;
-      border-radius: 50px;
-      cursor: pointer;
-      z-index: 999;
-      transition: all 0.2s ease;
-    }
-
-    .dark-toggle:hover {
-      transform: scale(1.1);
-      box-shadow: 0 0 10px rgba(0,0,0,0.3);
-    }
-
-    @keyframes fade {
-      from { opacity: 0; }
-      to { opacity: 1; }
-    }
-
-    @media (max-width: 768px) {
-      .fb-video-container iframe {
-        height: 300px;
-      }
-
-      nav a {
-        padding: 6px 12px;
-        font-size: 0.9rem;
-      }
-    }
-
-    @media (max-width: 480px) {
-      .fb-video-container iframe {
-        height: 250px;
-      }
-
-      nav {
-        gap: 8px;
-      }
-    }
-  </style>
+/* DARK MODE TOGGLE */
+#darkModeToggle {
+  position: fixed;
+  top: 15px;
+  right: 15px;
+  cursor: pointer;
+  width: 40px;
+  height: 40px;
+  border-radius: 50%;
+  background-color: #fff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 1.5rem;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+</style>
 </head>
 <body>
 
+<!-- DARK MODE TOGGLE -->
+<div id="darkModeToggle">🌓</div>
+
+<!-- NAVIGATION -->
 <nav>
   <a href="index.html">Home</a>
   <a href="index.html#servicios">Service Times</a>
@@ -171,30 +108,61 @@
   <a href="live.html">Live</a>
 </nav>
 
-<button class="dark-toggle" onclick="toggleDarkMode()">🌓 Dark Mode</button>
+<section class="hero">
+  <h1>Live Stream</h1>
+  <p>Watch our live broadcast from Facebook right here.</p>
+</section>
 
-<h1>Live Stream</h1>
-<p>Watch our Facebook Live here. It will automatically appear when we go live.</p>
-
-<div class="fb-video-container">
-  <iframe 
-    src="https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/310457289629080/live&show_text=false&width=720" 
-    allowfullscreen="true" 
-    allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share">
-  </iframe>
-</div>
-
-<a href="https://m.me/IglesiaCristoTeLlamaDelaware" class="messenger-btn" target="_blank">💬 Messenger</a>
+<section id="liveStream">
+  <p id="status">Checking if we are live...</p>
+</section>
 
 <script>
-  function toggleDarkMode() {
-    if(document.documentElement.getAttribute("data-theme") === "dark") {
-      document.documentElement.removeAttribute("data-theme");
-    } else {
-      document.documentElement.setAttribute("data-theme", "dark");
-    }
-  }
-</script>
+// DARK MODE TOGGLE
+const darkModeToggle = document.getElementById('darkModeToggle');
+darkModeToggle.addEventListener('click', () => { 
+  document.body.classList.toggle('dark'); 
+  document.getElementById('liveStream').classList.toggle('dark');
+});
 
+// FACEBOOK LIVE AUTO DETECTION
+const pageId = '310457289629080'; // your Facebook Page ID
+const liveContainer = document.getElementById('liveStream');
+const status = document.getElementById('status');
+
+// Function to embed live video
+function showLiveVideo(videoId){
+  liveContainer.innerHTML = `
+    <iframe 
+      src="https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/${pageId}/videos/${videoId}/&show_text=false&width=560"
+      allow="autoplay; clipboard-write; encrypted-media; picture-in-picture; web-share"
+      allowfullscreen>
+    </iframe>
+  `;
+}
+
+// Fetch live video using Facebook Graph API
+async function checkLive() {
+  try {
+    // This requires a Facebook App Access Token or User Access Token
+    // Example token placeholder: 'YOUR_FACEBOOK_ACCESS_TOKEN'
+    const token = 'YOUR_FACEBOOK_ACCESS_TOKEN';
+    const res = await fetch(`https://graph.facebook.com/${pageId}/live_videos?status=LIVE&access_token=${token}`);
+    const data = await res.json();
+
+    if(data.data && data.data.length > 0){
+      const liveVideoId = data.data[0].id;
+      showLiveVideo(liveVideoId);
+    } else {
+      status.innerText = "No live broadcast currently. Check back during our service times!";
+    }
+  } catch(e){
+    console.error(e);
+    status.innerText = "Unable to load live stream at this time.";
+  }
+}
+
+checkLive();
+</script>
 </body>
 </html>
