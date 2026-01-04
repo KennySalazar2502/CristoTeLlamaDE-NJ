@@ -4,29 +4,36 @@
   <meta charset="UTF-8" />
   <title>Cristo Te Llama DE/NJ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<a href="https://m.me/IglesiaCristoTeLlamaDelaware" class="messenger-btn" target="_blank">💬 Messenger</a>
-
-<nav>
-  <ul>
-    <li><a href="#inicio">Home</a></li>
-    <li><a href="#servicios">Service Times</a></li>
-    <li><a href="#eventos">Events</a></li>
-    <li><a href="#contacto">Contact</a></li>
-    <li><a href="#social">Social</a></li>
+<!-- Top Navigation -->
+<nav class="nav-bar">
+  <ul class="nav-list">
+    <li><a href="#inicio" class="nav-item">Home</a></li>
+    <li><a href="#servicios" class="nav-item">Service Times</a></li>
+    <li><a href="#eventos" class="nav-item">Events</a></li>
+    <li><a href="#contacto" class="nav-item">Contact</a></li>
+    <li><a href="#social" class="nav-item">Social</a></li>
+    <li><a href="live.html" class="nav-item">Live</a></li>
   </ul>
+  <button id="darkModeToggle">🌙</button>
 </nav>
 
+<!-- Messenger Button -->
+<a href="https://m.me/IglesiaCristoTeLlamaDelaware" class="messenger-btn" target="_blank">
+  <img src="images/facebook.svg" alt="Messenger" class="messenger-logo"> Messenger
+</a>
+
+<!-- Hero Section -->
 <section id="inicio" class="hero fade-in">
   <h1>Welcome to Cristo Te Llama DE/NJ</h1>
-  <p class="description">A Pentecostal church helping people grow in Christ.</p>
+  <p class="description">A Pentecostal church helping people grow in their walk with Jesus Christ.</p>
 </section>
 
+<!-- Service Times -->
 <section id="servicios" class="fade-in">
   <h2>Church Service Times</h2>
   <p><strong>Tuesday:</strong> 7:00 PM – 9:00 PM</p>
@@ -34,6 +41,7 @@
   <p><strong>Sunday:</strong> 10:00 AM – 1:00 PM</p>
 </section>
 
+<!-- Events / Calendar -->
 <section id="eventos" class="fade-in">
   <h2>Upcoming Events</h2>
 
@@ -42,93 +50,59 @@
     <span class="legend-box women"></span> Women’s Events
   </div>
 
-  <!-- Month Header -->
+  <!-- Calendar Header -->
   <div class="calendar-header">
-    <button onclick="prevMonth()">←</button>
+    <button id="prevMonth" class="arrow-btn">←</button>
     <h3 id="monthTitle">January</h3>
-    <button onclick="nextMonth()">→</button>
+    <button id="nextMonth" class="arrow-btn">→</button>
   </div>
 
-  <!-- JANUARY (WITH EVENTS) -->
-  <div class="calendar active" id="january">
-    <div class="calendar-grid">
-      <div class="day-name">Sun</div><div class="day-name">Mon</div><div class="day-name">Tue</div>
-      <div class="day-name">Wed</div><div class="day-name">Thu</div><div class="day-name">Fri</div>
-      <div class="day-name">Sat</div>
-
-      <div class="day empty"></div><div class="day empty"></div><div class="day empty"></div>
-      <div class="day"><span>1</span></div><div class="day"><span>2</span></div>
-
-      <div class="day event" data-event="Servicio De Adoración"><span>3</span><small>Servicio De Adoración</small></div>
-      <div class="day"><span>4</span></div>
-
-      <div class="day event" data-event="Servicio De Adoración"><span>6</span><small>Servicio De Adoración</small></div>
-      <div class="day"><span>7</span></div>
-
-      <div class="day women" data-event="Oración De Damas 7:00PM"><span>8</span><small>Oración De Damas</small></div>
-      <div class="day"><span>9</span></div>
-
-      <div class="day event" data-event="Servicio De Adoración"><span>10</span><small>Servicio De Adoración</small></div>
-      <div class="day event" data-event="Ayuno Congregacional"><span>11</span><small>Ayuno Congregacional</small></div>
-
-      <div class="day event" data-event="Servicio De Adoración"><span>13</span><small>Servicio De Adoración</small></div>
-      <div class="day"><span>14</span></div>
-
-      <div class="day women" data-event="Oración De Damas 7:00PM"><span>15</span><small>Oración De Damas</small></div>
-      <div class="day"><span>16</span></div>
-
-      <div class="day event" data-event="Servicio De Adoración"><span>17</span><small>Servicio De Adoración</small></div>
-      <div class="day"><span>18</span></div>
-
-      <div class="day event" data-event="Servicio De Adoración"><span>20</span><small>Servicio De Adoración</small></div>
-      <div class="day"><span>21</span></div>
-
-      <div class="day women" data-event="Oración De Damas 7:00PM"><span>22</span><small>Oración De Damas</small></div>
-      <div class="day"><span>23</span></div>
-
-      <div class="day women" data-event="Servicio De Adoración / Retiro Y Servicio De Damas">
-        <span>24</span><small>Retiro Y Servicio De Damas</small>
-      </div>
-
-      <div class="day"><span>25</span></div>
-
-      <div class="day event" data-event="Servicio De Adoración"><span>27</span><small>Servicio De Adoración</small></div>
-      <div class="day"><span>28</span></div>
-
-      <div class="day women" data-event="Oración De Damas 7:00PM"><span>29</span><small>Oración De Damas</small></div>
-      <div class="day event" data-event="Gran Vigilia Congregacional"><span>30</span><small>Gran Vigilia</small></div>
-      <div class="day event" data-event="Servicio De Adoración"><span>31</span><small>Servicio De Adoración</small></div>
-    </div>
+  <!-- Calendar Wrapper with Border -->
+  <div class="calendar-wrapper">
+    <div class="calendar active" id="january"></div>
+    <div class="calendar" id="february"></div>
+    <div class="calendar" id="march"></div>
+    <div class="calendar" id="april"></div>
+    <div class="calendar" id="may"></div>
+    <div class="calendar" id="june"></div>
+    <div class="calendar" id="july"></div>
+    <div class="calendar" id="august"></div>
+    <div class="calendar" id="september"></div>
+    <div class="calendar" id="october"></div>
+    <div class="calendar" id="november"></div>
+    <div class="calendar" id="december"></div>
   </div>
-
-  <!-- FEBRUARY -->
-  <div class="calendar" id="february">
-    <div class="calendar-grid placeholder">
-      <p>February has no events yet.<br>Please check back at the end of the month.</p>
-    </div>
-  </div>
-
-  <!-- MARCH -->
-  <div class="calendar" id="march">
-    <div class="calendar-grid placeholder">
-      <p>March has no events yet.<br>Please check back at the end of the month.</p>
-    </div>
-  </div>
-
-  <!-- DECEMBER -->
-  <div class="calendar" id="december">
-    <div class="calendar-grid placeholder">
-      <p>December has no events yet.<br>Please check back at the end of the month.</p>
-    </div>
-  </div>
-
 </section>
 
+<!-- Contact -->
+<section id="contacto" class="fade-in">
+  <h2>Contact</h2>
+  <p><strong>📍 Address:</strong> 110 E Maple Ave, Penns Grove, NJ</p>
+  <p><strong>📞 Pastor:</strong> 540-842-2846</p>
+  <iframe
+    src="https://www.google.com/maps?q=110+E+Maple+Ave,+Penns+Grove,+NJ&output=embed"
+    width="100%" height="300" style="border:0; border-radius:10px;" loading="lazy"></iframe>
+</section>
+
+<!-- Social Media -->
+<section id="social" class="fade-in">
+  <h2>Social Media</h2>
+  <div class="social-icons">
+    <a href="https://facebook.com/IglesiaCristoTeLlamaDelaware" target="_blank">
+      <img src="images/facebook.svg">
+    </a>
+    <a href="https://www.youtube.com/@CristoTeLlama" target="_blank">
+      <img src="images/youtube.svg">
+    </a>
+  </div>
+</section>
+
+<!-- Footer -->
 <footer>
   <p>© 2026 Cristo Te Llama DE/NJ</p>
 </footer>
 
-<!-- POPUP -->
+<!-- Event Popup -->
 <div id="popup" class="popup">
   <div class="popup-content">
     <span onclick="closePopup()" class="close">&times;</span>
@@ -137,33 +111,83 @@
 </div>
 
 <script>
-const months = ["january", "february", "march", "december"];
-const names = ["January", "February", "March", "December"];
-let current = 0;
+// Dark mode toggle
+const toggleBtn = document.getElementById('darkModeToggle');
+toggleBtn.addEventListener('click', () => {
+  document.body.classList.toggle('dark-mode');
+  toggleBtn.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+});
 
-function showMonth() {
-  months.forEach(m => document.getElementById(m).classList.remove("active"));
-  document.getElementById(months[current]).classList.add("active");
-  document.getElementById("monthTitle").innerText = names[current];
+// Calendar setup
+const months = [
+  'january','february','march','april','may','june','july','august','september','october','november','december'
+];
+const monthNames = [
+  'January','February','March','April','May','June','July','August','September','October','November','December'
+];
+let currentMonth = 0;
+
+function generateCalendar(monthIndex) {
+  const calendarEl = document.getElementById(months[monthIndex]);
+  calendarEl.innerHTML = '<div class="calendar-grid"></div>';
+  const grid = calendarEl.querySelector('.calendar-grid');
+  const dayNames = ['Sun','Mon','Tue','Wed','Thu','Fri','Sat'];
+  dayNames.forEach(d => {
+    const el = document.createElement('div');
+    el.className = 'day-name';
+    el.textContent = d;
+    grid.appendChild(el);
+  });
+
+  // Days placeholder (30 days for simplicity)
+  for (let i=1;i<=30;i++){
+    const day = document.createElement('div');
+    day.className = 'day';
+    day.dataset.event = ''; // empty placeholder, can be updated dynamically
+    day.innerHTML = `<span>${i}</span>`;
+    grid.appendChild(day);
+  }
 }
-function nextMonth(){ current=(current+1)%months.length; showMonth(); }
-function prevMonth(){ current=(current-1+months.length)%months.length; showMonth(); }
 
+// Generate all 12 months
+months.forEach((m,i)=>generateCalendar(i));
+
+function showMonth(index) {
+  months.forEach(m=>document.getElementById(m).classList.remove('active'));
+  document.getElementById(months[index]).classList.add('active');
+  document.getElementById('monthTitle').textContent = monthNames[index];
+}
+showMonth(currentMonth);
+
+document.getElementById('nextMonth').addEventListener('click', ()=> {
+  currentMonth = (currentMonth+1)%months.length;
+  showMonth(currentMonth);
+});
+document.getElementById('prevMonth').addEventListener('click', ()=> {
+  currentMonth = (currentMonth-1+months.length)%months.length;
+  showMonth(currentMonth);
+});
+
+// Popup events
+document.querySelectorAll(".day[data-event]").forEach(day=>{
+  day.addEventListener('click',()=>{
+    const text = day.dataset.event;
+    if(!text) return;
+    document.getElementById("popupText").textContent = text;
+    document.getElementById("popup").style.display = "flex";
+  });
+});
+function closePopup(){ document.getElementById("popup").style.display = "none"; }
+
+// Swipe support
 let startX=0;
 document.addEventListener("touchstart",e=>startX=e.touches[0].clientX);
 document.addEventListener("touchend",e=>{
   let diff=e.changedTouches[0].clientX-startX;
-  if(diff>50)prevMonth();
-  if(diff<-50)nextMonth();
+  if(diff>50) currentMonth = (currentMonth-1+months.length)%months.length;
+  if(diff<-50) currentMonth = (currentMonth+1)%months.length;
+  showMonth(currentMonth);
 });
-
-document.querySelectorAll(".day[data-event]").forEach(d=>{
-  d.onclick=()=>{
-    popupText.innerText=d.dataset.event;
-    popup.style.display="flex";
-  }
-});
-function closePopup(){ popup.style.display="none"; }
 </script>
 
 </body>
