@@ -16,7 +16,7 @@
   --text-light: #000;
   --text-dark: #fff;
   --calendar-bg: #f0eae2;
-  --calendar-event: #e3d9cd;
+  --calendar-event: #f0a500;
   --calendar-women: #f2d6df;
 }
 
@@ -146,6 +146,7 @@ section.hero {
   position: relative;
   padding: 5px;
   transition: transform 0.2s;
+  cursor: pointer;
 }
 
 .day span {
@@ -161,7 +162,6 @@ section.hero {
 
 .day.event { background: var(--calendar-event); }
 .day.women { background: var(--calendar-women); }
-.day.empty { background: transparent; cursor: default; }
 
 .day:hover {
   transform: scale(1.05);
@@ -186,8 +186,6 @@ body.dark {
   background-color: #3A0CA3;
   color: var(--text-dark);
 }
-
-/* DARK MODE calendar */
 body.dark .calendar-container { border-color: #9d4edd; }
 body.dark .calendar-header button { border-color: #9d4edd; }
 body.dark .calendar-header button:hover { background-color: #9d4edd; color:#fff; }
@@ -207,9 +205,15 @@ body.dark .calendar-header button:hover { background-color: #9d4edd; color:#fff;
   padding: 20px;
   border-radius: 10px;
   max-width: 300px;
+  animation: fadeIn 0.3s ease;
 }
 
 .close { cursor: pointer; float: right; }
+
+@keyframes fadeIn {
+  from { opacity:0; transform: translateY(-10px);}
+  to { opacity:1; transform: translateY(0);}
+}
 
 @media (max-width: 600px){
   nav { justify-content: center; gap: 8px; }
@@ -256,7 +260,7 @@ body.dark .calendar-header button:hover { background-color: #9d4edd; color:#fff;
       <button onclick="nextMonth()">→</button>
     </div>
     <div class="calendar-grid" id="calendarGrid">
-      <!-- Days will be injected by JS -->
+      <!-- Days injected by JS -->
     </div>
   </div>
 </section>
@@ -297,9 +301,7 @@ body.dark .calendar-header button:hover { background-color: #9d4edd; color:#fff;
 <script>
 // DARK MODE TOGGLE
 const darkModeToggle = document.getElementById('darkModeToggle');
-darkModeToggle.addEventListener('click', () => {
-  document.body.classList.toggle('dark');
-});
+darkModeToggle.addEventListener('click', () => { document.body.classList.toggle('dark'); });
 
 // CALENDAR LOGIC
 const months = [
@@ -312,54 +314,43 @@ const months = [
 let currentMonth = 0;
 const year = 2026;
 
+// Sample events
+let events = [
+  {day:3, month:0, title:"Servicio De Adoración", type:"event"},
+  {day:8, month:0, title:"Oración De Damas 7:00PM", type:"women"}
+];
+
 function renderCalendar() {
   const grid = document.getElementById('calendarGrid');
   grid.innerHTML = '';
 
-  // Day names
   const dayNames = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-  dayNames.forEach(d => {
-    const div = document.createElement('div');
-    div.classList.add('day-name');
-    div.innerText = d;
-    grid.appendChild(div);
-  });
+  dayNames.forEach(d => { const div=document.createElement('div'); div.classList.add('day-name'); div.innerText=d; grid.appendChild(div); });
 
-  // Empty slots for first day
-  const firstDay = new Date(year, currentMonth, 1).getDay();
+  const firstDay = new Date(year,currentMonth,1).getDay();
   for(let i=0;i<firstDay;i++){
-    const empty = document.createElement('div');
-    empty.classList.add('day','empty');
-    grid.appendChild(empty);
+    const empty = document.createElement('div'); empty.classList.add('day','empty'); grid.appendChild(empty);
   }
 
-  // Days
   for(let i=1;i<=months[currentMonth].days;i++){
-    const day = document.createElement('div');
-    day.classList.add('day');
-    day.innerHTML = `<span>${i}</span>`;
-    grid.appendChild(day);
+    const dayDiv = document.createElement('div'); 
+    dayDiv.classList.add('day');
+    const eventToday = events.find(e => e.day===i && e.month===currentMonth);
+    if(eventToday){ dayDiv.classList.add(eventToday.type); dayDiv.setAttribute('data-event', eventToday.title); dayDiv.innerHTML=`<span>${i}</span><small>${eventToday.title}</small>`;}
+    else { dayDiv.innerHTML=`<span>${i}</span>`;}
+    dayDiv.addEventListener('click',()=>{ 
+      if(dayDiv.dataset.event){ document.getElementById("popupText").innerText=dayDiv.dataset.event; document.getElementById("popup").style.display='flex'; }
+    });
+    grid.appendChild(dayDiv);
   }
-
-  document.getElementById('monthTitle').innerText = `${months[currentMonth].name} ${year}`;
+  document.getElementById('monthTitle').innerText=`${months[currentMonth].name} ${year}`;
 }
 
-function nextMonth() { currentMonth = (currentMonth+1)%12; renderCalendar(); }
-function prevMonth() { currentMonth = (currentMonth+11)%12; renderCalendar(); }
-
+function nextMonth(){ currentMonth=(currentMonth+1)%12; renderCalendar();}
+function prevMonth(){ currentMonth=(currentMonth+11)%12; renderCalendar();}
 renderCalendar();
 
-// POPUP
-document.querySelectorAll(".day[data-event]").forEach(day => {
-  day.addEventListener("click", () => {
-    const text = day.getAttribute("data-event");
-    if (!text) return;
-    document.getElementById("popupText").innerText = text;
-    document.getElementById("popup").style.display = "flex";
-  });
-});
-function closePopup() { document.getElementById("popup").style.display = "none"; }
+function closePopup(){ document.getElementById("popup").style.display='none'; }
 </script>
-
 </body>
 </html>
