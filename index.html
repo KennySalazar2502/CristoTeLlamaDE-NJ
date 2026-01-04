@@ -5,169 +5,194 @@
   <title>Cristo Te Llama DE/NJ</title>
   <meta name="viewport" content="width=device-width, initial-scale=1.0" />
 
-  <!-- Google Font -->
   <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
-
-  <!-- CSS -->
   <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-  <!-- Messenger Button -->
-  <a href="https://m.me/IglesiaCristoTeLlamaDelaware"
-     class="messenger-btn"
-     target="_blank"
-     rel="noopener">
-    💬 Messenger
-  </a>
+<a href="https://m.me/IglesiaCristoTeLlamaDelaware" class="messenger-btn" target="_blank">💬 Messenger</a>
 
-  <!-- Navigation -->
-  <nav>
-    <ul>
-      <li><a href="#inicio">Home</a></li>
-      <li><a href="#verso">Bible Verse</a></li>
-      <li><a href="#servicios">Service Times</a></li>
-      <li><a href="#eventos">Events</a></li>
-      <li><a href="#contacto">Contact</a></li>
-      <li><a href="#social">Social</a></li>
-    </ul>
-  </nav>
+<nav>
+  <ul>
+    <li><a href="#inicio">Home</a></li>
+    <li><a href="#servicios">Service Times</a></li>
+    <li><a href="#eventos">Events</a></li>
+    <li><a href="#contacto">Contact</a></li>
+    <li><a href="#social">Social</a></li>
+  </ul>
+</nav>
 
-  <!-- Hero -->
-  <section id="inicio" class="hero fade-in">
-    <h1>Welcome to Cristo Te Llama DE/NJ</h1>
-    <p class="description">
-      We are a Pentecostal church committed to helping people grow
-      in their walk with God through Jesus Christ.
-    </p>
+<section id="inicio" class="hero fade-in">
+  <h1>Welcome to Cristo Te Llama DE/NJ</h1>
+  <p class="description">
+    A Pentecostal church helping people grow in their walk with Jesus Christ.
+  </p>
+</section>
 
-    <div class="slideshow">
-      <img src="images/slide1.jpg" class="slide active" alt="">
-      <img src="images/slide2.jpg" class="slide" alt="">
-      <img src="images/slide3.jpg" class="slide" alt="">
-    </div>
-  </section>
+<section id="servicios" class="fade-in">
+  <h2>Church Service Times</h2>
+  <p><strong>Tuesday:</strong> 7:00 PM – 9:00 PM</p>
+  <p><strong>Saturday:</strong> 7:00 PM – 9:00 PM</p>
+  <p><strong>Sunday:</strong> 10:00 AM – 1:00 PM</p>
+</section>
 
-  <!-- Bible Verse -->
-  <section id="verso" class="fade-in">
-    <h2>Bible Verse of the Week</h2>
-    <p>Coming soon</p>
-  </section>
+<section id="eventos" class="fade-in">
+  <h2>Upcoming Events</h2>
 
-  <!-- Service Times -->
-  <section id="servicios" class="fade-in">
-    <h2>Church Service Times</h2>
-    <p><strong>Every Tuesday:</strong> 7:00 PM – 9:00 PM</p>
-    <p><strong>Every Saturday:</strong> 7:00 PM – 9:00 PM</p>
-    <p><strong>Every Sunday:</strong> 10:00 AM – 1:00 PM</p>
-  </section>
+  <!-- Legend -->
+  <div class="legend">
+    <span class="legend-box women"></span> Women’s Events
+  </div>
 
-  <!-- Upcoming Events -->
-  <section id="eventos" class="fade-in">
-    <h2>Upcoming Events</h2>
+  <!-- Month Switch -->
+  <div class="calendar-header">
+    <button onclick="prevMonth()">←</button>
+    <h3 id="monthTitle">January</h3>
+    <button onclick="nextMonth()">→</button>
+  </div>
 
-    <div class="calendar">
-      <h3>January</h3>
+  <!-- JANUARY -->
+  <div class="calendar active" id="january">
+    <div class="calendar-grid">
+      <div class="day-name">Sun</div><div class="day-name">Mon</div><div class="day-name">Tue</div>
+      <div class="day-name">Wed</div><div class="day-name">Thu</div><div class="day-name">Fri</div>
+      <div class="day-name">Sat</div>
 
-      <div class="calendar-grid">
-        <!-- Weekdays -->
-        <div class="day-name">Sun</div>
-        <div class="day-name">Mon</div>
-        <div class="day-name">Tue</div>
-        <div class="day-name">Wed</div>
-        <div class="day-name">Thu</div>
-        <div class="day-name">Fri</div>
-        <div class="day-name">Sat</div>
+      <div class="day empty"></div><div class="day empty"></div><div class="day empty"></div>
+      <div class="day" data-event=""><span>1</span></div>
+      <div class="day" data-event=""><span>2</span></div>
 
-        <!-- Empty days -->
-        <div class="day empty"></div>
-        <div class="day empty"></div>
-        <div class="day empty"></div>
+      <div class="day event" data-event="Servicio De Adoración"><span>3</span><small>Servicio De Adoración</small></div>
+      <div class="day"><span>4</span></div>
 
-        <div class="day"><span>1</span></div>
-        <div class="day"><span>2</span></div>
+      <div class="day event" data-event="Servicio De Adoración"><span>6</span><small>Servicio De Adoración</small></div>
+      <div class="day"><span>7</span></div>
 
-        <div class="day event">
-          <span>3</span>
-          <small>Servicio De Adoración</small>
-        </div>
+      <div class="day women" data-event="Oración De Damas 7:00PM"><span>8</span><small>Oración De Damas</small></div>
+      <div class="day"><span>9</span></div>
 
-        <div class="day"><span>4</span></div>
+      <div class="day event" data-event="Servicio De Adoración"><span>10</span><small>Servicio De Adoración</small></div>
+      <div class="day event" data-event="Ayuno Congregacional"><span>11</span><small>Ayuno Congregacional</small></div>
 
-        <div class="day event"><span>6</span><small>Servicio De Adoración</small></div>
-        <div class="day"><span>7</span></div>
+      <div class="day event" data-event="Servicio De Adoración"><span>13</span><small>Servicio De Adoración</small></div>
+      <div class="day"><span>14</span></div>
 
-        <div class="day event"><span>8</span><small>Oración De Damas 7:00PM</small></div>
-        <div class="day"><span>9</span></div>
+      <div class="day women" data-event="Oración De Damas 7:00PM"><span>15</span><small>Oración De Damas</small></div>
+      <div class="day"><span>16</span></div>
 
-        <div class="day event"><span>10</span><small>Servicio De Adoración</small></div>
-        <div class="day event"><span>11</span><small>Ayuno Congregacional</small></div>
+      <div class="day event" data-event="Servicio De Adoración"><span>17</span><small>Servicio De Adoración</small></div>
+      <div class="day"><span>18</span></div>
 
-        <div class="day event"><span>13</span><small>Servicio De Adoración</small></div>
-        <div class="day"><span>14</span></div>
+      <div class="day event" data-event="Servicio De Adoración"><span>20</span><small>Servicio De Adoración</small></div>
+      <div class="day"><span>21</span></div>
 
-        <div class="day event"><span>15</span><small>Oración De Damas 7:00PM</small></div>
-        <div class="day"><span>16</span></div>
+      <div class="day women" data-event="Oración De Damas 7:00PM"><span>22</span><small>Oración De Damas</small></div>
+      <div class="day"><span>23</span></div>
 
-        <div class="day event"><span>17</span><small>Servicio De Adoración</small></div>
-        <div class="day"><span>18</span></div>
-
-        <div class="day event"><span>20</span><small>Servicio De Adoración</small></div>
-        <div class="day"><span>21</span></div>
-
-        <div class="day event"><span>22</span><small>Oración De Damas 7:00PM</small></div>
-        <div class="day"><span>23</span></div>
-
-        <div class="day event">
-          <span>24</span>
-          <small>Servicio De Adoración<br>Retiro Y Servicio De Damas</small>
-        </div>
-
-        <div class="day"><span>25</span></div>
-
-        <div class="day event"><span>27</span><small>Servicio De Adoración</small></div>
-        <div class="day"><span>28</span></div>
-
-        <div class="day event"><span>29</span><small>Oración De Damas 7:00PM</small></div>
-
-        <div class="day event"><span>30</span><small>Gran Vigilia Congregacional</small></div>
-
-        <div class="day event"><span>31</span><small>Servicio De Adoración</small></div>
+      <div class="day women" data-event="Servicio De Adoración / Retiro Y Servicio De Damas">
+        <span>24</span>
+        <small>Retiro Y Servicio De Damas</small>
       </div>
+
+      <div class="day"><span>25</span></div>
+
+      <div class="day event" data-event="Servicio De Adoración"><span>27</span><small>Servicio De Adoración</small></div>
+      <div class="day"><span>28</span></div>
+
+      <div class="day women" data-event="Oración De Damas 7:00PM"><span>29</span><small>Oración De Damas</small></div>
+      <div class="day event" data-event="Gran Vigilia Congregacional"><span>30</span><small>Gran Vigilia</small></div>
+      <div class="day event" data-event="Servicio De Adoración"><span>31</span><small>Servicio De Adoración</small></div>
     </div>
-  </section>
+  </div>
 
-  <!-- Contact -->
-  <section id="contacto" class="fade-in">
-    <h2>Contact</h2>
-    <p><strong>📍 Address:</strong> 110 E Maple Ave, Penns Grove, NJ</p>
-    <p><strong>📞 Pastor Phone:</strong> 540-842-2846</p>
+  <!-- FEBRUARY -->
+  <div class="calendar" id="february">
+    <p class="no-events">February has no events yet.<br>Please check back at the end of the month.</p>
+  </div>
 
-    <iframe
-      src="https://www.google.com/maps?q=110+E+Maple+Ave,+Penns+Grove,+NJ&output=embed"
-      width="100%"
-      height="300"
-      style="border:0; border-radius:10px;"
-      loading="lazy">
-    </iframe>
-  </section>
+  <!-- MARCH -->
+  <div class="calendar" id="march">
+    <p class="no-events">March has no events yet.<br>Please check back at the end of the month.</p>
+  </div>
 
-  <!-- Social -->
-  <section id="social" class="fade-in">
-    <h2>Social Media</h2>
-    <div class="social-icons">
-      <a href="https://facebook.com/IglesiaCristoTeLlamaDelaware" target="_blank">
-        <img src="images/facebook.svg" alt="Facebook">
-      </a>
-      <a href="https://www.youtube.com/@CristoTeLlama" target="_blank">
-        <img src="images/youtube.svg" alt="YouTube">
-      </a>
-    </div>
-  </section>
+  <!-- DECEMBER -->
+  <div class="calendar" id="december">
+    <p class="no-events">December has no events yet.<br>Please check back at the end of the month.</p>
+  </div>
 
-  <footer>
-    <p>© 2026 Cristo Te Llama DE/NJ</p>
-  </footer>
+</section>
+
+<section id="contacto" class="fade-in">
+  <h2>Contact</h2>
+  <p><strong>📍 Address:</strong> 110 E Maple Ave, Penns Grove, NJ</p>
+  <p><strong>📞 Pastor:</strong> 540-842-2846</p>
+
+  <iframe
+    src="https://www.google.com/maps?q=110+E+Maple+Ave,+Penns+Grove,+NJ&output=embed"
+    width="100%" height="300"
+    style="border:0; border-radius:10px;"
+    loading="lazy"></iframe>
+</section>
+
+<section id="social" class="fade-in">
+  <h2>Social Media</h2>
+  <div class="social-icons">
+    <a href="https://facebook.com/IglesiaCristoTeLlamaDelaware" target="_blank">
+      <img src="images/facebook.svg">
+    </a>
+    <a href="https://www.youtube.com/@CristoTeLlama" target="_blank">
+      <img src="images/youtube.svg">
+    </a>
+  </div>
+</section>
+
+<footer>
+  <p>© 2026 Cristo Te Llama DE/NJ</p>
+</footer>
+
+<!-- EVENT POPUP -->
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <span onclick="closePopup()" class="close">&times;</span>
+    <p id="popupText"></p>
+  </div>
+</div>
+
+<script>
+const months = ["january", "february", "march", "december"];
+const monthNames = ["January", "February", "March", "December"];
+let current = 0;
+
+function showMonth() {
+  months.forEach(m => document.getElementById(m).classList.remove("active"));
+  document.getElementById(months[current]).classList.add("active");
+  document.getElementById("monthTitle").innerText = monthNames[current];
+}
+function nextMonth() { current = (current + 1) % months.length; showMonth(); }
+function prevMonth() { current = (current - 1 + months.length) % months.length; showMonth(); }
+
+// Swipe support
+let startX = 0;
+document.addEventListener("touchstart", e => startX = e.touches[0].clientX);
+document.addEventListener("touchend", e => {
+  let diff = e.changedTouches[0].clientX - startX;
+  if (diff > 50) prevMonth();
+  if (diff < -50) nextMonth();
+});
+
+// Popup
+document.querySelectorAll(".day[data-event]").forEach(day => {
+  day.addEventListener("click", () => {
+    const text = day.getAttribute("data-event");
+    if (!text) return;
+    document.getElementById("popupText").innerText = text;
+    document.getElementById("popup").style.display = "flex";
+  });
+});
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
+}
+</script>
 
 </body>
 </html>
