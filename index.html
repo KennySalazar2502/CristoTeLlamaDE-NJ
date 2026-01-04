@@ -191,14 +191,12 @@ document.querySelectorAll(".day[data-event]").forEach(day=>{
 });
 function closePopup(){ document.getElementById("popup").style.display = "none"; }
 
-// Prayer form submission
+// Prayer form submission + push notification
 const prayerForm = document.getElementById('prayerForm');
 prayerForm.addEventListener('submit', (e)=>{
   e.preventDefault();
   document.getElementById('prayerMsg').textContent = "Thank you! Your prayer request has been submitted.";
   prayerForm.reset();
-
-  // Push notification
   if (Notification.permission === "granted") {
     new Notification("Prayer Request Submitted", { body: "Thank you for submitting your prayer request!" });
   } else if (Notification.permission !== "denied") {
@@ -208,7 +206,7 @@ prayerForm.addEventListener('submit', (e)=>{
   }
 });
 
-// Swipe support
+// Swipe support for calendar
 let startX=0;
 document.addEventListener("touchstart",e=>startX=e.touches[0].clientX);
 document.addEventListener("touchend",e=>{
