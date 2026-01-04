@@ -1,20 +1,96 @@
 <!DOCTYPE html>
-<html>
+<html lang="en">
 <head>
-<title>Live | Cristo Te Llama</title>
-<link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8" />
+  <title>Cristo Te Llama DE/NJ - Live</title>
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<section class="hero">
-<h1>Live Stream</h1>
+<!-- Top Navigation -->
+<nav class="nav-bar">
+  <ul class="nav-list">
+    <li><a href="index.html" class="nav-item">Home</a></li>
+    <li><a href="index.html#servicios" class="nav-item">Service Times</a></li>
+    <li><a href="index.html#eventos" class="nav-item">Events</a></li>
+    <li><a href="index.html#contacto" class="nav-item">Contact</a></li>
+    <li><a href="index.html#social" class="nav-item">Social</a></li>
+    <li><a href="live.html" class="nav-item active">Live</a></li>
+  </ul>
+  <button id="darkModeToggle">🌙</button>
+</nav>
 
-<iframe
-src="https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/IglesiaCristoTeLlamaDelaware/live"
-width="100%" height="500"
-allowfullscreen>
-</iframe>
-
+<!-- Hero Section -->
+<section class="hero fade-in">
+  <h1>Watch Us Live</h1>
+  <p class="description">Join our live stream whenever we are broadcasting on Facebook.</p>
 </section>
+
+<!-- Live Video Section -->
+<section id="liveStream" class="fade-in">
+  <div id="fbLiveContainer">
+    <p id="liveMessage">Checking for live stream...</p>
+  </div>
+</section>
+
+<!-- Footer -->
+<footer>
+  <p>© 2026 Cristo Te Llama DE/NJ</p>
+</footer>
+
+<script>
+const PAGE_ID = "YOUR_FACEBOOK_PAGE_ID"; // <-- replace with your FB Page ID
+
+// Dark mode toggle
+const toggleBtn = document.getElementById('darkModeToggle');
+toggleBtn.addEventListener('click', () => {
+  document.body.classList.toggle('dark-mode');
+  toggleBtn.textContent = document.body.classList.contains('dark-mode') ? '☀️' : '🌙';
+});
+
+// Load Facebook SDK
+(function(d, s, id) {
+  var js, fjs = d.getElementsByTagName(s)[0];
+  if (d.getElementById(id)) return;
+  js = d.createElement(s); js.id = id;
+  js.src = "https://connect.facebook.net/en_US/sdk.js";
+  fjs.parentNode.insertBefore(js, fjs);
+}(document, 'script', 'facebook-jssdk'));
+
+// Auto-detect if FB Live is active
+window.fbAsyncInit = function() {
+  FB.init({
+    appId      : 'YOUR_APP_ID', // Optional, for advanced usage
+    xfbml      : true,
+    version    : 'v17.0'
+  });
+
+  fetch(`https://graph.facebook.com/${PAGE_ID}/live_videos?status=LIVE&access_token=YOUR_ACCESS_TOKEN`)
+    .then(res => res.json())
+    .then(data => {
+      const container = document.getElementById('fbLiveContainer');
+      if (data.data && data.data.length > 0) {
+        // Get the first live video
+        const liveVideoId = data.data[0].id;
+        container.innerHTML = `
+          <div class="fb-video" 
+            data-href="https://www.facebook.com/${PAGE_ID}/videos/${liveVideoId}/"
+            data-width="500" 
+            data-show-text="false">
+          </div>`;
+        FB.XFBML.parse(container);
+      } else {
+        document.getElementById('liveMessage').textContent = "No Live Stream Right Now. Check back soon!";
+      }
+    })
+    .catch(err => {
+      document.getElementById('liveMessage').textContent = "Error loading live stream.";
+      console.error(err);
+    });
+};
+</script>
+
 </body>
 </html>
