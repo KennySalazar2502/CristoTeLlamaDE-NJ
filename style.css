@@ -1,0 +1,76 @@
+body {
+    margin: 0;
+    font-family: 'Playfair Display', serif;
+    background-color: #F6F1EB;
+    color: #000;
+}
+
+nav {
+    background: #fff;
+    padding: 15px;
+    position: sticky;
+    top: 0;
+}
+
+nav ul {
+    display: flex;
+    justify-content: center;
+    gap: 20px;
+    list-style: none;
+}
+
+nav a {
+    text-decoration: none;
+    font-weight: bold;
+    color: black;
+}
+
+.hero {
+    text-align: center;
+    padding: 50px 20px;
+}
+
+.slideshow {
+    max-width: 800px;
+    margin: auto;
+    position: relative;
+}
+
+.slide {
+    display: none;
+    width: 100%;
+}
+
+.slide.active {
+    display: block;
+}
+
+section {
+    padding: 50px 20px;
+    text-align: center;
+}
+
+footer {
+    background: #fff;
+    padding: 20px;
+}
+
+.messenger-btn {
+    position: fixed;
+    bottom: 20px;
+    right: 20px;
+    background: #0084ff;
+    color: white;
+    padding: 15px;
+    border-radius: 50px;
+    text-decoration: none;
+}
+
+.fade-in {
+    animation: fade 1.5s ease-in;
+}
+
+@keyframes fade {
+    from { opacity: 0; }
+    to { opacity: 1; }
+}
