@@ -1,0 +1,8 @@
+cristo-te-llama-website/
+│── index.html
+│── style.css
+│── script.js
+│── images/
+│   ├── slide1.jpg
+│   ├── slide2.jpg
+│   └── slide3.jpg
