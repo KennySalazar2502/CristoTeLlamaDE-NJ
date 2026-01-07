@@ -1,42 +1,38 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cristo Te Llama DE/NJ - Live</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Cristo Te Llama DE/NJ - Live</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style.css">
 </head>
 <body>
 
-<!-- Dark mode & language toggles -->
-<div id="darkModeToggle">🌓</div>
-<div id="langToggle">🌐</div>
+<button id="darkModeToggle">🌓</button>
 
-<!-- Navigation -->
-<nav>
-  <a href="index.html" data-en="Home" data-es="Inicio">Home</a>
-  <a href="index.html#services" data-en="Service Times" data-es="Horarios de Servicios">Service Times</a>
-  <a href="index.html#events" data-en="Events" data-es="Eventos">Events</a>
-  <a href="index.html#contact" data-en="Contact" data-es="Contacto">Contact</a>
-  <a href="index.html#social" data-en="Social" data-es="Redes">Social</a>
-  <a href="live.html" data-en="Live" data-es="En Vivo">Live</a>
+<nav class="nav-bar">
+  <ul class="nav-list">
+    <li><a class="nav-item" href="index.html#inicio">Home</a></li>
+    <li><a class="nav-item" href="index.html#servicios">Service Times</a></li>
+    <li><a class="nav-item" href="index.html#eventos">Events</a></li>
+    <li><a class="nav-item" href="index.html#contacto">Contact</a></li>
+    <li><a class="nav-item" href="index.html#social">Social</a></li>
+    <li><a class="nav-item" href="live.html">Live</a></li>
+  </ul>
 </nav>
 
-<!-- Hero -->
 <section class="hero">
-  <h1 data-en="Live Stream" data-es="Transmisión En Vivo">Live Stream</h1>
-  <p data-en="Watch our live broadcast here." data-es="Mira nuestra transmisión en vivo aquí.">Watch our live broadcast here.</p>
+  <h1 data-en="Live Stream" data-es="Transmisión en Vivo">Live Stream</h1>
+  <p data-en="Watch our live broadcast right here." data-es="Mira nuestra transmisión en vivo aquí.">
+    Watch our live broadcast right here.
+  </p>
 </section>
 
-<!-- YouTube Live Embed -->
-<section id="liveStream"></section>
+<section id="liveStream">
+  <iframe src="https://www.youtube.com/embed/UCB-beIq8bOOnmi78a8uEvWQ?autoplay=0" allowfullscreen></iframe>
+</section>
 
-<!-- Messenger Button -->
-<a href="https://m.me/cristo-te-llama" class="messenger-btn">
-  <img src="images/messenger.png" class="messenger-logo" alt="Messenger">
-  <span data-en="Message Us" data-es="Envíanos un Mensaje">Message Us</span>
-</a>
-
-<script src="main.js"></script>
+<script src="./main.js" defer></script>
 </body>
 </html>
