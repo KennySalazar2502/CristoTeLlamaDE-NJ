@@ -1,3 +1,4 @@
+<!-- index.html -->
 <!DOCTYPE html>
 <html lang="en">
 <head>
@@ -5,269 +6,65 @@
 <title>Cristo Te Llama DE/NJ</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
-<style>
-:root {
-  --light-bg: #E8DFFB;
-  --light-bubble: #fff;
-  --light-bubble-hover: #6a0dad;
-  --dark-bg: #3A0CA3;
-  --dark-bubble: #fff;
-  --dark-bubble-hover: #9d4edd;
-  --text-light: #000;
-  --text-dark: #fff;
-  --calendar-bg: #f0eae2;
-  --calendar-event: #f0a500;
-  --calendar-women: #f2d6df;
-}
-
-body {
-  margin: 0;
-  font-family: 'Playfair Display', serif;
-  background-color: var(--light-bg);
-  color: var(--text-light);
-  transition: background 0.5s, color 0.5s;
-}
-
-/* NAVIGATION */
-nav {
-  display: flex;
-  justify-content: center;
-  gap: 15px;
-  flex-wrap: wrap;
-  padding: 15px 0;
-  position: sticky;
-  top: 0;
-  z-index: 1000;
-}
-
-nav a {
-  text-decoration: none;
-  font-weight: bold;
-  padding: 10px 20px;
-  border-radius: 25px;
-  background-color: var(--light-bubble);
-  color: var(--text-light);
-  transition: all 0.3s ease;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-}
-
-nav a:hover {
-  background-color: var(--light-bubble-hover);
-  color: #fff;
-  transform: translateY(-3px);
-  box-shadow: 0 5px 10px rgba(0,0,0,0.3);
-}
-
-/* Dark mode nav */
-body.dark nav a {
-  background-color: var(--dark-bubble);
-  color: var(--text-dark);
-}
-body.dark nav a:hover {
-  background-color: var(--dark-bubble-hover);
-  color: #fff;
-}
-
-/* DARK MODE TOGGLE */
-#darkModeToggle {
-  position: fixed;
-  top: 15px;
-  right: 15px;
-  cursor: pointer;
-  width: 40px;
-  height: 40px;
-  border-radius: 50%;
-  background-color: #fff;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  font-size: 1.5rem;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
-  transition: all 0.3s ease;
-}
-
-/* HERO SECTION */
-section.hero {
-  padding: 60px 20px;
-  text-align: center;
-}
-
-/* CALENDAR */
-.calendar-container {
-  max-width: 720px;
-  margin: 20px auto;
-  padding: 15px;
-  border: 2px solid #6a0dad;
-  border-radius: 15px;
-  background-color: #fff;
-  text-align: center;
-}
-
-.calendar-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 15px;
-}
-
-.calendar-header h3 {
-  margin: 0;
-  font-size: 1.3rem;
-}
-
-.calendar-header button {
-  background: none;
-  border: 2px solid #6a0dad;
-  border-radius: 50%;
-  padding: 5px 12px;
-  font-size: 1.2rem;
-  cursor: pointer;
-  transition: all 0.3s ease;
-}
-
-.calendar-header button:hover {
-  background-color: #6a0dad;
-  color: #fff;
-}
-
-/* CALENDAR GRID */
-.calendar-grid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 5px;
-}
-
-.day-name { font-weight: bold; }
-
-.day {
-  background: var(--calendar-bg);
-  border-radius: 8px;
-  min-height: 70px;
-  position: relative;
-  padding: 5px;
-  transition: transform 0.2s;
-  cursor: pointer;
-}
-
-.day span {
-  display: block;
-  font-weight: bold;
-}
-
-.day small {
-  display: block;
-  margin-top: 5px;
-  font-size: 0.75rem;
-}
-
-.day.event { background: var(--calendar-event); }
-.day.women { background: var(--calendar-women); }
-
-.day:hover {
-  transform: scale(1.05);
-  z-index: 5;
-}
-
-/* MESSENGER BUTTON */
-.messenger-btn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #0084ff;
-  color: white;
-  padding: 15px 20px;
-  border-radius: 50px;
-  text-decoration: none;
-  box-shadow: 0 3px 6px rgba(0,0,0,0.3);
-}
-
-/* DARK MODE */
-body.dark {
-  background-color: #3A0CA3;
-  color: var(--text-dark);
-}
-body.dark .calendar-container { border-color: #9d4edd; }
-body.dark .calendar-header button { border-color: #9d4edd; }
-body.dark .calendar-header button:hover { background-color: #9d4edd; color:#fff; }
-
-/* POPUP */
-.popup {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.5);
-  justify-content: center;
-  align-items: center;
-}
-
-.popup-content {
-  background: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 300px;
-  animation: fadeIn 0.3s ease;
-}
-
-.close { cursor: pointer; float: right; }
-
-@keyframes fadeIn {
-  from { opacity:0; transform: translateY(-10px);}
-  to { opacity:1; transform: translateY(0);}
-}
-
-@media (max-width: 600px){
-  nav { justify-content: center; gap: 8px; }
-  .day { min-height: 50px; font-size: 0.75rem; }
-}
-</style>
+<link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <!-- DARK MODE TOGGLE -->
 <div id="darkModeToggle">🌓</div>
 
+<!-- LANGUAGE TOGGLE -->
+<div id="langToggle">ES/EN</div>
+
 <!-- NAVIGATION -->
 <nav>
-  <a href="#inicio">Home</a>
-  <a href="#servicios">Service Times</a>
-  <a href="#eventos">Events</a>
-  <a href="#contacto">Contact</a>
-  <a href="#social">Social</a>
-  <a href="#live">Live</a>
+  <ul class="nav-list">
+    <li><a class="nav-item" href="#inicio" data-en="Home" data-es="Inicio">Home</a></li>
+    <li><a class="nav-item" href="#servicios" data-en="Service Times" data-es="Servicios">Service Times</a></li>
+    <li><a class="nav-item" href="#eventos" data-en="Events" data-es="Eventos">Events</a></li>
+    <li><a class="nav-item" href="#contacto" data-en="Contact" data-es="Contacto">Contact</a></li>
+    <li><a class="nav-item" href="#social" data-en="Social" data-es="Redes">Social</a></li>
+    <li><a class="nav-item" href="live.html" data-en="Live" data-es="En Vivo">Live</a></li>
+  </ul>
 </nav>
 
 <!-- HERO -->
 <section id="inicio" class="hero">
-  <h1>Welcome to Cristo Te Llama DE/NJ</h1>
-  <p>A Pentecostal church helping people grow in their walk with Jesus Christ.</p>
+  <h1 data-en="Welcome to Cristo Te Llama DE/NJ" data-es="Bienvenido a Cristo Te Llama DE/NJ">Welcome to Cristo Te Llama DE/NJ</h1>
+  <p data-en="A Pentecostal church helping people grow in their walk with Jesus Christ."
+     data-es="Una iglesia Pentecostal ayudando a las personas a crecer en su caminar con Jesucristo.">
+     A Pentecostal church helping people grow in their walk with Jesus Christ.
+  </p>
 </section>
 
 <!-- SERVICES -->
 <section id="servicios">
-  <h2>Church Service Times</h2>
-  <p><strong>Tuesday:</strong> 7:00 PM – 9:00 PM</p>
-  <p><strong>Saturday:</strong> 7:00 PM – 9:00 PM</p>
-  <p><strong>Sunday:</strong> 10:00 AM – 1:00 PM</p>
+  <h2 data-en="Church Service Times" data-es="Horarios de Servicios">Church Service Times</h2>
+  <p><strong data-en="Tuesday:" data-es="Martes:">Tuesday:</strong> 7:00 PM – 9:00 PM</p>
+  <p><strong data-en="Saturday:" data-es="Sábado:">Saturday:</strong> 7:00 PM – 9:00 PM</p>
+  <p><strong data-en="Sunday:" data-es="Domingo:">Sunday:</strong> 10:00 AM – 1:00 PM</p>
 </section>
 
 <!-- EVENTS / CALENDAR -->
 <section id="eventos">
-  <h2>Upcoming Events</h2>
-  <div class="calendar-container">
+  <h2 data-en="Upcoming Events" data-es="Próximos Eventos">Upcoming Events</h2>
+  <div class="calendar-wrapper">
     <div class="calendar-header">
-      <button onclick="prevMonth()">←</button>
+      <button class="arrow-btn" onclick="prevMonth()">←</button>
       <h3 id="monthTitle">January 2026</h3>
-      <button onclick="nextMonth()">→</button>
+      <button class="arrow-btn" onclick="nextMonth()">→</button>
     </div>
-    <div class="calendar-grid" id="calendarGrid">
-      <!-- Days injected by JS -->
+    <div class="legend">
+      <div class="legend-box event"></div><span data-en="Event" data-es="Evento">Event</span>
+      <div class="legend-box women"></div><span data-en="Women's Prayer" data-es="Oración de Damas">Women's Prayer</span>
     </div>
+    <div class="calendar-grid" id="calendarGrid"></div>
   </div>
 </section>
 
 <!-- CONTACT -->
 <section id="contacto">
-  <h2>Contact</h2>
+  <h2 data-en="Contact" data-es="Contacto">Contact</h2>
   <p><strong>📍 Address:</strong> 110 E Maple Ave, Penns Grove, NJ</p>
   <p><strong>📞 Pastor:</strong> 540-842-2846</p>
   <iframe src="https://www.google.com/maps?q=110+E+Maple+Ave,+Penns+Grove,+NJ&output=embed"
@@ -276,7 +73,7 @@ body.dark .calendar-header button:hover { background-color: #9d4edd; color:#fff;
 
 <!-- SOCIAL -->
 <section id="social">
-  <h2>Social Media</h2>
+  <h2 data-en="Social Media" data-es="Redes Sociales">Social Media</h2>
   <div class="social-icons">
     <a href="https://facebook.com/IglesiaCristoTeLlamaDelaware" target="_blank">
       <img src="images/facebook.svg" alt="Facebook">
@@ -288,7 +85,9 @@ body.dark .calendar-header button:hover { background-color: #9d4edd; color:#fff;
 </section>
 
 <!-- MESSENGER BUTTON -->
-<a href="https://m.me/IglesiaCristoTeLlamaDelaware" class="messenger-btn" target="_blank">💬 Messenger</a>
+<a href="https://m.me/IglesiaCristoTeLlamaDelaware" class="messenger-btn" target="_blank">
+  <img src="images/messenger.svg" class="messenger-logo" alt="Messenger">Messenger
+</a>
 
 <!-- POPUP -->
 <div id="popup" class="popup">
@@ -298,59 +97,6 @@ body.dark .calendar-header button:hover { background-color: #9d4edd; color:#fff;
   </div>
 </div>
 
-<script>
-// DARK MODE TOGGLE
-const darkModeToggle = document.getElementById('darkModeToggle');
-darkModeToggle.addEventListener('click', () => { document.body.classList.toggle('dark'); });
-
-// CALENDAR LOGIC
-const months = [
-  {name:"January", days:31}, {name:"February", days:28}, {name:"March", days:31},
-  {name:"April", days:30}, {name:"May", days:31}, {name:"June", days:30},
-  {name:"July", days:31}, {name:"August", days:31}, {name:"September", days:30},
-  {name:"October", days:31}, {name:"November", days:30}, {name:"December", days:31}
-];
-
-let currentMonth = 0;
-const year = 2026;
-
-// Sample events
-let events = [
-  {day:3, month:0, title:"Servicio De Adoración", type:"event"},
-  {day:8, month:0, title:"Oración De Damas 7:00PM", type:"women"}
-];
-
-function renderCalendar() {
-  const grid = document.getElementById('calendarGrid');
-  grid.innerHTML = '';
-
-  const dayNames = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
-  dayNames.forEach(d => { const div=document.createElement('div'); div.classList.add('day-name'); div.innerText=d; grid.appendChild(div); });
-
-  const firstDay = new Date(year,currentMonth,1).getDay();
-  for(let i=0;i<firstDay;i++){
-    const empty = document.createElement('div'); empty.classList.add('day','empty'); grid.appendChild(empty);
-  }
-
-  for(let i=1;i<=months[currentMonth].days;i++){
-    const dayDiv = document.createElement('div'); 
-    dayDiv.classList.add('day');
-    const eventToday = events.find(e => e.day===i && e.month===currentMonth);
-    if(eventToday){ dayDiv.classList.add(eventToday.type); dayDiv.setAttribute('data-event', eventToday.title); dayDiv.innerHTML=`<span>${i}</span><small>${eventToday.title}</small>`;}
-    else { dayDiv.innerHTML=`<span>${i}</span>`;}
-    dayDiv.addEventListener('click',()=>{ 
-      if(dayDiv.dataset.event){ document.getElementById("popupText").innerText=dayDiv.dataset.event; document.getElementById("popup").style.display='flex'; }
-    });
-    grid.appendChild(dayDiv);
-  }
-  document.getElementById('monthTitle').innerText=`${months[currentMonth].name} ${year}`;
-}
-
-function nextMonth(){ currentMonth=(currentMonth+1)%12; renderCalendar();}
-function prevMonth(){ currentMonth=(currentMonth+11)%12; renderCalendar();}
-renderCalendar();
-
-function closePopup(){ document.getElementById("popup").style.display='none'; }
-</script>
+<script src="main.js"></script>
 </body>
 </html>
