@@ -9,46 +9,32 @@
 </head>
 <body>
 
+<!-- DARK MODE TOGGLE -->
+<div id="darkModeToggle">🌓</div>
+
 <!-- NAVIGATION -->
-<nav class="nav-bar">
-  <ul class="nav-list">
-    <li><a class="nav-item" href="index.html">Home</a></li>
-    <li><a class="nav-item" href="#services">Service Times</a></li>
-    <li><a class="nav-item" href="#events">Events</a></li>
-    <li><a class="nav-item" href="#contact">Contact</a></li>
-    <li><a class="nav-item" href="#social">Social</a></li>
-    <li><a class="nav-item" href="live.html">Live</a></li>
-  </ul>
-  <button id="darkModeToggle">🌓</button>
-  <button id="langToggle" data-en="ES" data-es="EN">ES</button>
+<nav>
+  <a href="index.html" data-en="Home" data-es="Inicio">Home</a>
+  <a href="index.html#services" data-en="Service Times" data-es="Horarios de Servicio">Service Times</a>
+  <a href="index.html#events" data-en="Events" data-es="Eventos">Events</a>
+  <a href="index.html#contact" data-en="Contact" data-es="Contacto">Contact</a>
+  <a href="calendar.html" data-en="Calendar" data-es="Calendario">Calendar</a>
+  <a href="live.html" data-en="Live" data-es="En Vivo">Live</a>
 </nav>
 
+<!-- HERO SECTION -->
 <section class="hero">
-  <h1 data-en="Welcome" data-es="Bienvenidos">Welcome</h1>
-  <p data-en="Join us for live services and events!" data-es="¡Únase a nosotros para servicios y eventos en vivo!">Join us for live services and events!</p>
+  <h1 data-en="Welcome to Cristo Te Llama DE/NJ" data-es="Bienvenidos a Cristo Te Llama DE/NJ">Welcome to Cristo Te Llama DE/NJ</h1>
+  <p data-en="Join us for worship, prayer, and community events." data-es="Únase a nosotros para adoración, oración y eventos comunitarios.">Join us for worship, prayer, and community events.</p>
 </section>
 
-<section id="calendarSection" class="calendar-wrapper">
-  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
-    <button class="arrow-btn" onclick="prevMonth()">◀</button>
-    <h2 id="monthTitle"></h2>
-    <button class="arrow-btn" onclick="nextMonth()">▶</button>
-  </div>
-  <div class="calendar-grid" id="calendarGrid"></div>
-</section>
-
-<!-- POPUP -->
-<div class="popup" id="popup">
-  <div class="popup-content">
-    <span class="close" onclick="closePopup()">×</span>
-    <p id="popupText"></p>
-  </div>
-</div>
-
-<section id="social" class="social-icons">
-  <a href="#"><img src="images/facebook.png" alt="Facebook"></a>
-  <a href="#"><img src="images/instagram.png" alt="Instagram"></a>
-  <a href="#"><img src="images/youtube.png" alt="YouTube"></a>
+<!-- EXAMPLE EVENTS SECTION -->
+<section id="events">
+  <h2 data-en="Upcoming Events" data-es="Próximos Eventos">Upcoming Events</h2>
+  <ul>
+    <li data-en="Service Times every Sunday" data-es="Horarios de servicio cada domingo">Service Times every Sunday</li>
+    <li data-en="Women’s Prayer every Friday 7 PM" data-es="Oración de Damas cada viernes 7 PM">Women’s Prayer every Friday 7 PM</li>
+  </ul>
 </section>
 
 <script src="main.js"></script>
