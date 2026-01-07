@@ -1,145 +1,271 @@
-/* -------------------
-   GENERAL
-------------------- */
+/* GENERAL STYLES */
 body {
-  margin:0;
-  font-family:'Playfair Display', serif;
-  background-color:#F6F1EB;
-  color:#000;
-  transition: background 0.3s,color 0.3s;
-}
-body.dark-mode { background:#121212; color:#EEE; }
-
-/* -------------------
-   NAVIGATION
-------------------- */
-.nav-bar {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  background:#fff;
-  padding:10px 20px;
-  position:sticky;
-  top:0;
-  z-index:100;
-  box-shadow:0 2px 5px rgba(0,0,0,0.1);
-}
-.nav-list {
-  display:flex;
-  gap:15px;
-  list-style:none;
-  padding:0;
-  margin:0;
-  flex-wrap:wrap;
-}
-.nav-item {
-  text-decoration:none;
-  padding:10px 15px;
-  border:2px solid #0084ff;
-  border-radius:25px;
-  color:#0084ff;
-  font-weight:bold;
-  transition:all 0.3s;
-}
-.nav-item:hover {
-  background:#0084ff;
-  color:#fff;
-  transform:scale(1.1);
+  margin: 0;
+  font-family: 'Playfair Display', serif;
+  background-color: #F6F1EB;
+  color: #000;
+  transition: background 0.3s, color 0.3s;
 }
 
-/* DARK MODE BUTTON */
-#darkModeToggle {
+body.dark {
+  background-color: #121212;
+  color: #EEE;
+}
+
+/* NAVIGATION */
+nav {
+  display: flex;
+  justify-content: center;
+  gap: 15px;
+  flex-wrap: wrap;
+  padding: 15px 0;
+  position: sticky;
+  top: 0;
+  z-index: 1000;
+  background: #fff;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+}
+
+nav a {
+  text-decoration: none;
+  font-weight: bold;
+  padding: 10px 20px;
+  border-radius: 25px;
+  border: 2px solid #0084ff;
+  color: #0084ff;
+  transition: all 0.3s ease;
+}
+
+nav a:hover {
+  background-color: #0084ff;
+  color: #fff;
+  transform: scale(1.05);
+}
+
+/* DARK MODE & LANGUAGE TOGGLE */
+#darkModeToggle, #langToggle {
   position: fixed;
   top: 15px;
-  right: 15px;
-  border:none;
-  background:none;
-  font-size:1.5rem;
-  cursor:pointer;
-  z-index:1000;
+  cursor: pointer;
+  z-index: 1001;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  padding: 5px 10px;
+  border-radius: 8px;
+  font-size: 1.2rem;
+  background: #fff;
+  color: #000;
+  box-shadow: 0 2px 5px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
 }
 
-/* -------------------
-   CALENDAR
-------------------- */
+body.dark #darkModeToggle, body.dark #langToggle {
+  background: #333;
+  color: #fff;
+}
+
+/* HERO SECTION */
+section.hero {
+  padding: 60px 20px;
+  text-align: center;
+}
+
+/* CALENDAR */
 .calendar-wrapper {
-  max-width:720px;
-  margin:20px auto;
-  border:2px solid #0084ff;
-  border-radius:12px;
-  padding:10px;
-  background:#fff;
+  max-width: 720px;
+  margin: 20px auto;
+  border-radius: 12px;
+  overflow: hidden;
+  box-shadow: 0 4px 8px rgba(0,0,0,0.15);
   transition: all 0.3s;
 }
-body.dark-mode .calendar-wrapper { background:#1e1e2f; border-color:#6a0dad; }
 
 .calendar-header {
-  display:flex;
-  justify-content:space-between;
-  align-items:center;
-  margin-bottom:10px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  background: #0084ff;
+  color: #fff;
+  padding: 10px 20px;
 }
-.arrow-btn { font-size:1.5rem; border:none; background:none; cursor:pointer; transition: transform 0.2s; }
-.arrow-btn:hover { transform: scale(1.3); color:#0084ff; }
+
+.arrow-btn {
+  font-size: 1.5rem;
+  border: none;
+  background: none;
+  color: #fff;
+  cursor: pointer;
+  transition: transform 0.2s;
+}
+
+.arrow-btn:hover {
+  transform: scale(1.3);
+}
 
 .calendar-grid {
-  display:grid;
-  grid-template-columns:repeat(7,1fr);
-  gap:8px;
+  display: grid;
+  grid-template-columns: repeat(7, 1fr);
+  gap: 6px;
+  padding: 10px;
+  background: #f0f0f0;
 }
-.day { background:#f0eae2; border-radius:8px; padding:8px; min-height:70px; cursor:pointer; transition: transform 0.2s, background 0.2s; font-size:0.85rem;}
-.day:hover { transform:scale(1.05); }
-.day span { font-weight:bold; display:block; margin-bottom:4px; }
-.day.event { background:#ffeedb; color:#000; font-weight:bold; }
-body.dark-mode .day.event { background:#6a0dad; color:#fff; }
 
-.day.empty { background:transparent; cursor:default; }
+.calendar-grid .day {
+  background: #fff;
+  border-radius: 8px;
+  min-height: 70px;
+  padding: 5px;
+  display: flex;
+  flex-direction: column;
+  justify-content: flex-start;
+  align-items: flex-start;
+  cursor: default;
+  font-size: 0.85rem;
+  transition: transform 0.2s, background 0.2s;
+  position: relative;
+}
 
-.legend { display:flex; justify-content:center; align-items:center; gap:10px; margin-top:10px; flex-wrap:wrap; }
-.legend-box { width:18px; height:18px; border-radius:4px; display:inline-block; }
-.legend-box.event { background:#ffeedb; }
-body.dark-mode .legend-box.event { background:#6a0dad; }
+.calendar-grid .day:hover {
+  transform: scale(1.05);
+}
 
-/* -------------------
-   POPUP
-------------------- */
-.popup { display:none; position:fixed; inset:0; background:rgba(0,0,0,0.5); justify-content:center; align-items:center; }
-.popup-content { background:#fff; padding:20px; border-radius:10px; max-width:300px; }
-body.dark-mode .popup-content { background:#333; color:#fff; }
-.close { cursor:pointer; float:right; font-size:1.2rem; }
+.calendar-grid .day span {
+  font-weight: bold;
+  margin-bottom: 2px;
+}
 
-/* -------------------
-   MESSENGER BUTTON
-------------------- */
+.calendar-grid .day.event {
+  background: #FFD700;
+  color: #000;
+}
+
+.calendar-grid .day.women {
+  background: #FFB6C1;
+  color: #000;
+}
+
+.calendar-grid .day.empty {
+  background: transparent;
+  cursor: default;
+}
+
+/* TOOLTIP */
+.calendar-grid .day[title] {
+  position: relative;
+}
+
+.calendar-grid .day[title]:hover::after {
+  content: attr(title);
+  position: absolute;
+  top: -35px;
+  left: 50%;
+  transform: translateX(-50%);
+  background: #333;
+  color: #fff;
+  padding: 5px 8px;
+  border-radius: 5px;
+  font-size: 0.8rem;
+  white-space: nowrap;
+  z-index: 10;
+}
+
+/* DARK MODE CALENDAR */
+body.dark .calendar-header {
+  background: #6a0dad;
+}
+
+body.dark .calendar-grid {
+  background: #1e1e1e;
+}
+
+body.dark .calendar-grid .day {
+  background: #2a2a2a;
+  color: #fff;
+}
+
+body.dark .calendar-grid .day.event {
+  background: #f9d342;
+  color: #000;
+}
+
+body.dark .calendar-grid .day.women {
+  background: #ff7f91;
+  color: #000;
+}
+
+/* SECTIONS */
+section {
+  padding: 50px 20px;
+  text-align: center;
+  transition: all 0.3s;
+}
+
+/* SOCIAL ICONS */
+.social-icons {
+  display: flex;
+  justify-content: center;
+  gap: 30px;
+}
+
+.social-icons img {
+  width: 48px;
+  height: 48px;
+  transition: transform 0.2s;
+}
+
+.social-icons img:hover {
+  transform: scale(1.2);
+}
+
+/* MESSENGER BUTTON */
 .messenger-btn {
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  background:#0084ff;
-  color:#fff;
-  padding:12px 18px;
-  border-radius:50px;
-  text-decoration:none;
-  display:flex;
-  align-items:center;
-  gap:8px;
-  font-weight:bold;
-  box-shadow:0 4px 6px rgba(0,0,0,0.2);
-  transition:transform 0.2s;
+  position: fixed;
+  bottom: 20px;
+  right: 20px;
+  background: #0084ff;
+  color: #fff;
+  padding: 12px 18px;
+  border-radius: 50px;
+  text-decoration: none;
+  display: flex;
+  align-items: center;
+  gap: 8px;
+  font-weight: bold;
+  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
+  transition: transform 0.2s;
 }
-.messenger-btn:hover { transform: scale(1.05); }
 
-/* -------------------
-   SOCIAL ICONS
-------------------- */
-.social-icons { display:flex; justify-content:center; gap:30px; margin:20px 0; }
-.social-icons img { width:48px; height:48px; }
+.messenger-btn:hover {
+  transform: scale(1.05);
+}
 
-/* -------------------
-   RESPONSIVE
-------------------- */
+/* FORMS */
+form input, form textarea, form button {
+  width: 80%;
+  padding: 10px;
+  margin: 5px 0;
+  border-radius: 8px;
+  border: 1px solid #ccc;
+}
+
+form button {
+  background: #0084ff;
+  color: #fff;
+  border: none;
+  cursor: pointer;
+  font-weight: bold;
+  transition: transform 0.2s;
+}
+
+form button:hover {
+  transform: scale(1.05);
+}
+
+/* MEDIA QUERIES */
 @media(max-width:600px){
-  .nav-list { flex-direction:column; gap:10px; }
-  .calendar-wrapper { padding:5px; }
-  .day { min-height:50px; padding:6px; font-size:0.75rem; }
+  .calendar-wrapper { max-width: 95%; }
+  .calendar-grid .day { min-height: 50px; font-size: 0.75rem; }
+  nav { flex-direction: column; gap: 10px; }
+  form input, form textarea, form button { width: 95%; }
 }
