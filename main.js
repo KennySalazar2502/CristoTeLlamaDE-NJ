@@ -1,149 +1,86 @@
-/* main.js */
+// ---------------------------
+// MAIN.JS
+// ---------------------------
 
-// ------------------ Dark Mode ------------------
-const darkModeToggle = document.getElementById("darkModeToggle");
+// DARK MODE TOGGLE
+const darkModeToggle = document.getElementById('darkModeToggle');
 const body = document.body;
 
-// Load dark mode preference
-if (localStorage.getItem("darkMode") === "enabled") {
-  body.classList.add("dark-mode");
+if(localStorage.getItem('darkMode') === 'true') {
+  body.classList.add('dark-mode');
 }
 
-darkModeToggle.addEventListener("click", () => {
-  body.classList.toggle("dark-mode");
-  localStorage.setItem(
-    "darkMode",
-    body.classList.contains("dark-mode") ? "enabled" : "disabled"
-  );
+darkModeToggle.addEventListener('click', () => {
+  body.classList.toggle('dark-mode');
+  localStorage.setItem('darkMode', body.classList.contains('dark-mode'));
 });
 
-// ------------------ Language Toggle ------------------
-const langToggle = document.getElementById("langToggle");
-let currentLang = localStorage.getItem("lang") || "en";
-
-function updateLanguage() {
-  document.querySelectorAll("[data-en]").forEach((el) => {
-    el.innerText = currentLang === "en" ? el.dataset.en : el.dataset.es;
-  });
-}
-updateLanguage();
-
-if (langToggle) {
-  langToggle.addEventListener("click", () => {
-    currentLang = currentLang === "en" ? "es" : "en";
-    localStorage.setItem("lang", currentLang);
-    updateLanguage();
+// ---------------------------
+// LANGUAGE TOGGLE
+// ---------------------------
+function toggleLang() {
+  document.querySelectorAll("[data-en]").forEach(el => {
+    el.innerText = el.innerText === el.dataset.en ? el.dataset.es : el.dataset.en;
   });
 }
 
-// ------------------ Calendar ------------------
-const calendarGrid = document.getElementById("calendarGrid");
+// ---------------------------
+// CALENDAR SETUP
+// ---------------------------
+const calendarEl = document.getElementById("calendar");
 const monthTitle = document.getElementById("monthTitle");
-const popup = document.getElementById("popup");
-const popupText = document.getElementById("popupText");
-let currentDate = new Date();
 
-// 2026-2030 Events
-const events = [
-  { day: 3, month: 0, year: 2026, title: "Servicio De Adoracion", type: "event" },
-  { day: 10, month: 0, year: 2026, title: "Servicio De Adoracion", type: "event" },
-  { day: 17, month: 0, year: 2026, title: "Servicio De Adoracion", type: "event" },
-  { day: 31, month: 0, year: 2026, title: "Servicio De Adoracion", type: "event" },
-  { day: 6, month: 0, year: 2026, title: "Servicio De Oracion", type: "special" },
-  { day: 13, month: 0, year: 2026, title: "Servicio De Oracion", type: "special" },
-  { day: 20, month: 0, year: 2026, title: "Servicio De Oracion", type: "special" },
-  { day: 27, month: 0, year: 2026, title: "Servicio De Oracion", type: "special" },
-  { day: 8, month: 0, year: 2026, title: "Oracion De Damas 7PM", type: "women" },
-  { day: 15, month: 0, year: 2026, title: "Oracion De Damas 7PM", type: "women" },
-  { day: 22, month: 0, year: 2026, title: "Oracion De Damas 7PM", type: "women" },
-  { day: 29, month: 0, year: 2026, title: "Oracion De Damas 7PM", type: "women" },
-  { day: 11, month: 0, year: 2026, title: "Ayuno Congregacional", type: "special" },
-  { day: 30, month: 0, year: 2026, title: "Gran Vigilia Congregacional", type: "special" },
-  { day: 24, month: 0, year: 2026, title: "Servicio De Adoracion Retiro Y Servicio De Damas", type: "long" }
-];
+// Current calendar date
+let date = new Date();
 
-// Calendar rendering
+// Calendar Events (add more as needed)
+const events = {
+  "2026-01-03": "Servicio De Adoracion",
+  "2026-01-06": "Servicio De Oracion",
+  "2026-01-08": "Oracion De Damas 7pm",
+  "2026-01-10": "Servicio De Adoracion",
+  "2026-01-11": "Ayuno Congregacional",
+  "2026-01-13": "Servicio De Oracion",
+  "2026-01-15": "Oracion De Damas 7pm",
+  "2026-01-17": "Servicio De Adoracion",
+  "2026-01-20": "Servicio De Oracion",
+  "2026-01-22": "Oracion De Damas 7pm",
+  "2026-01-24": "Servicio De Adoracion Retiro Y Servicio De Damas",
+  "2026-01-27": "Servicio De Oracion",
+  "2026-01-29": "Oracion De Damas 7pm",
+  "2026-01-30": "Gran Vigilia Congregacional",
+  "2026-01-31": "Servicio De Adoracion"
+};
+
+// Helper to format YYYY-MM-DD
+function formatDate(y, m, d) {
+  return `${y}-${String(m + 1).padStart(2,'0')}-${String(d).padStart(2,'0')}`;
+}
+
+// Render calendar
 function renderCalendar() {
-  calendarGrid.innerHTML = "";
-  const year = currentDate.getFullYear();
-  const month = currentDate.getMonth();
+  calendarEl.innerHTML = "";
+  const year = date.getFullYear();
+  const month = date.getMonth();
+  monthTitle.innerText = date.toLocaleString('default', { month: 'long', year: 'numeric' });
 
-  monthTitle.innerText = currentDate.toLocaleString("default", {
-    month: "long",
-    year: "numeric"
-  });
-
-  const firstDay = new Date(year, month, 1).getDay();
+  const firstDay = new Date(year, month, 1).getDay(); // Sunday = 0
   const daysInMonth = new Date(year, month + 1, 0).getDate();
 
-  // Day names
-  const dayNames = ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"];
-  dayNames.forEach((d) => {
-    const div = document.createElement("div");
-    div.classList.add("day-name");
-    div.innerText = d;
-    calendarGrid.appendChild(div);
-  });
-
-  // Empty days
-  for (let i = 0; i < firstDay; i++) {
-    const div = document.createElement("div");
-    div.classList.add("day", "empty");
-    calendarGrid.appendChild(div);
+  // Empty slots before first day
+  for(let i = 0; i < firstDay; i++){
+    const empty = document.createElement('div');
+    empty.classList.add('day','empty');
+    calendarEl.appendChild(empty);
   }
 
-  // Days
-  for (let d = 1; d <= daysInMonth; d++) {
-    const div = document.createElement("div");
-    div.classList.add("day");
+  for(let d=1; d<=daysInMonth; d++){
+    const dayEl = document.createElement('div');
+    dayEl.classList.add('day');
 
-    // Event check
-    const event = events.find(
-      (e) => e.day === d && e.month === month && e.year === year
-    );
-
-    if (event) {
-      div.classList.add(event.type);
-      div.innerHTML = `<span>${d}</span><small>${event.title.length>18?event.title.slice(0,18)+'...':event.title}</small>`;
-      div.addEventListener("click", () => {
-        popupText.innerText = event.title;
-        popup.style.display = "flex";
-      });
-    } else {
-      div.innerHTML = `<span>${d}</span>`;
-    }
-
-    calendarGrid.appendChild(div);
-  }
-}
-
-// Arrow navigation
-document.getElementById("prevMonth").addEventListener("click", () => {
-  currentDate.setMonth(currentDate.getMonth() - 1);
-  renderCalendar();
-});
-document.getElementById("nextMonth").addEventListener("click", () => {
-  currentDate.setMonth(currentDate.getMonth() + 1);
-  renderCalendar();
-});
-
-// Close popup
-document.querySelector(".close").addEventListener("click", () => {
-  popup.style.display = "none";
-});
-
-// Initial render
-renderCalendar();
-
-// ------------------ YouTube Live ------------------
-const liveContainer = document.getElementById("liveStream");
-if (liveContainer) {
-  liveContainer.innerHTML = `
-    <iframe 
-      width="100%" height="480"
-      src="https://www.youtube.com/embed/live_stream?channel=UCB-beIq8bOOnmi78a8uEvWQ"
-      allow="autoplay; encrypted-media; picture-in-picture"
-      allowfullscreen>
-    </iframe>
-  `;
-}
+    const fullDate = formatDate(year, month, d);
+    if(events[fullDate]) {
+      dayEl.classList.add('event');
+      const shortText = events[fullDate].length > 20 ? events[fullDate].substring(0,20)+"..." : events[fullDate];
+      dayEl.innerHTML = `<span>${d}</span>${shortText}`;
+      dayEl.addEventLis
