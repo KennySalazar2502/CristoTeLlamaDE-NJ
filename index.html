@@ -2,97 +2,67 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Cristo Te Llama DE/NJ</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Cristo Te Llama DE/NJ</title>
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- DARK MODE & LANGUAGE TOGGLE -->
-<div style="position:fixed; top:15px; right:15px; display:flex; gap:10px; z-index:1000;">
-  <button id="darkModeToggle">🌓</button>
-  <button id="langToggle">🌐</button>
-</div>
+<!-- Dark Mode Toggle -->
+<div id="darkModeToggle">🌓</div>
 
-<!-- NAVIGATION -->
-<nav class="nav-bar">
-  <ul class="nav-list">
-    <li><a class="nav-item" href="#inicio" data-en="Home" data-es="Inicio">Home</a></li>
-    <li><a class="nav-item" href="#servicios" data-en="Service Times" data-es="Horarios">Service Times</a></li>
-    <li><a class="nav-item" href="#eventos" data-en="Events" data-es="Eventos">Events</a></li>
-    <li><a class="nav-item" href="#contacto" data-en="Contact" data-es="Contacto">Contact</a></li>
-    <li><a class="nav-item" href="#social" data-en="Social" data-es="Redes">Social</a></li>
-    <li><a class="nav-item" href="live.html" data-en="Live" data-es="En Vivo">Live</a></li>
-  </ul>
+<!-- Navigation -->
+<nav>
+  <a href="index.html" data-en="Home" data-es="Inicio">Home</a>
+  <a href="#services" data-en="Service Times" data-es="Horarios">Service Times</a>
+  <a href="#events" data-en="Events" data-es="Eventos">Events</a>
+  <a href="#contact" data-en="Contact" data-es="Contacto">Contact</a>
+  <a href="#social" data-en="Social" data-es="Social">Social</a>
+  <a href="live.html" data-en="Live" data-es="En Vivo">Live</a>
+  <button id="langToggle">🌐</button>
 </nav>
 
-<!-- HERO -->
-<section id="inicio" class="hero">
-  <h1 data-en="Welcome to Cristo Te Llama DE/NJ" data-es="Bienvenido a Cristo Te Llama DE/NJ">Welcome to Cristo Te Llama DE/NJ</h1>
-  <p data-en="A Pentecostal church helping people grow in their walk with Jesus Christ."
-     data-es="Una iglesia pentecostal que ayuda a las personas a crecer en su camino con Jesucristo.">
-     A Pentecostal church helping people grow in their walk with Jesus Christ.
-  </p>
+<!-- Hero Section -->
+<section class="hero">
+  <h1 data-en="Welcome to Cristo Te Llama" data-es="Bienvenidos a Cristo Te Llama">Welcome to Cristo Te Llama</h1>
+  <p data-en="Join us for worship and community." data-es="Únete a nosotros para adoración y comunidad.">Join us for worship and community.</p>
 </section>
 
-<!-- SERVICES -->
-<section id="servicios">
-  <h2 data-en="Church Service Times" data-es="Horarios de Servicio">Church Service Times</h2>
-  <p><strong>Tuesday:</strong> 7:00 PM – 9:00 PM</p>
-  <p><strong>Saturday:</strong> 7:00 PM – 9:00 PM</p>
-  <p><strong>Sunday:</strong> 10:00 AM – 1:00 PM</p>
-</section>
-
-<!-- EVENTS / CALENDAR -->
-<section id="eventos">
-  <h2 data-en="Upcoming Events" data-es="Próximos Eventos">Upcoming Events</h2>
+<!-- Calendar Section -->
+<section id="calendar-section">
+  <h2 data-en="Calendar" data-es="Calendario">Calendar</h2>
   <div class="calendar-wrapper">
-    <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-      <button class="arrow-btn" onclick="prevMonth()">←</button>
+    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+      <button class="arrow-btn" id="prevMonthBtn">⬅</button>
       <h3 id="monthTitle"></h3>
-      <button class="arrow-btn" onclick="nextMonth()">→</button>
+      <button class="arrow-btn" id="nextMonthBtn">➡</button>
     </div>
-    <div class="calendar-grid" id="calendarGrid"></div>
+    <div id="calendarGrid" class="calendar-grid"></div>
   </div>
 </section>
 
-<!-- CONTACT -->
-<section id="contacto">
-  <h2 data-en="Contact" data-es="Contacto">Contact</h2>
-  <p><strong>📍 Address:</strong> 110 E Maple Ave, Penns Grove, NJ</p>
-  <p><strong>📞 Pastor:</strong> 540-842-2846</p>
-  <iframe src="https://www.google.com/maps?q=110+E+Maple+Ave,+Penns+Grove,+NJ&output=embed"
-          width="100%" height="300" style="border:0; border-radius:10px;" loading="lazy"></iframe>
-</section>
-
-<!-- SOCIAL -->
-<section id="social">
-  <h2 data-en="Social Media" data-es="Redes Sociales">Social Media</h2>
-  <div class="social-icons">
-    <a href="https://facebook.com/IglesiaCristoTeLlamaDelaware" target="_blank">
-      <img src="images/facebook.svg" alt="Facebook">
-    </a>
-    <a href="https://www.youtube.com/@CristoTeLlama" target="_blank">
-      <img src="images/youtube.svg" alt="YouTube">
-    </a>
-  </div>
-</section>
-
-<!-- MESSENGER BUTTON -->
-<a href="https://m.me/IglesiaCristoTeLlamaDelaware" class="messenger-btn" target="_blank">
-  💬 Messenger
-</a>
-
-<!-- POPUP -->
-<div id="popup" class="popup">
+<!-- Popup for Events -->
+<div class="popup" id="popup">
   <div class="popup-content">
-    <span onclick="closePopup()" class="close">&times;</span>
+    <span class="close">✖</span>
     <p id="popupText"></p>
   </div>
 </div>
 
-<!-- MAIN JS -->
+<!-- Messenger Button -->
+<a href="https://m.me/YOUR_PAGE" target="_blank" class="messenger-btn">
+  <img src="images/messenger.png" alt="Messenger" class="messenger-logo">
+  Messenger
+</a>
+
+<!-- Footer / Social -->
+<section id="social" class="social-icons">
+  <a href="#"><img src="images/facebook.png" alt="Facebook"></a>
+  <a href="#"><img src="images/instagram.png" alt="Instagram"></a>
+  <a href="#"><img src="images/youtube.png" alt="YouTube"></a>
+</section>
+
 <script src="main.js"></script>
 </body>
 </html>
