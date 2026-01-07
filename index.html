@@ -1,51 +1,98 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cristo Te Llama DE/NJ</title>
-  <link rel="stylesheet" href="style.css">
+<meta charset="UTF-8">
+<title>Cristo Te Llama DE/NJ</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="./style.css">
 </head>
 <body>
 
-<!-- Dark mode & language toggles -->
-<div id="darkModeToggle">🌓</div>
-<div id="langToggle">🌐</div>
+<!-- DARK MODE TOGGLE -->
+<button id="darkModeToggle">🌓</button>
 
-<!-- Navigation -->
-<nav>
-  <a href="index.html" data-en="Home" data-es="Inicio">Home</a>
-  <a href="#services" data-en="Service Times" data-es="Horarios de Servicios">Service Times</a>
-  <a href="#events" data-en="Events" data-es="Eventos">Events</a>
-  <a href="#contact" data-en="Contact" data-es="Contacto">Contact</a>
-  <a href="#social" data-en="Social" data-es="Redes">Social</a>
-  <a href="live.html" data-en="Live" data-es="En Vivo">Live</a>
+<!-- NAVIGATION -->
+<nav class="nav-bar">
+  <ul class="nav-list">
+    <li><a class="nav-item" href="#inicio">Home</a></li>
+    <li><a class="nav-item" href="#servicios">Service Times</a></li>
+    <li><a class="nav-item" href="#eventos">Events</a></li>
+    <li><a class="nav-item" href="#contacto">Contact</a></li>
+    <li><a class="nav-item" href="#social">Social</a></li>
+    <li><a class="nav-item" href="live.html">Live</a></li>
+  </ul>
 </nav>
 
-<!-- Hero -->
-<section class="hero">
-  <h1 data-en="Welcome to Cristo Te Llama DE/NJ" data-es="Bienvenido a Cristo Te Llama DE/NJ">Welcome to Cristo Te Llama DE/NJ</h1>
-  <p data-en="Check our events and live stream below." data-es="Consulta nuestros eventos y transmisión en vivo abajo.">Check our events and live stream below.</p>
+<!-- HERO -->
+<section id="inicio" class="hero">
+  <h1 data-en="Welcome to Cristo Te Llama DE/NJ" data-es="Bienvenidos a Cristo Te Llama DE/NJ">Welcome to Cristo Te Llama DE/NJ</h1>
+  <p data-en="A Pentecostal church helping people grow in their walk with Jesus Christ."
+     data-es="Una iglesia pentecostal que ayuda a las personas a crecer en su caminar con Jesucristo.">
+    A Pentecostal church helping people grow in their walk with Jesus Christ.
+  </p>
 </section>
 
-<!-- Calendar -->
-<section id="calendarContainer">
-  <div style="display:flex; justify-content:space-between; align-items:center; margin-bottom:10px;">
-    <button id="prevMonth">←</button>
-    <h3 id="monthTitle"></h3>
-    <button id="nextMonth">→</button>
+<!-- SERVICES -->
+<section id="servicios">
+  <h2 data-en="Church Service Times" data-es="Horarios de Servicio">Church Service Times</h2>
+  <p><strong>Tuesday:</strong> 7:00 PM – 9:00 PM</p>
+  <p><strong>Saturday:</strong> 7:00 PM – 9:00 PM</p>
+  <p><strong>Sunday:</strong> 10:00 AM – 1:00 PM</p>
+</section>
+
+<!-- EVENTS / CALENDAR -->
+<section id="eventos">
+  <h2 data-en="Upcoming Events" data-es="Próximos Eventos">Upcoming Events</h2>
+  <div class="calendar-wrapper">
+    <div class="calendar-header">
+      <button class="arrow-btn" onclick="prevMonth()">←</button>
+      <h3 id="monthTitle">January 2026</h3>
+      <button class="arrow-btn" onclick="nextMonth()">→</button>
+    </div>
+    <div class="calendar-grid" id="calendar"></div>
   </div>
-  <div id="calendarGrid"></div>
+  <div class="legend">
+    <div class="legend-box event"></div><span>General Event</span>
+    <div class="legend-box women"></div><span>Women Event</span>
+  </div>
 </section>
 
-<!-- Popup for long events -->
+<!-- CONTACT -->
+<section id="contacto">
+  <h2 data-en="Contact" data-es="Contacto">Contact</h2>
+  <p><strong>📍 Address:</strong> 110 E Maple Ave, Penns Grove, NJ</p>
+  <p><strong>📞 Pastor:</strong> 540-842-2846</p>
+  <iframe src="https://www.google.com/maps?q=110+E+Maple+Ave,+Penns+Grove,+NJ&output=embed"
+          width="100%" height="300" style="border:0; border-radius:10px;" loading="lazy"></iframe>
+</section>
+
+<!-- SOCIAL -->
+<section id="social">
+  <h2 data-en="Social Media" data-es="Redes Sociales">Social Media</h2>
+  <div class="social-icons">
+    <a href="https://facebook.com/IglesiaCristoTeLlamaDelaware" target="_blank">
+      <img src="images/facebook.svg" alt="Facebook">
+    </a>
+    <a href="https://www.youtube.com/@CristoTeLlama" target="_blank">
+      <img src="images/youtube.svg" alt="YouTube">
+    </a>
+  </div>
+</section>
+
+<!-- MESSENGER BUTTON -->
+<a href="https://m.me/IglesiaCristoTeLlamaDelaware" class="messenger-btn" target="_blank">
+  💬 Messenger
+</a>
+
+<!-- POPUP -->
 <div id="popup" class="popup">
   <div class="popup-content">
-    <span class="close">&times;</span>
+    <span onclick="closePopup()" class="close">&times;</span>
     <p id="popupText"></p>
   </div>
 </div>
 
-<!-- Messenger Button -->
-<a href="https://m.me/cristo-te-llama" class="messenger-btn">
-  <img src="images/messenger.p
+<script src="./main.js" defer></script>
+</body>
+</html>
