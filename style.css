@@ -1,105 +1,79 @@
-/* style.css */
+/* ===== GLOBAL ===== */
 body {
   margin:0;
   font-family:'Playfair Display', serif;
   background:#F6F1EB;
   color:#000;
-  transition: all 0.3s ease;
+  transition: all 0.3s;
 }
-.dark-mode { background:#121212; color:#EEE; }
+body.dark { background:#3A0CA3; color:#fff; }
 
-/* NAVIGATION */
-.nav-bar {
+/* ===== NAVIGATION ===== */
+nav {
   display:flex;
-  justify-content:space-between;
-  align-items:center;
-  background:#fff;
-  padding:10px 20px;
+  justify-content:center;
+  flex-wrap:wrap;
+  gap:15px;
+  padding:15px 0;
   position:sticky;
   top:0;
-  z-index:100;
-  box-shadow:0 2px 5px rgba(0,0,0,0.1);
+  z-index:1000;
 }
-.nav-list { display:flex; gap:15px; flex-wrap:wrap; list-style:none; margin:0; padding:0; }
-.nav-item {
+nav a {
   text-decoration:none;
-  padding:10px 15px;
-  border:2px solid #0084ff;
+  font-weight:bold;
+  padding:10px 20px;
   border-radius:25px;
-  color:#0084ff;
-  font-weight:bold;
-  transition:all 0.3s;
-}
-.nav-item:hover {
-  background:#0084ff;
-  color:#fff;
-  transform:scale(1.1);
-}
-
-/* DARK MODE TOGGLE */
-#darkModeToggle { border:none; background:none; font-size:1.2rem; cursor:pointer; }
-
-/* MESSENGER BUTTON */
-.messenger-btn {
-  position:fixed;
-  bottom:20px;
-  right:20px;
-  background:#0084ff;
-  color:#fff;
-  padding:12px 18px;
-  border-radius:50px;
-  text-decoration:none;
-  display:flex;
-  align-items:center;
-  gap:8px;
-  font-weight:bold;
-  box-shadow:0 4px 6px rgba(0,0,0,0.2);
-  transition:transform 0.2s;
-}
-.messenger-btn:hover { transform: scale(1.05); }
-.messenger-logo { width:24px; height:24px; }
-
-/* SECTIONS */
-section { padding:50px 20px; text-align:center; transition:all 0.3s ease; }
-
-/* CALENDAR */
-.calendar-wrapper {
-  max-width:720px;
-  margin:20px auto;
-  border-radius:12px;
-  padding:10px;
-  border:2px solid #0084ff;
   background:#fff;
+  color:#000;
+  transition:0.3s;
+  box-shadow:0 2px 5px rgba(0,0,0,0.2);
 }
-.dark-mode .calendar-wrapper { border-color:#9d4edd; background:#2c0735; }
+nav a:hover { background:#6a0dad; color:#fff; transform:translateY(-3px); }
 
-.calendar-grid {
-  display:grid;
-  grid-template-columns:repeat(7,1fr);
-  gap:8px;
+/* ===== DARK MODE TOGGLE ===== */
+#darkModeToggle {
+  position:fixed;
+  top:15px;
+  right:15px;
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  background:#fff;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:1.5rem;
+  cursor:pointer;
+  box-shadow:0 2px 5px rgba(0,0,0,0.2);
 }
+
+/* ===== SECTIONS ===== */
+section { padding:50px 20px; text-align:center; transition: all 0.3s; }
+
+/* ===== CALENDAR ===== */
+#calendarGrid { display:grid; grid-template-columns:repeat(7,1fr); gap:5px; max-width:720px; margin:20px auto; }
 .day-name { font-weight:bold; text-align:center; }
 .day {
   background:#f0eae2;
   border-radius:8px;
-  padding:8px;
   min-height:70px;
+  padding:5px;
   cursor:pointer;
-  transition: transform 0.2s, background 0.2s;
-  font-size:0.85rem;
+  transition: all 0.2s;
 }
 .day:hover { transform:scale(1.05); }
-.day span { display:block; font-weight:bold; margin-bottom:4px; }
+.day span { display:block; font-weight:bold; }
+.day small { display:block; font-size:0.75rem; margin-top:4px; }
+.day.event { background:#ffd966; color:#000; } /* bright yellow for events */
+.day.women { background:#ff99cc; color:#000; } /* pink for women's prayer */
 .day.empty { background:transparent; cursor:default; }
 
-/* EVENT COLORS */
-.day.oracion { background:#6a0dad; color:#fff; }
-.day.damas { background:#f06292; color:#fff; }
-.day.vigilia { background:#f0a500; color:#fff; }
-.day.ayuno { background:#4dabf5; color:#fff; }
-.day.adoracion { background:#20c997; color:#fff; }
+body.dark .day { background:#3a0ca3; color:#fff; }
+body.dark .day.event { background:#f0a500; color:#000; }
+body.dark .day.women { background:#9d4edd; color:#fff; }
 
-/* POPUP */
+/* ===== POPUP ===== */
 .popup {
   display:none;
   position:fixed;
@@ -117,36 +91,9 @@ section { padding:50px 20px; text-align:center; transition:all 0.3s ease; }
 }
 .close { cursor:pointer; float:right; font-size:1.2rem; }
 
-/* SOCIAL ICONS */
-.social-icons {
-  display:flex;
-  justify-content:center;
-  gap:30px;
-}
-.social-icons img { width:48px; }
-
-/* FORMS */
-form input, form textarea, form button {
-  width:80%;
-  padding:10px;
-  margin:5px 0;
-  border-radius:8px;
-  border:1px solid #ccc;
-}
-form button {
-  background:#0084ff;
-  color:#fff;
-  border:none;
-  cursor:pointer;
-  font-weight:bold;
-  transition: transform 0.2s;
-}
-form button:hover { transform:scale(1.05); }
-
-/* RESPONSIVE */
+/* ===== RESPONSIVE ===== */
 @media(max-width:600px){
-  .nav-list { flex-direction:column; gap:10px; }
-  .calendar-wrapper { padding:5px; }
-  .day { min-height:50px; padding:6px; font-size:0.75rem; }
-  form input, form textarea, form button { width:95%; }
+  nav { gap:8px; }
+  .day { min-height:50px; font-size:0.75rem; }
+  .popup-content { width:90%; }
 }
