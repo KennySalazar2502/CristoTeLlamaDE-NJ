@@ -2,61 +2,49 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cristo Te Llama DE/NJ</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
-<!-- Dark Mode Toggle -->
-<div id="darkModeToggle">🌓</div>
-
-<!-- Navigation -->
-<nav>
-  <a href="index.html" data-en="Home" data-es="Inicio">Home</a>
-  <a href="#services" data-en="Service Times" data-es="Horarios">Service Times</a>
-  <a href="#events" data-en="Events" data-es="Eventos">Events</a>
-  <a href="#contact" data-en="Contact" data-es="Contacto">Contact</a>
-  <a href="#social" data-en="Social" data-es="Social">Social</a>
-  <a href="live.html" data-en="Live" data-es="En Vivo">Live</a>
-  <button id="langToggle">🌐</button>
+<!-- NAVIGATION -->
+<nav class="nav-bar">
+  <ul class="nav-list">
+    <li><a class="nav-item" href="index.html">Home</a></li>
+    <li><a class="nav-item" href="#services">Service Times</a></li>
+    <li><a class="nav-item" href="#events">Events</a></li>
+    <li><a class="nav-item" href="#contact">Contact</a></li>
+    <li><a class="nav-item" href="#social">Social</a></li>
+    <li><a class="nav-item" href="live.html">Live</a></li>
+  </ul>
+  <button id="darkModeToggle">🌓</button>
+  <button id="langToggle" data-en="ES" data-es="EN">ES</button>
 </nav>
 
-<!-- Hero Section -->
 <section class="hero">
-  <h1 data-en="Welcome to Cristo Te Llama" data-es="Bienvenidos a Cristo Te Llama">Welcome to Cristo Te Llama</h1>
-  <p data-en="Join us for worship and community." data-es="Únete a nosotros para adoración y comunidad.">Join us for worship and community.</p>
+  <h1 data-en="Welcome" data-es="Bienvenidos">Welcome</h1>
+  <p data-en="Join us for live services and events!" data-es="¡Únase a nosotros para servicios y eventos en vivo!">Join us for live services and events!</p>
 </section>
 
-<!-- Calendar Section -->
-<section id="calendar-section">
-  <h2 data-en="Calendar" data-es="Calendario">Calendar</h2>
-  <div class="calendar-wrapper">
-    <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
-      <button class="arrow-btn" id="prevMonthBtn">⬅</button>
-      <h3 id="monthTitle"></h3>
-      <button class="arrow-btn" id="nextMonthBtn">➡</button>
-    </div>
-    <div id="calendarGrid" class="calendar-grid"></div>
+<section id="calendarSection" class="calendar-wrapper">
+  <div style="display:flex;justify-content:space-between;align-items:center;margin-bottom:10px;">
+    <button class="arrow-btn" onclick="prevMonth()">◀</button>
+    <h2 id="monthTitle"></h2>
+    <button class="arrow-btn" onclick="nextMonth()">▶</button>
   </div>
+  <div class="calendar-grid" id="calendarGrid"></div>
 </section>
 
-<!-- Popup for Events -->
+<!-- POPUP -->
 <div class="popup" id="popup">
   <div class="popup-content">
-    <span class="close">✖</span>
+    <span class="close" onclick="closePopup()">×</span>
     <p id="popupText"></p>
   </div>
 </div>
 
-<!-- Messenger Button -->
-<a href="https://m.me/YOUR_PAGE" target="_blank" class="messenger-btn">
-  <img src="images/messenger.png" alt="Messenger" class="messenger-logo">
-  Messenger
-</a>
-
-<!-- Footer / Social -->
 <section id="social" class="social-icons">
   <a href="#"><img src="images/facebook.png" alt="Facebook"></a>
   <a href="#"><img src="images/instagram.png" alt="Instagram"></a>
