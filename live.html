@@ -34,20 +34,23 @@
 </section>
 
 <section id="liveStream">
-  <p id="status">Checking if we are live...</p>
+  <!-- YouTube live stream will be injected here -->
 </section>
 
 <script src="main.js"></script>
 <script>
+  // YouTube Live Embed
   const liveContainer = document.getElementById('liveStream');
   const youtubeChannelId = 'UCB-beIq8bOOnmi78a8uEvWQ'; // your channel ID
 
   liveContainer.innerHTML = `
     <iframe width="100%" height="400" 
       src="https://www.youtube.com/embed/live_stream?channel=${youtubeChannelId}&autoplay=0"
-      allow="autoplay; encrypted-media" allowfullscreen>
+      allow="autoplay; encrypted-media" allowfullscreen
+      style="border-radius:10px;">
     </iframe>
   `;
 </script>
+
 </body>
 </html>
