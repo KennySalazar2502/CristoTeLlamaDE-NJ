@@ -1,212 +1,212 @@
-/* ==========================
+/* =========================
    General Styles
-========================== */
+========================= */
 body {
-  margin: 0;
-  font-family: 'Playfair Display', serif;
-  background-color: #F6F1EB;
-  color: #000;
-  transition: background 0.3s, color 0.3s;
+  margin:0;
+  font-family:'Playfair Display', serif;
+  background-color:#F6F1EB;
+  color:#000;
+  transition: background 0.3s,color 0.3s;
 }
+body.dark { background:#3A0CA3; color:#fff; }
 
-body.dark {
-  background-color: #3A0CA3;
-  color: #fff;
+section { padding:50px 20px;text-align:center; transition: all 0.3s; }
+
+/* =========================
+   Navigation
+========================= */
+nav {
+  display:flex;
+  justify-content:center;
+  gap:15px;
+  flex-wrap:wrap;
+  padding:15px 0;
+  position:sticky;
+  top:0;
+  z-index:1000;
+  background:#fff;
+  box-shadow:0 2px 5px rgba(0,0,0,0.1);
 }
-
-/* NAVIGATION */
-.nav-bar {
-  display: flex;
-  justify-content: center;
-  background: #fff;
-  padding: 10px 20px;
-  position: sticky;
-  top: 0;
-  z-index: 100;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
-}
-
-.nav-list {
-  display: flex;
-  gap: 15px;
-  list-style: none;
-  padding: 0;
-  margin: 0;
-  flex-wrap: wrap;
-}
-
-.nav-item {
-  text-decoration: none;
-  padding: 10px 15px;
-  border: 2px solid #0084ff;
-  border-radius: 25px;
-  color: #0084ff;
-  font-weight: bold;
+nav a {
+  text-decoration:none;
+  font-weight:bold;
+  padding:10px 20px;
+  border-radius:25px;
+  border:2px solid #0084ff;
+  color:#0084ff;
   transition: all 0.3s;
 }
-
-.nav-item:hover {
-  background: #0084ff;
-  color: #fff;
+nav a:hover {
+  background:#0084ff;
+  color:#fff;
   transform: scale(1.1);
 }
 
-/* HERO SECTION */
-section.hero {
-  padding: 50px 20px;
-  text-align: center;
+/* Dark Mode Navigation */
+body.dark nav {
+  background:#2A0A72;
+}
+body.dark nav a {
+  color:#fff;
+  border-color:#9d4edd;
+}
+body.dark nav a:hover {
+  background:#9d4edd;
+  color:#fff;
+}
+
+/* =========================
+   Dark Mode Toggle
+========================= */
+#darkModeToggle {
+  position:fixed;
+  top:15px;
+  right:15px;
+  cursor:pointer;
+  width:40px;
+  height:40px;
+  border-radius:50%;
+  background-color:#fff;
+  display:flex;
+  justify-content:center;
+  align-items:center;
+  font-size:1.5rem;
+  box-shadow:0 2px 5px rgba(0,0,0,0.2);
+  transition: all 0.3s ease;
+}
+
+/* =========================
+   Calendar Styles
+========================= */
+.calendar-wrapper {
+  max-width:720px;
+  margin:20px auto;
+  border-radius:12px;
+  padding:10px;
+  border:2px solid #0084ff;
+  background:#fff;
   transition: all 0.3s;
 }
-
-/* MESSENGER BUTTON */
-.messenger-btn {
-  position: fixed;
-  bottom: 20px;
-  right: 20px;
-  background: #0084ff;
-  color: #fff;
-  padding: 12px 18px;
-  border-radius: 50px;
-  text-decoration: none;
-  display: flex;
-  align-items: center;
-  gap: 8px;
-  font-weight: bold;
-  box-shadow: 0 4px 6px rgba(0,0,0,0.2);
-  transition: transform 0.2s;
-}
-
-.messenger-btn:hover {
-  transform: scale(1.05);
-}
-
-/* CALENDAR */
-.calendar-wrapper {
-  max-width: 720px;
-  margin: 20px auto;
-  border: 2px solid #0084ff;
-  border-radius: 12px;
-  padding: 10px;
-  text-align: center;
-}
+body.dark .calendar-wrapper { border-color:#9d4edd; background:#3A0CA3; }
 
 .calendar-header {
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  margin-bottom: 10px;
+  display:flex;
+  justify-content:space-between;
+  align-items:center;
+  margin-bottom:10px;
 }
-
+.calendar-header h3 { margin:0; font-size:1.3rem; }
 .arrow-btn {
-  font-size: 1.5rem;
-  border: none;
-  background: none;
-  cursor: pointer;
+  font-size:1.5rem;
+  border:none;
+  background:none;
+  cursor:pointer;
   transition: transform 0.2s;
 }
-
-.arrow-btn:hover {
-  transform: scale(1.3);
-  color: #0084ff;
-}
+.arrow-btn:hover { transform:scale(1.3); color:#0084ff; }
 
 .calendar-grid {
-  display: grid;
-  grid-template-columns: repeat(7, 1fr);
-  gap: 8px;
+  display:grid;
+  grid-template-columns:repeat(7,1fr);
+  gap:8px;
 }
-
-.day-name {
-  font-weight: bold;
-}
-
+.day-name { font-weight:bold; text-align:center; }
 .day {
-  background: #f0eae2;
-  border-radius: 8px;
-  padding: 8px;
-  min-height: 70px;
-  cursor: pointer;
+  background:#f0eae2;
+  border-radius:8px;
+  padding:8px;
+  min-height:70px;
+  cursor:pointer;
   transition: transform 0.2s, background 0.2s;
+  font-size:0.9rem;
 }
+.day span { font-weight:bold; display:block; margin-bottom:4px; }
+.day.event { background:#ffd6a5; }       /* Event colors improved */
+.day.women { background:#ffadad; }       /* Women's events color */
+.day.empty { background:transparent; cursor:default; }
 
-.day span {
-  display: block;
-  font-weight: bold;
-  margin-bottom: 4px;
-}
+body.dark .day { background:#4B0082; color:#fff; }
+body.dark .day.event { background:#6a0dad; color:#fff; }
+body.dark .day.women { background:#9d4edd; color:#fff; }
 
-.day.event { background: #ffcc80; }      /* main events */
-.day.women { background: #f48fb1; }     /* women's events */
-.day.special { background: #81d4fa; }   /* long events / special */
+.legend { display:flex; justify-content:center; align-items:center; gap:8px; margin-bottom:10px; }
+.legend-box { width:18px; height:18px; border-radius:4px; }
+.legend-box.event { background:#ffd6a5; }
+.legend-box.women { background:#ffadad; }
 
-.day.empty { background: transparent; cursor: default; }
-
-.day:hover {
-  transform: scale(1.05);
-}
-
-/* POPUP */
+/* =========================
+   Popup
+========================= */
 .popup {
-  display: none;
-  position: fixed;
-  inset: 0;
-  background: rgba(0,0,0,0.5);
-  justify-content: center;
-  align-items: center;
+  display:none;
+  position:fixed;
+  inset:0;
+  background:rgba(0,0,0,0.5);
+  justify-content:center;
+  align-items:center;
 }
-
 .popup-content {
-  background: #fff;
-  padding: 20px;
-  border-radius: 10px;
-  max-width: 300px;
-  text-align: center;
+  background:#fff;
+  padding:20px;
+  border-radius:10px;
+  max-width:300px;
 }
+body.dark .popup-content { background:#3A0CA3; color:#fff; }
+.close { cursor:pointer; float:right; font-size:1.2rem; }
 
-.close {
-  cursor: pointer;
-  float: right;
-  font-size: 1.2rem;
+/* =========================
+   Messenger Button
+========================= */
+.messenger-btn {
+  position:fixed;
+  bottom:20px;
+  right:20px;
+  background:#0084ff;
+  color:#fff;
+  padding:12px 18px;
+  border-radius:50px;
+  text-decoration:none;
+  display:flex;
+  align-items:center;
+  gap:8px;
+  font-weight:bold;
+  box-shadow:0 4px 6px rgba(0,0,0,0.2);
+  transition:transform 0.2s;
 }
+.messenger-btn:hover { transform: scale(1.05); }
 
-/* SOCIAL ICONS */
-.social-icons {
-  display: flex;
-  justify-content: center;
-  gap: 30px;
-  margin: 20px 0;
-}
+/* =========================
+   Social Icons
+========================= */
+.social-icons { display:flex; justify-content:center; gap:30px; }
+.social-icons img { width:48px; }
 
-.social-icons img {
-  width: 48px;
-}
-
-/* FORM STYLING */
+/* =========================
+   Forms
+========================= */
 form input, form textarea, form button {
-  width: 80%;
-  padding: 10px;
-  margin: 5px 0;
-  border-radius: 8px;
-  border: 1px solid #ccc;
+  width:80%;
+  padding:10px;
+  margin:5px 0;
+  border-radius:8px;
+  border:1px solid #ccc;
 }
-
 form button {
-  background: #0084ff;
-  color: #fff;
-  border: none;
-  cursor: pointer;
-  font-weight: bold;
+  background:#0084ff;
+  color:#fff;
+  border:none;
+  cursor:pointer;
+  font-weight:bold;
   transition: transform 0.2s;
 }
+form button:hover { transform:scale(1.05); }
 
-form button:hover {
-  transform: scale(1.05);
-}
-
-/* RESPONSIVE */
-@media(max-width: 600px) {
-  .nav-list { flex-direction: column; gap: 10px; }
-  .calendar-wrapper { padding: 5px; }
-  .day { min-height: 50px; padding: 6px; font-size: 0.85rem; }
-  form input, form textarea, form button { width: 95%; }
+/* =========================
+   Responsive
+========================= */
+@media(max-width:600px){
+  nav { flex-direction:column; gap:10px; }
+  .calendar-wrapper { padding:5px; }
+  .day { min-height:50px; padding:6px; font-size:0.8rem; }
+  form input, form textarea, form button { width:95%; }
 }
