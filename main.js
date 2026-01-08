@@ -1,119 +1,113 @@
-/* ========= DARK MODE ========= */
-const darkModeToggle = document.getElementById("darkModeToggle");
+/* ===== MAIN.JS ===== */
 
-function loadDarkMode() {
-  if(localStorage.getItem("darkMode") === "true") document.body.classList.add("dark");
-}
-loadDarkMode();
-
-darkModeToggle.addEventListener("click", () => {
-  document.body.classList.toggle("dark");
-  localStorage.setItem("darkMode", document.body.classList.contains("dark"));
+// ---------- DARK MODE TOGGLE ----------
+const darkToggle = document.getElementById('darkModeToggle');
+darkToggle.addEventListener('click', () => {
+  document.body.classList.toggle('dark');
+  localStorage.setItem('darkMode', document.body.classList.contains('dark'));
 });
+if(localStorage.getItem('darkMode') === 'true') document.body.classList.add('dark');
 
-/* ========= LANGUAGE TOGGLE ========= */
-const langToggle = document.getElementById("langToggle");
-langToggle.addEventListener("click", () => {
-  document.querySelectorAll("[data-en]").forEach(el => {
+// ---------- LANGUAGE TOGGLE ----------
+function toggleLang() {
+  document.querySelectorAll('[data-en]').forEach(el => {
     el.innerText = el.innerText === el.dataset.en ? el.dataset.es : el.dataset.en;
   });
-});
+}
 
-/* ========= CALENDAR ========= */
-const calendarGrid = document.getElementById("calendarGrid");
-const monthTitle = document.getElementById("monthTitle");
+// ---------- CALENDAR SETUP ----------
+const monthNames = ["January","February","March","April","May","June",
+                    "July","August","September","October","November","December"];
+const calendarGrid = document.getElementById('calendarGrid');
+const monthTitle = document.getElementById('monthTitle');
+const yearStart = 2026;
+let currentMonth = 0;
+let currentYear = 2026;
 
-let currentDate = new Date();
-let currentMonth = currentDate.getMonth();
-let currentYear = currentDate.getFullYear();
+// Events object: year -> month -> day
+let events = {};
+for(let y=2026;y<=2030;y++){ events[y] = {}; for(let m=0;m<12;m++){ events[y][m] = {}; } }
 
-// Events
-const events = [
-  { day: 3, month:0, year:2026, title:"Servicio De Adoracion", type:"event" },
-  { day: 10, month:0, year:2026, title:"Servicio De Adoracion", type:"event" },
-  { day: 17, month:0, year:2026, title:"Servicio De Adoracion", type:"event" },
-  { day: 31, month:0, year:2026, title:"Servicio De Adoracion", type:"event" },
-  { day: 6, month:0, year:2026, title:"Servicio De Oracion", type:"event" },
-  { day: 13, month:0, year:2026, title:"Servicio De Oracion", type:"event" },
-  { day: 20, month:0, year:2026, title:"Servicio De Oracion", type:"event" },
-  { day: 27, month:0, year:2026, title:"Servicio De Oracion", type:"event" },
-  { day: 8, month:0, year:2026, title:"Oracion De Damas 7PM", type:"women" },
-  { day: 15, month:0, year:2026, title:"Oracion De Damas 7PM", type:"women" },
-  { day: 22, month:0, year:2026, title:"Oracion De Damas 7PM", type:"women" },
-  { day: 29, month:0, year:2026, title:"Oracion De Damas 7PM", type:"women" },
-  { day: 30, month:0, year:2026, title:"Gran Vigilia Congregacional", type:"special" },
-  { day: 11, month:0, year:2026, title:"Ayuno Congregacional", type:"special" },
-  { day: 24, month:0, year:2026, title:"Servicio De Adoracion Retiro y Servicio De Damas", type:"special" }
-];
+// ---------- JANUARY 2026 EVENTS ----------
+events[2026][0][3]  = "Servicio De Adoracion";
+events[2026][0][6]  = "Servicio De Oracion";
+events[2026][0][8]  = "Oracion De Damas 7pm";
+events[2026][0][10] = "Servicio De Adoracion";
+events[2026][0][11] = "Ayuno Congregacional";
+events[2026][0][13] = "Servicio De Oracion";
+events[2026][0][15] = "Oracion De Damas 7pm";
+events[2026][0][17] = "Servicio De Adoracion";
+events[2026][0][20] = "Servicio De Oracion";
+events[2026][0][22] = "Oracion De Damas 7pm";
+events[2026][0][24] = "Servicio De Adoracion Retiro Y Servicio De Damas";
+events[2026][0][27] = "Servicio De Oracion";
+events[2026][0][29] = "Oracion De Damas 7pm";
+events[2026][0][30] = "Gran Vigilia Congregacional";
+events[2026][0][31] = "Servicio De Adoracion";
 
+// ---------- RENDER CALENDAR ----------
 function renderCalendar() {
-  if(!calendarGrid) return;
+  calendarGrid.innerHTML = '';
 
-  calendarGrid.innerHTML = "";
+  // Weekday headers
+  const weekdays = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+  weekdays.forEach(d => {
+    const div = document.createElement('div');
+    div.classList.add('day-name');
+    div.innerText = d;
+    calendarGrid.appendChild(div);
+  });
 
-  const months = [
-    "January","February","March","April","May","June",
-    "July","August","September","October","November","December"
-  ];
+  const firstDay = new Date(currentYear, currentMonth, 1).getDay();
+  const daysInMonth = new Date(currentYear, currentMonth+1,0).getDate();
 
-  monthTitle.innerText = `${months[currentMonth]} ${currentYear}`;
-
-  const firstDay = new Date(currentYear,currentMonth,1).getDay();
-  const daysInMonth = new Date(currentYear,currentMonth+1,0).getDate();
-
-  // empty slots
+  // Empty slots before first day
   for(let i=0;i<firstDay;i++){
-    const emptyDiv = document.createElement("div");
-    emptyDiv.classList.add("day","empty");
-    calendarGrid.appendChild(emptyDiv);
+    const empty = document.createElement('div');
+    empty.classList.add('day','empty');
+    calendarGrid.appendChild(empty);
   }
 
-  // days
+  // Days
   for(let d=1; d<=daysInMonth; d++){
-    const dayDiv = document.createElement("div");
-    dayDiv.classList.add("day");
-    const eventToday = events.find(ev => ev.day===d && ev.month===currentMonth && ev.year===currentYear);
-    if(eventToday){
-      dayDiv.classList.add(eventToday.type);
-      dayDiv.innerHTML = `<span>${d}</span><small>${eventToday.title}</small>`;
-      dayDiv.addEventListener("click",()=>{
-        showPopup(eventToday.title);
-      });
+    const dayDiv = document.createElement('div');
+    dayDiv.classList.add('day');
+    if(events[currentYear][currentMonth][d]){
+      dayDiv.classList.add('event');
+      const shortText = events[currentYear][currentMonth][d].length>18 ? 
+                        events[currentYear][currentMonth][d].substring(0,18)+'...' : 
+                        events[currentYear][currentMonth][d];
+      dayDiv.innerHTML = `<span>${d}</span><small>${shortText}</small>`;
+      dayDiv.dataset.event = events[currentYear][currentMonth][d];
     } else {
       dayDiv.innerHTML = `<span>${d}</span>`;
     }
+    dayDiv.addEventListener('click',()=>{
+      if(dayDiv.dataset.event){
+        document.getElementById('popupText').innerText = dayDiv.dataset.event;
+        document.getElementById('popup').style.display='flex';
+      }
+    });
     calendarGrid.appendChild(dayDiv);
   }
+
+  monthTitle.innerText = `${monthNames[currentMonth]} ${currentYear}`;
 }
 
-// Popup
-function showPopup(text){
-  const popup = document.getElementById("popup");
-  document.getElementById("popupText").innerText = text;
-  popup.style.display = "flex";
-}
-
-function closePopup(){
-  document.getElementById("popup").style.display = "none";
-}
-
-// Navigation for calendar
+// ---------- NAVIGATION ----------
 function nextMonth(){
   currentMonth++;
-  if(currentMonth>11){
-    currentMonth=0;
-    currentYear++;
-  }
+  if(currentMonth>11){ currentMonth=0; currentYear++; }
   renderCalendar();
 }
-
 function prevMonth(){
   currentMonth--;
-  if(currentMonth<0){
-    currentMonth=11;
-    currentYear--;
-  }
+  if(currentMonth<0){ currentMonth=11; currentYear--; }
   renderCalendar();
 }
 
+// ---------- CLOSE POPUP ----------
+function closePopup(){ document.getElementById('popup').style.display='none'; }
+
+// Initial render
 renderCalendar();
