@@ -2,24 +2,24 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cristo Te Llama DE/NJ - Live</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <!-- DARK MODE & LANGUAGE TOGGLE -->
-<div class="top-toggles">
+<div style="position:fixed; top:10px; right:10px; display:flex; gap:10px;">
   <button id="darkModeToggle">🌓</button>
-  <button id="langToggle" data-en="ES" data-es="EN">ES</button>
+  <button id="langToggle">EN/ES</button>
 </div>
 
 <!-- NAVIGATION -->
 <nav class="nav-bar">
   <ul class="nav-list">
-    <li><a class="nav-item" href="index.html" data-en="Home" data-es="Inicio">Home</a></li>
-    <li><a class="nav-item" href="index.html#services" data-en="Service Times" data-es="Servicios">Service Times</a></li>
+    <li><a class="nav-item" href="index.html#home" data-en="Home" data-es="Inicio">Home</a></li>
+    <li><a class="nav-item" href="index.html#services" data-en="Service Times" data-es="Horarios de Servicio">Service Times</a></li>
     <li><a class="nav-item" href="index.html#events" data-en="Events" data-es="Eventos">Events</a></li>
     <li><a class="nav-item" href="index.html#contact" data-en="Contact" data-es="Contacto">Contact</a></li>
     <li><a class="nav-item" href="live.html" data-en="Live" data-es="En Vivo">Live</a></li>
@@ -28,40 +28,15 @@
 
 <!-- HERO -->
 <section class="hero">
-  <h1 data-en="Live Broadcast" data-es="Transmisión en Vivo">Live Broadcast</h1>
-  <p data-en="Watch our services live from YouTube" data-es="Mira nuestros servicios en vivo desde YouTube">Watch our services live from YouTube</p>
+  <h1 data-en="Live Stream" data-es="Transmisión En Vivo">Live Stream</h1>
+  <p data-en="Watch our live broadcast from YouTube right here." data-es="Mira nuestra transmisión en vivo de YouTube aquí.">Watch our live broadcast from YouTube right here.</p>
 </section>
 
-<!-- LIVE STREAM -->
-<section class="hero" id="liveSection">
-  <div id="liveStream">
-    <iframe 
-      src="https://www.youtube.com/embed/UCB-beIq8bOOnmi78a8uEvWQ?autoplay=0&mute=1"
-      allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
-      allowfullscreen></iframe>
-  </div>
+<!-- LIVE VIDEO -->
+<section id="liveStream">
+  <iframe id="youtubeLive" width="100%" height="400" src="https://www.youtube.com/embed/live_stream?channel=UCB-beIq8bOOnmi78a8uEvWQ" allow="autoplay; encrypted-media; picture-in-picture" allowfullscreen></iframe>
 </section>
 
-<script>
-// ===== DARK MODE =====
-const darkModeToggle = document.getElementById("darkModeToggle");
-function loadDarkMode() {
-  if(localStorage.getItem("darkMode") === "true") document.body.classList.add("dark");
-}
-loadDarkMode();
-
-darkModeToggle.addEventListener("click", () => {
-  document.body.classList.toggle("dark");
-  localStorage.setItem("darkMode", document.body.classList.contains("dark"));
-});
-
-// ===== LANGUAGE TOGGLE =====
-const langToggle = document.getElementById("langToggle");
-langToggle.addEventListener("click", () => {
-  document.querySelectorAll("[data-en]").forEach(el => {
-    el.innerText = el.innerText === el.dataset.en ? el.dataset.es : el.dataset.en;
-  });
-});
-</script>
+<script src="main.js"></script>
 </body>
 </html>
