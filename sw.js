@@ -1,12 +1,15 @@
 const CACHE_NAME = "cristo-cache-v1";
 const urlsToCache = [
   "/index.html",
+  "/calendar.html",
   "/live.html",
   "/style.css",
   "/main.js",
   "/manifest.json",
   "/images/icon-192.png",
-  "/images/icon-512.png"
+  "/images/icon-512.png",
+  "/images/facebook.svg",
+  "/images/youtube.svg"
 ];
 
 self.addEventListener("install", event => {
