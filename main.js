@@ -1,102 +1,158 @@
-/* ======================
-   DARK MODE (GLOBAL)
-====================== */
-const darkToggle = document.getElementById("darkModeToggle");
-if (localStorage.getItem("dark") === "true") {
-  document.body.classList.add("dark");
+/***********************
+ DARK MODE (GLOBAL)
+************************/
+const body = document.body;
+const darkModeToggle = document.getElementById("darkModeToggle");
+
+if (localStorage.getItem("darkMode") === "true") {
+  body.classList.add("dark");
 }
 
-darkToggle?.addEventListener("click", () => {
-  document.body.classList.toggle("dark");
-  localStorage.setItem("dark", document.body.classList.contains("dark"));
-});
+if (darkModeToggle) {
+  darkModeToggle.addEventListener("click", () => {
+    body.classList.toggle("dark");
+    localStorage.setItem("darkMode", body.classList.contains("dark"));
+  });
+}
 
-/* ======================
-   LANGUAGE TOGGLE
-====================== */
+/***********************
+ LANGUAGE TOGGLE
+************************/
 const langToggle = document.getElementById("langToggle");
 let currentLang = localStorage.getItem("lang") || "en";
 
-function setLanguage(lang) {
+const translations = {
+  weekdays: {
+    en: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
+    es: ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"]
+  },
+  months: {
+    en: [
+      "January","February","March","April","May","June",
+      "July","August","September","October","November","December"
+    ],
+    es: [
+      "enero","febrero","marzo","abril","mayo","junio",
+      "julio","agosto","septiembre","octubre","noviembre","diciembre"
+    ]
+  }
+};
+
+function updateLanguage(lang) {
   document.querySelectorAll("[data-en]").forEach(el => {
     el.innerText = lang === "en" ? el.dataset.en : el.dataset.es;
   });
+  currentLang = lang;
   localStorage.setItem("lang", lang);
+  renderCalendar();
 }
-setLanguage(currentLang);
 
-langToggle?.addEventListener("click", () => {
-  currentLang = currentLang === "en" ? "es" : "en";
-  setLanguage(currentLang);
-  renderCalendar(); // re-render calendar language
-});
+if (langToggle) {
+  langToggle.addEventListener("click", () => {
+    updateLanguage(currentLang === "en" ? "es" : "en");
+  });
+}
 
-/* ======================
-   CALENDAR
-====================== */
+updateLanguage(currentLang);
+
+/***********************
+ POPUP
+************************/
+function closePopup() {
+  document.getElementById("popup").style.display = "none";
+}
+
+/***********************
+ CALENDAR
+************************/
 const calendarGrid = document.getElementById("calendarGrid");
 const monthTitle = document.getElementById("monthTitle");
 
 let date = new Date(2026, 0, 1); // January 2026
 
-const weekdayNames = {
-  en: ["Sun", "Mon", "Tue", "Wed", "Thu", "Fri", "Sat"],
-  es: ["Dom", "Lun", "Mar", "Mié", "Jue", "Vie", "Sáb"]
-};
+const serviceDays = [0, 2, 6]; // Sun, Tue, Sat
 
 const events = [
-  { day: 3, title: { en: "Servicio De Adoracion", es: "Servicio de Adoración" }, type: "event" },
-  { day: 6, title: { en: "Servicio De Oracion", es: "Servicio de Oración" }, type: "event" },
-  { day: 8, title: { en: "Oracion De Damas 7pm", es: "Oración de Damas 7pm" }, type: "women" },
-  { day: 11, title: { en: "Ayuno Congregacional", es: "Ayuno Congregacional" }, type: "event" },
-  { day: 24, title: { en: "Retiro y Servicio de Damas", es: "Retiro y Servicio de Damas" }, type: "event" }
+  { day: 3, title: "Servicio De Adoración", type: "event" },
+  { day: 6, title: "Servicio De Oración", type: "event" },
+  { day: 8, title: "Oración De Damas 7pm", type: "women" },
+  { day: 10, title: "Servicio De Adoración", type: "event" },
+  { day: 11, title: "Ayuno Congregacional", type: "event" },
+  { day: 13, title: "Servicio De Oración", type: "event" },
+  { day: 15, title: "Oración De Damas 7pm", type: "women" },
+  { day: 17, title: "Servicio De Adoración", type: "event" },
+  { day: 20, title: "Servicio De Oración", type: "event" },
+  { day: 22, title: "Oración De Damas 7pm", type: "women" },
+  { day: 24, title: "Servicio De Adoración Retiro Y Servicio De Damas", type: "event" },
+  { day: 27, title: "Servicio De Oración", type: "event" },
+  { day: 29, title: "Oración De Damas 7pm", type: "women" },
+  { day: 30, title: "Gran Vigilia Congregacional", type: "event" },
+  { day: 31, title: "Servicio De Adoración", type: "event" }
 ];
 
 function renderCalendar() {
   if (!calendarGrid) return;
-
   calendarGrid.innerHTML = "";
+
   const year = date.getFullYear();
   const month = date.getMonth();
+  const today = new Date();
 
-  monthTitle.innerText = date.toLocaleString(
-    currentLang === "en" ? "en-US" : "es-ES",
-    { month: "long", year: "numeric" }
-  );
+  monthTitle.innerText =
+    translations.months[currentLang][month] + " " + year;
 
   // Weekday headers
-  weekdayNames[currentLang].forEach(day => {
-    const div = document.createElement("div");
-    div.className = "day-name";
-    div.innerText = day;
-    calendarGrid.appendChild(div);
+  translations.weekdays[currentLang].forEach(day => {
+    const d = document.createElement("div");
+    d.className = "day-name";
+    d.innerText = day;
+    calendarGrid.appendChild(d);
   });
 
   const firstDay = new Date(year, month, 1).getDay();
+  const daysInMonth = new Date(year, month + 1, 0).getDate();
+
   for (let i = 0; i < firstDay; i++) {
     calendarGrid.appendChild(document.createElement("div"));
   }
 
-  const daysInMonth = new Date(year, month + 1, 0).getDate();
-
   for (let d = 1; d <= daysInMonth; d++) {
+    const cellDate = new Date(year, month, d);
     const dayDiv = document.createElement("div");
     dayDiv.className = "day";
 
+    // Weekend styling
+    if (cellDate.getDay() === 0 || cellDate.getDay() === 6) {
+      dayDiv.classList.add("weekend");
+    }
+
+    // Service day highlight
+    if (serviceDays.includes(cellDate.getDay())) {
+      dayDiv.classList.add("service-day");
+    }
+
+    // Today highlight
+    if (
+      d === today.getDate() &&
+      month === today.getMonth() &&
+      year === today.getFullYear()
+    ) {
+      dayDiv.classList.add("today");
+    }
+
     const eventToday =
-      year === 2026 && month === 0
-        ? events.find(e => e.day === d)
-        : null;
+      month === 0 ? events.find(e => e.day === d) : null;
 
     if (eventToday) {
       dayDiv.classList.add(eventToday.type);
-      const title = eventToday.title[currentLang];
-      const shortTitle =
-        title.length > 18 ? title.slice(0, 18) + "…" : title;
+      const shortText =
+        eventToday.title.length > 20
+          ? eventToday.title.slice(0, 20) + "…"
+          : eventToday.title;
 
-      dayDiv.innerHTML = `<span>${d}</span><small>${shortTitle}</small>`;
+      dayDiv.innerHTML = `<span>${d}</span><small>${shortText}</small>`;
       dayDiv.onclick = () => {
-        document.getElementById("popupText").innerText = title;
+        document.getElementById("popupText").innerText = eventToday.title;
         document.getElementById("popup").style.display = "flex";
       };
     } else {
@@ -117,8 +173,5 @@ function prevMonth() {
   renderCalendar();
 }
 
-function closePopup() {
-  document.getElementById("popup").style.display = "none";
-}
-
 renderCalendar();
+
