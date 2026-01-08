@@ -9,56 +9,56 @@
 </head>
 <body>
 
-<!-- DARK MODE & LANGUAGE TOGGLE -->
-<div style="position:fixed; top:10px; right:10px; display:flex; gap:10px;">
-  <button id="darkModeToggle">🌓</button>
-  <button id="langToggle">EN/ES</button>
-</div>
+<!-- DARK MODE TOGGLE -->
+<div id="darkModeToggle">🌓</div>
 
 <!-- NAVIGATION -->
-<nav class="nav-bar">
-  <ul class="nav-list">
-    <li><a class="nav-item" href="#home" data-en="Home" data-es="Inicio">Home</a></li>
-    <li><a class="nav-item" href="#services" data-en="Service Times" data-es="Horarios de Servicio">Service Times</a></li>
-    <li><a class="nav-item" href="#events" data-en="Events" data-es="Eventos">Events</a></li>
-    <li><a class="nav-item" href="#contact" data-en="Contact" data-es="Contacto">Contact</a></li>
-    <li><a class="nav-item" href="live.html" data-en="Live" data-es="En Vivo">Live</a></li>
-  </ul>
+<nav>
+  <a href="index.html" data-en="Home" data-es="Inicio">Home</a>
+  <a href="#calendar" data-en="Service Times" data-es="Servicios">Service Times</a>
+  <a href="#events" data-en="Events" data-es="Eventos">Events</a>
+  <a href="#contact" data-en="Contact" data-es="Contacto">Contact</a>
+  <a href="#social" data-en="Social" data-es="Social">Social</a>
+  <a href="live.html" data-en="Live" data-es="En Vivo">Live</a>
 </nav>
 
 <!-- HERO -->
-<section class="hero" id="home">
-  <h1 data-en="Welcome to Cristo Te Llama DE/NJ" data-es="Bienvenido a Cristo Te Llama DE/NJ">Welcome to Cristo Te Llama DE/NJ</h1>
-  <p data-en="Join us for worship and prayer!" data-es="¡Únete a nosotros para adoración y oración!">Join us for worship and prayer!</p>
+<section class="hero">
+  <h1 data-en="Welcome to Cristo Te Llama DE/NJ" data-es="Bienvenidos a Cristo Te Llama DE/NJ">Welcome to Cristo Te Llama DE/NJ</h1>
+  <p data-en="Join us for worship and events" data-es="Únase a nosotros para adoración y eventos">Join us for worship and events</p>
+  <button onclick="toggleLang()">🌐 EN/ES</button>
 </section>
 
 <!-- CALENDAR -->
-<section class="calendar-wrapper" id="events">
-  <div class="calendar-header">
-    <button class="arrow-btn" onclick="prevMonth()">&#8592;</button>
-    <h2 id="monthTitle"></h2>
-    <button class="arrow-btn" onclick="nextMonth()">&#8594;</button>
-  </div>
-  <div class="calendar-grid" id="calendarGrid">
-    <!-- Calendar days inserted via main.js -->
+<section id="calendar">
+  <div class="calendar-wrapper">
+    <div class="calendar-header">
+      <button class="arrow-btn" onclick="prevMonth()">&#8592;</button>
+      <h3 id="monthTitle">January 2026</h3>
+      <button class="arrow-btn" onclick="nextMonth()">&#8594;</button>
+    </div>
+    <div class="calendar-grid" id="calendarGrid"></div>
+    <div class="legend">
+      <div class="legend-box event"></div><span data-en="Event" data-es="Evento">Event</span>
+      <div class="legend-box women"></div><span data-en="Women's Event" data-es="Evento de Damas">Women's Event</span>
+    </div>
   </div>
 </section>
 
-<!-- POPUP FOR EVENTS -->
+<!-- POPUP -->
 <div class="popup" id="popup">
   <div class="popup-content">
-    <span class="close" onclick="closePopup()">&times;</span>
+    <span class="close" onclick="closePopup()">×</span>
     <p id="popupText"></p>
   </div>
 </div>
 
-<!-- SOCIAL -->
-<section class="social-icons">
-  <a href="https://www.facebook.com/" target="_blank"><img src="images/facebook.png" alt="Facebook"></a>
-  <a href="https://www.instagram.com/" target="_blank"><img src="images/instagram.png" alt="Instagram"></a>
-  <a href="https://www.youtube.com/" target="_blank"><img src="images/youtube.png" alt="YouTube"></a>
-</section>
+<!-- SOCIAL / MESSENGER -->
+<a href="https://m.me/CristoTeLlama" target="_blank" class="messenger-btn">
+  <img src="images/messenger-logo.png" alt="Messenger" class="messenger-logo">Messenger
+</a>
 
+<!-- SCRIPTS -->
 <script src="main.js"></script>
 </body>
 </html>
