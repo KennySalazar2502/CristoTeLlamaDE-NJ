@@ -2,24 +2,24 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <title>Cristo Te Llama DE/NJ</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
 <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
 
 <!-- DARK MODE & LANGUAGE TOGGLE -->
-<div class="top-toggles">
+<div style="position:fixed; top:10px; right:10px; display:flex; gap:10px;">
   <button id="darkModeToggle">🌓</button>
-  <button id="langToggle" data-en="ES" data-es="EN">ES</button>
+  <button id="langToggle">EN/ES</button>
 </div>
 
 <!-- NAVIGATION -->
 <nav class="nav-bar">
   <ul class="nav-list">
-    <li><a class="nav-item" href="index.html" data-en="Home" data-es="Inicio">Home</a></li>
-    <li><a class="nav-item" href="#services" data-en="Service Times" data-es="Servicios">Service Times</a></li>
+    <li><a class="nav-item" href="#home" data-en="Home" data-es="Inicio">Home</a></li>
+    <li><a class="nav-item" href="#services" data-en="Service Times" data-es="Horarios de Servicio">Service Times</a></li>
     <li><a class="nav-item" href="#events" data-en="Events" data-es="Eventos">Events</a></li>
     <li><a class="nav-item" href="#contact" data-en="Contact" data-es="Contacto">Contact</a></li>
     <li><a class="nav-item" href="live.html" data-en="Live" data-es="En Vivo">Live</a></li>
@@ -27,40 +27,36 @@
 </nav>
 
 <!-- HERO -->
-<section class="hero">
-  <h1 data-en="Welcome to Cristo Te Llama DE/NJ" data-es="Bienvenidos a Cristo Te Llama DE/NJ">Welcome to Cristo Te Llama DE/NJ</h1>
-  <p data-en="Join our live services and events" data-es="Únete a nuestros servicios y eventos en vivo">Join our live services and events</p>
+<section class="hero" id="home">
+  <h1 data-en="Welcome to Cristo Te Llama DE/NJ" data-es="Bienvenido a Cristo Te Llama DE/NJ">Welcome to Cristo Te Llama DE/NJ</h1>
+  <p data-en="Join us for worship and prayer!" data-es="¡Únete a nosotros para adoración y oración!">Join us for worship and prayer!</p>
 </section>
 
 <!-- CALENDAR -->
-<section class="calendar-section" id="calendarSection">
-  <h2 data-en="Church Calendar" data-es="Calendario de la Iglesia">Church Calendar</h2>
-  <div class="calendar-wrapper" id="calendarWrapper">
-    <div class="calendar-header">
-      <button id="prevMonth" class="arrow-btn">&#8592;</button>
-      <h2 id="monthTitle"></h2>
-      <button id="nextMonth" class="arrow-btn">&#8594;</button>
-    </div>
-    <div class="calendar-grid" id="calendar"></div>
+<section class="calendar-wrapper" id="events">
+  <div class="calendar-header">
+    <button class="arrow-btn" onclick="prevMonth()">&#8592;</button>
+    <h2 id="monthTitle"></h2>
+    <button class="arrow-btn" onclick="nextMonth()">&#8594;</button>
+  </div>
+  <div class="calendar-grid" id="calendarGrid">
+    <!-- Calendar days inserted via main.js -->
   </div>
 </section>
 
-<!-- POPUP -->
-<div id="popup" class="popup">
-  <div class="popup-content" id="popupContent">
-    <span id="popupClose" class="close">&times;</span>
+<!-- POPUP FOR EVENTS -->
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <span class="close" onclick="closePopup()">&times;</span>
+    <p id="popupText"></p>
   </div>
 </div>
 
-<!-- LIVE STREAM -->
-<section class="hero" id="liveSection">
-  <h2 data-en="Live Stream" data-es="Transmisión en Vivo">Live Stream</h2>
-  <div id="liveStream">
-    <iframe 
-      src="https://www.youtube.com/embed/UCB-beIq8bOOnmi78a8uEvWQ?autoplay=0&mute=1"
-      allow="autoplay; clipboard-write; encrypted-media; picture-in-picture"
-      allowfullscreen></iframe>
-  </div>
+<!-- SOCIAL -->
+<section class="social-icons">
+  <a href="https://www.facebook.com/" target="_blank"><img src="images/facebook.png" alt="Facebook"></a>
+  <a href="https://www.instagram.com/" target="_blank"><img src="images/instagram.png" alt="Instagram"></a>
+  <a href="https://www.youtube.com/" target="_blank"><img src="images/youtube.png" alt="YouTube"></a>
 </section>
 
 <script src="main.js"></script>
