@@ -11,51 +11,87 @@
 </head>
 <body>
 
+<!-- TOGGLES -->
 <div class="toggles">
   <div id="darkModeToggle">🌓</div>
   <div id="langToggle">🌐</div>
 </div>
 
+<!-- NAV -->
 <nav>
   <a href="#inicio" data-en="Home" data-es="Inicio">Home</a>
-  <a href="#servicios" data-en="Service Times" data-es="Servicios">Service Times</a>
+  <a href="#servicios" data-en="Service Times" data-es="Horarios">Service Times</a>
   <a href="#eventos" data-en="Events" data-es="Eventos">Events</a>
   <a href="calendar.html" data-en="Calendar" data-es="Calendario">Calendar</a>
   <a href="live.html" data-en="Live" data-es="En Vivo">Live</a>
 </nav>
 
+<!-- HERO -->
 <section id="inicio" class="hero">
-  <h1 data-en="Welcome to Cristo Te Llama DE/NJ" data-es="Bienvenidos a Cristo Te Llama DE/NJ">
+  <h1 data-en="Welcome to Cristo Te Llama DE/NJ"
+      data-es="Bienvenidos a Cristo Te Llama DE/NJ">
     Welcome to Cristo Te Llama DE/NJ
   </h1>
   <p data-en="A Pentecostal church helping people grow in their walk with Jesus Christ."
      data-es="Una iglesia Pentecostal ayudando a las personas a crecer en su caminar con Jesucristo.">
-     A Pentecostal church helping people grow in their walk with Jesus Christ.
+    A Pentecostal church helping people grow in their walk with Jesus Christ.
   </p>
 </section>
 
+<!-- SERVICES -->
 <section id="servicios">
-  <h2 data-en="Church Service Times" data-es="Horario de Servicios">Church Service Times</h2>
-  <p><strong>Tuesday:</strong> 7:00 PM – 9:00 PM</p>
-  <p><strong>Saturday:</strong> 7:00 PM – 9:00 PM</p>
-  <p><strong>Sunday:</strong> 10:00 AM – 1:00 PM</p>
+  <h2 data-en="Church Service Times"
+      data-es="Horario de Servicios">
+    Church Service Times
+  </h2>
+
+  <p>
+    <strong data-en="Tuesday:" data-es="Martes:">Tuesday:</strong>
+    7:00 PM – 9:00 PM
+  </p>
+
+  <p>
+    <strong data-en="Saturday:" data-es="Sábado:">Saturday:</strong>
+    7:00 PM – 9:00 PM
+  </p>
+
+  <p>
+    <strong data-en="Sunday:" data-es="Domingo:">Sunday:</strong>
+    10:00 AM – 1:00 PM
+  </p>
 </section>
 
+<!-- EVENTS -->
 <section id="eventos">
-  <h2 data-en="Upcoming Events" data-es="Próximos Eventos">Upcoming Events</h2>
-  <p data-en="View full calendar for details" data-es="Ver calendario completo para detalles">
+  <h2 data-en="Upcoming Events"
+      data-es="Próximos Eventos">
+    Upcoming Events
+  </h2>
+
+  <p data-en="View full calendar for details"
+     data-es="Ver calendario completo para más detalles">
     View full calendar for details
   </p>
-  <a href="calendar.html" class="calendar-link">📅 Open Calendar</a>
+
+  <a href="calendar.html"
+     class="calendar-link"
+     data-en="📅 Open Calendar"
+     data-es="📅 Abrir Calendario">
+    📅 Open Calendar
+  </a>
 </section>
 
+<!-- CONTACT -->
 <section id="contacto">
   <h2 data-en="Contact" data-es="Contacto">Contact</h2>
   <p>📍 110 E Maple Ave, Penns Grove, NJ</p>
   <p>📞 540-842-2846</p>
 </section>
 
-<a href="https://m.me/IglesiaCristoTeLlamaDelaware" class="messenger-btn" target="_blank">
+<!-- MESSENGER -->
+<a href="https://m.me/IglesiaCristoTeLlamaDelaware"
+   class="messenger-btn"
+   target="_blank">
   💬 Messenger
 </a>
 
@@ -65,5 +101,6 @@ if ('serviceWorker' in navigator) {
   navigator.serviceWorker.register('sw.js');
 }
 </script>
+
 </body>
 </html>
