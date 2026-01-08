@@ -9,16 +9,14 @@
 </head>
 <body>
 
-<!-- DARK MODE & LANGUAGE TOGGLE -->
 <div class="toggles">
   <div id="darkModeToggle">🌓</div>
   <div id="langToggle">🌐</div>
 </div>
 
-<!-- NAVIGATION -->
 <nav>
   <a href="index.html" data-en="Home" data-es="Inicio">Home</a>
-  <a href="index.html#servicios" data-en="Service Times" data-es="Servicios">Service Times</a>
+  <a href="index.html#servicios" data-en="Service Times" data-es="Horarios de Servicio">Service Times</a>
   <a href="index.html#eventos" data-en="Events" data-es="Eventos">Events</a>
   <a href="calendar.html" data-en="Calendar" data-es="Calendario">Calendar</a>
   <a href="live.html" data-en="Live" data-es="En Vivo">Live</a>
@@ -26,23 +24,14 @@
 
 <section>
   <h1 data-en="Calendar" data-es="Calendario">Calendar</h1>
-  <div class="calendar-wrapper">
-    <div class="calendar-header">
-      <button class="arrow-btn" onclick="prevMonth()">&#8592;</button>
-      <h3 id="monthTitle"></h3>
-      <button class="arrow-btn" onclick="nextMonth()">&#8594;</button>
-    </div>
-    <div id="calendarGrid" class="calendar-grid">
-      <!-- Calendar days injected by JS -->
-    </div>
-    <div class="legend">
-      <div class="legend-box event"></div><span data-en="General Event" data-es="Evento General">General Event</span>
-      <div class="legend-box women"></div><span data-en="Women's Prayer" data-es="Oración de Damas">Women's Prayer</span>
-    </div>
+  <div style="text-align:center; margin:20px;">
+    <button class="arrow-btn" onclick="prevMonth()">&#8592;</button>
+    <span id="monthTitle"></span>
+    <button class="arrow-btn" onclick="nextMonth()">&#8594;</button>
   </div>
+  <div id="calendarGrid" class="calendar-grid"></div>
 </section>
 
-<!-- POPUP -->
 <div id="popup" class="popup" onclick="closePopup()">
   <div class="popup-content">
     <span class="close" onclick="closePopup()">&times;</span>
