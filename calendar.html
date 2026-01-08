@@ -2,11 +2,8 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Cristo Te Llama DE/NJ - Calendar</title>
+<title>Calendar | Cristo Te Llama</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link rel="manifest" href="manifest.json">
-<meta name="theme-color" content="#0084ff">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
 </head>
 <body>
@@ -17,24 +14,22 @@
 </div>
 
 <nav>
-  <a href="index.html" data-en="Home" data-es="Inicio">Home</a>
-  <a href="index.html#services" data-en="Service Times" data-es="Horarios de Servicio">Service Times</a>
-  <a href="index.html#events" data-en="Events" data-es="Eventos">Events</a>
-  <a href="calendar.html" data-en="Calendar" data-es="Calendario">Calendar</a>
-  <a href="live.html" data-en="Live" data-es="En Vivo">Live</a>
+  <a href="index.html">Home</a>
+  <a href="calendar.html">Calendar</a>
+  <a href="live.html">Live</a>
 </nav>
 
 <section>
-  <h1 data-en="Calendar" data-es="Calendario">Calendar</h1>
-  <div style="text-align:center; margin:20px;">
-    <button class="arrow-btn" onclick="prevMonth()">&#8592;</button>
-    <span id="monthTitle"></span>
-    <button class="arrow-btn" onclick="nextMonth()">&#8594;</button>
+  <div class="calendar-header">
+    <button class="arrow-btn" onclick="prevMonth()">←</button>
+    <h2 id="monthTitle"></h2>
+    <button class="arrow-btn" onclick="nextMonth()">→</button>
   </div>
-  <div id="calendarGrid" class="calendar-grid"></div>
+
+  <div class="calendar-grid" id="calendarGrid"></div>
 </section>
 
-<div id="popup" class="popup" onclick="closePopup()">
+<div id="popup" class="popup">
   <div class="popup-content">
     <span class="close" onclick="closePopup()">&times;</span>
     <p id="popupText"></p>
