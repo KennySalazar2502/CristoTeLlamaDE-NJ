@@ -20,13 +20,14 @@
   <a href="#inicio" data-en="Home" data-es="Inicio">Home</a>
   <a href="#servicios" data-en="Service Times" data-es="Servicios">Service Times</a>
   <a href="#eventos" data-en="Events" data-es="Eventos">Events</a>
-  <a href="#contacto" data-en="Contact" data-es="Contacto">Contact</a>
-  <a href="#social" data-en="Social" data-es="Social">Social</a>
+  <a href="calendar.html" data-en="Calendar" data-es="Calendario">Calendar</a>
   <a href="live.html" data-en="Live" data-es="En Vivo">Live</a>
 </nav>
 
 <section id="inicio" class="hero">
-  <h1 data-en="Welcome to Cristo Te Llama DE/NJ" data-es="Bienvenidos a Cristo Te Llama DE/NJ">Welcome to Cristo Te Llama DE/NJ</h1>
+  <h1 data-en="Welcome to Cristo Te Llama DE/NJ" data-es="Bienvenidos a Cristo Te Llama DE/NJ">
+    Welcome to Cristo Te Llama DE/NJ
+  </h1>
   <p data-en="A Pentecostal church helping people grow in their walk with Jesus Christ."
      data-es="Una iglesia Pentecostal ayudando a las personas a crecer en su caminar con Jesucristo.">
      A Pentecostal church helping people grow in their walk with Jesus Christ.
@@ -35,66 +36,33 @@
 
 <section id="servicios">
   <h2 data-en="Church Service Times" data-es="Horario de Servicios">Church Service Times</h2>
-  <p><strong data-en="Tuesday:" data-es="Martes:">Tuesday:</strong> 7:00 PM – 9:00 PM</p>
-  <p><strong data-en="Saturday:" data-es="Sábado:">Saturday:</strong> 7:00 PM – 9:00 PM</p>
-  <p><strong data-en="Sunday:" data-es="Domingo:">Sunday:</strong> 10:00 AM – 1:00 PM</p>
+  <p><strong>Tuesday:</strong> 7:00 PM – 9:00 PM</p>
+  <p><strong>Saturday:</strong> 7:00 PM – 9:00 PM</p>
+  <p><strong>Sunday:</strong> 10:00 AM – 1:00 PM</p>
 </section>
 
 <section id="eventos">
   <h2 data-en="Upcoming Events" data-es="Próximos Eventos">Upcoming Events</h2>
-  <div class="calendar-wrapper">
-    <div class="calendar-header">
-      <button class="arrow-btn" onclick="prevMonth()">←</button>
-      <h3 id="monthTitle">January 2026</h3>
-      <button class="arrow-btn" onclick="nextMonth()">→</button>
-    </div>
-    <div class="calendar-grid" id="calendarGrid"></div>
-    <div class="legend">
-      <div class="legend-box event"></div><span data-en="General Event" data-es="Evento General">General Event</span>
-      <div class="legend-box women"></div><span data-en="Women's Prayer" data-es="Oración de Damas">Women's Prayer</span>
-    </div>
-  </div>
+  <p data-en="View full calendar for details" data-es="Ver calendario completo para detalles">
+    View full calendar for details
+  </p>
+  <a href="calendar.html" class="calendar-link">📅 Open Calendar</a>
 </section>
 
 <section id="contacto">
   <h2 data-en="Contact" data-es="Contacto">Contact</h2>
-  <p><strong>📍 Address:</strong> 110 E Maple Ave, Penns Grove, NJ</p>
-  <p><strong>📞 Pastor:</strong> 540-842-2846</p>
-  <iframe src="https://www.google.com/maps?q=110+E+Maple+Ave,+Penns+Grove,+NJ&output=embed"
-          width="100%" height="300" style="border:0; border-radius:10px;" loading="lazy"></iframe>
-</section>
-
-<section id="social">
-  <h2 data-en="Social Media" data-es="Redes Sociales">Social Media</h2>
-  <div class="social-icons">
-    <a href="https://facebook.com/IglesiaCristoTeLlamaDelaware" target="_blank">
-      <img src="images/facebook.svg" alt="Facebook">
-    </a>
-    <a href="https://www.youtube.com/@CristoTeLlama" target="_blank">
-      <img src="images/youtube.svg" alt="YouTube">
-    </a>
-  </div>
+  <p>📍 110 E Maple Ave, Penns Grove, NJ</p>
+  <p>📞 540-842-2846</p>
 </section>
 
 <a href="https://m.me/IglesiaCristoTeLlamaDelaware" class="messenger-btn" target="_blank">
   💬 Messenger
 </a>
 
-<div id="popup" class="popup">
-  <div class="popup-content">
-    <span onclick="closePopup()" class="close">&times;</span>
-    <p id="popupText"></p>
-  </div>
-</div>
-
 <script src="main.js"></script>
 <script>
-if('serviceWorker' in navigator){
-  window.addEventListener('load', () => {
-    navigator.serviceWorker.register('/sw.js')
-      .then(reg => console.log('Service Worker registered.', reg))
-      .catch(err => console.log('Service Worker failed:', err));
-  });
+if ('serviceWorker' in navigator) {
+  navigator.serviceWorker.register('sw.js');
 }
 </script>
 </body>
