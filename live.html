@@ -10,26 +10,24 @@
 </head>
 <body>
 
-<!-- ANNOUNCEMENT BANNER -->
-
-<!-- DARK MODE & LANGUAGE TOGGLE -->
-<div class="toggles">
-  <div id="darkModeToggle">🌓</div>
-  <div id="langToggle">🌐</div>
-</div>
-
-<!-- NAVIGATION with Logo -->
-<nav>
+<!-- STICKY NAVBAR WITH LOGO + NAV + TOGGLES -->
+<div class="navbar-wrapper">
   <a href="index.html" class="logo-link">
     <img src="logo.png" alt="Cristo Te Llama Logo" class="logo">
   </a>
-  <a href="index.html" data-en="Home" data-es="Inicio">Home</a>
-  <a href="index.html#servicios" data-en="Service Times" data-es="Servicios">Service Times</a>
-  <a href="index.html#eventos" data-en="Events" data-es="Eventos">Events</a>
-  <a href="index.html#contacto" data-en="Contact" data-es="Contacto">Contact</a>
-  <a href="index.html#social" data-en="Social" data-es="Social">Social</a>
-  <a href="live.html" data-en="Live" data-es="En Vivo">Live</a>
-</nav>
+  <nav>
+    <a href="index.html" data-en="Home" data-es="Inicio">Home</a>
+    <a href="index.html#servicios" data-en="Service Times" data-es="Servicios">Service Times</a>
+    <a href="index.html#eventos" data-en="Events" data-es="Eventos">Events</a>
+    <a href="index.html#contacto" data-en="Contact" data-es="Contacto">Contact</a>
+    <a href="index.html#social" data-en="Social" data-es="Social">Social</a>
+    <a href="live.html" data-en="Live" data-es="En Vivo">Live</a>
+  </nav>
+  <div class="toggles">
+    <div id="darkModeToggle">🌓</div>
+    <div id="langToggle">🌐</div>
+  </div>
+</div>
 
 <section class="hero">
   <h1 data-en="Live Stream" data-es="Transmisión En Vivo">Live Stream</h1>
@@ -46,8 +44,7 @@
 <script src="main.js"></script>
 <script>
   const liveContainer = document.getElementById('liveStream');
-  const youtubeChannelId = 'UCB-beIq8bOOnmi78a8uEvWQ'; // your channel ID
-
+  const youtubeChannelId = 'UCB-beIq8bOOnmi78a8uEvWQ';
   liveContainer.innerHTML = `
     <iframe width="100%" height="400" 
       src="https://www.youtube.com/embed/live_stream?channel=${youtubeChannelId}&autoplay=0"
@@ -55,5 +52,6 @@
     </iframe>
   `;
 </script>
-</body> 
+</body>
 </html>
+
