@@ -11,16 +11,19 @@
 <nav>
   <img src="logo.png" class="logo">
   <a href="index.html">Home</a>
-  <a href="live.html">Live</a>
+  <a href="calendar.html">Calendar</a>
 </nav>
 
-<section class="calendar-wrapper">
-  <div class="calendar-header">
-    <button class="arrow-btn" onclick="prevMonth()">←</button>
-    <h3 id="monthTitle"></h3>
-    <button class="arrow-btn" onclick="nextMonth()">→</button>
+<section>
+  <h1>Church Calendar</h1>
+  <div class="calendar-wrapper">
+    <div class="calendar-header">
+      <button onclick="prevMonth()">←</button>
+      <h3 id="monthTitle"></h3>
+      <button onclick="nextMonth()">→</button>
+    </div>
+    <div id="calendarGrid" class="calendar-grid"></div>
   </div>
-  <div class="calendar-grid" id="calendarGrid"></div>
 </section>
 
 <script src="main.js"></script>
