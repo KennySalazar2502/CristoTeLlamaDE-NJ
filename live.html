@@ -10,11 +10,15 @@
 </head>
 <body>
 
+<!-- ANNOUNCEMENT BANNER added via JS -->
+
+<!-- DARK MODE & LANGUAGE TOGGLE -->
 <div class="toggles">
   <div id="darkModeToggle">🌓</div>
   <div id="langToggle">🌐</div>
 </div>
 
+<!-- NAVIGATION -->
 <nav>
   <img src="logo.png" alt="Cristo Te Llama Logo" class="logo">
   <a href="index.html" data-en="Home" data-es="Inicio">Home</a>
@@ -40,7 +44,8 @@
 <script src="main.js"></script>
 <script>
   const liveContainer = document.getElementById('liveStream');
-  const youtubeChannelId = 'UCB-beIq8bOOnmi78a8uEvWQ';
+  const youtubeChannelId = 'UCB-beIq8bOOnmi78a8uEvWQ'; // your channel ID
+
   liveContainer.innerHTML = `
     <iframe width="100%" height="400" 
       src="https://www.youtube.com/embed/live_stream?channel=${youtubeChannelId}&autoplay=0"
@@ -48,5 +53,5 @@
     </iframe>
   `;
 </script>
-</body>
+</body> 
 </html>
