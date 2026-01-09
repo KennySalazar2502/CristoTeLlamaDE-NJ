@@ -1,4 +1,4 @@
-const CACHE_NAME = "cristo-cache-v2"; // updated version to avoid conflicts
+const CACHE_NAME = "cristo-cache-v3";
 const urlsToCache = [
   "/index.html",
   "/calendar.html",
@@ -8,10 +8,8 @@ const urlsToCache = [
   "/script.js",
   "/manifest.json",
   "/logo.png",
-  "/images/icon-192.png",
-  "/images/icon-512.png",
-  "/images/youtube logo.webp",
-  "/images/facebook logo.jpg"
+  "/facebook logo.jpg",
+  "/youtube logo.webp"
 ];
 
 self.addEventListener("install", event => {
