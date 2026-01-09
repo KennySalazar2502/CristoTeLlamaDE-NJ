@@ -11,20 +11,23 @@ body.dark { background:#121212; color:#EEE; }
 
 /* NAVIGATION + LOGO */
 nav {
-  display: flex;
-  align-items: center;
-  gap: 15px;
-  flex-wrap: wrap;
-  padding: 10px 20px;
-  position: sticky;
-  top: 50px;
-  z-index: 1000;
-  background: #fff;
-  box-shadow: 0 2px 5px rgba(0,0,0,0.1);
+  display:flex;
+  align-items:center;
+  gap:15px;
+  flex-wrap:wrap;
+  padding:10px 20px;
+  position:sticky;
+  top:50px;
+  z-index:1000;
+  background:#fff;
+  box-shadow:0 2px 5px rgba(0,0,0,0.1);
 }
 nav .logo {
-  height: 30px; /* smaller logo */
-  margin-right: 15px;
+  height:40px;
+  max-height:40px;
+  width:auto;
+  object-fit:contain;
+  margin-right:20px;
 }
 nav a { 
   text-decoration:none; 
@@ -42,11 +45,20 @@ nav a:hover {
 }
 
 /* ANNOUNCEMENT */
-.announcement { position:fixed; top:0; left:0; width:100%; background:#0084ff; color:#fff; display:flex; align-items:center; gap:10px; padding:8px 15px; font-weight:bold; cursor:pointer; z-index:1001; }
+.announcement {
+  position:fixed; top:0; left:0; width:100%; background:#0084ff; color:#fff;
+  display:flex; align-items:center; gap:10px; padding:8px 15px; font-weight:bold;
+  cursor:pointer; z-index:1001;
+}
 .announcement span { flex:1; white-space:nowrap; overflow:hidden; text-overflow:ellipsis; }
 
 /* MESSENGER BUTTON */
-.messenger-btn { position:fixed; bottom:20px; right:20px; background:#0084ff; color:#fff; padding:12px 18px; border-radius:50px; text-decoration:none; font-weight:bold; display:flex; align-items:center; box-shadow:0 4px 6px rgba(0,0,0,0.2); transition:transform 0.2s; }
+.messenger-btn {
+  position:fixed; bottom:20px; right:20px;
+  background:#0084ff; color:#fff; padding:12px 18px; border-radius:50px;
+  text-decoration:none; font-weight:bold; display:flex; align-items:center;
+  box-shadow:0 4px 6px rgba(0,0,0,0.2); transition:transform 0.2s;
+}
 .messenger-btn:hover { transform: scale(1.05); }
 
 /* SECTIONS */
@@ -87,8 +99,8 @@ section { padding:50px 20px;text-align:center; transition: all 0.3s; }
 
 /* RESPONSIVE */
 @media(max-width:600px){
-  nav { flex-direction:row; gap:10px; }
-  nav .logo { height:25px; margin-right:10px; }
+  nav { flex-direction:column; gap:10px; }
+  nav .logo { margin-bottom:10px; height:35px; max-height:35px; }
   .calendar-wrapper { padding:5px; }
   .day { min-height:50px; font-size:0.7rem; padding:4px; }
   .social-icons img { width:40px; height:40px; }
