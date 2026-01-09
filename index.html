@@ -10,26 +10,24 @@
 </head>
 <body>
 
-<!-- ANNOUNCEMENT BANNER added dynamically via JS -->
-
-<!-- DARK MODE & LANGUAGE TOGGLE -->
-<div class="toggles">
-  <div id="darkModeToggle">🌓</div>
-  <div id="langToggle">🌐</div>
-</div>
-
-<!-- NAVIGATION with Logo -->
-<nav>
+<!-- STICKY NAVBAR WITH LOGO + NAV + TOGGLES -->
+<div class="navbar-wrapper">
   <a href="index.html" class="logo-link">
     <img src="logo.png" alt="Cristo Te Llama Logo" class="logo">
   </a>
-  <a href="#inicio" data-en="Home" data-es="Inicio">Home</a>
-  <a href="#servicios" data-en="Service Times" data-es="Servicios">Service Times</a>
-  <a href="#eventos" data-en="Events" data-es="Eventos">Events</a>
-  <a href="#contacto" data-en="Contact" data-es="Contacto">Contact</a>
-  <a href="#social" data-en="Social" data-es="Social">Social</a>
-  <a href="live.html" data-en="Live" data-es="En Vivo">Live</a>
-</nav>
+  <nav>
+    <a href="#inicio" data-en="Home" data-es="Inicio">Home</a>
+    <a href="#servicios" data-en="Service Times" data-es="Servicios">Service Times</a>
+    <a href="#eventos" data-en="Events" data-es="Eventos">Events</a>
+    <a href="#contacto" data-en="Contact" data-es="Contacto">Contact</a>
+    <a href="#social" data-en="Social" data-es="Social">Social</a>
+    <a href="live.html" data-en="Live" data-es="En Vivo">Live</a>
+  </nav>
+  <div class="toggles">
+    <div id="darkModeToggle">🌓</div>
+    <div id="langToggle">🌐</div>
+  </div>
+</div>
 
 <!-- HERO -->
 <section id="inicio" class="hero">
@@ -106,3 +104,4 @@
 <script src="main.js"></script>
 </body>
 </html>
+
