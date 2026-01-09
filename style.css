@@ -10,56 +10,53 @@ nav {
   gap:15px;
   padding:10px 20px;
   background:#fff;
+  position:sticky;
+  top:0;
 }
 
 .logo {
-  height:80px;
+  height:45px;
   width:auto;
 }
 
+@media (min-width:1200px) {
+  .logo { height:70px; }
+  body { font-size:1.15rem; }
+}
+
+body.presentation {
+  font-size:1.4rem;
+}
+
+body.presentation .logo {
+  height:90px;
+}
+
 nav a {
-  padding:10px 15px;
+  text-decoration:none;
+  padding:8px 15px;
   border:2px solid #0084ff;
   border-radius:20px;
   color:#0084ff;
-  text-decoration:none;
-  font-weight:bold;
 }
 
 .hero {
-  text-align:center;
   padding:40px;
-}
-
-.calendar-wrapper {
-  max-width:1000px;
-  margin:20px auto;
+  text-align:center;
 }
 
 .calendar-grid {
   display:grid;
   grid-template-columns:repeat(7,1fr);
-  gap:10px;
+  gap:5px;
 }
 
 .day {
-  min-height:140px;
   background:#f0eae2;
-  padding:8px;
-}
-
-.arrow-btn {
-  font-size:3rem;
-  background:none;
-  border:none;
+  padding:10px;
+  border-radius:8px;
 }
 
 .social-icons img {
-  width:60px;
-}
-
-/* MOBILE */
-@media(max-width:600px){
-  .logo { height:50px; }
-  .day { min-height:80px; }
+  width:55px;
 }
