@@ -2,50 +2,26 @@
 <html lang="en">
 <head>
 <meta charset="UTF-8">
-<title>Cristo Te Llama DE/NJ - Calendar</title>
+<title>Calendar</title>
 <meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
 <link rel="stylesheet" href="style.css">
-<link rel="manifest" href="manifest.json">
 </head>
 <body>
 
-<!-- ANNOUNCEMENT BANNER added via JS -->
-
-<!-- DARK MODE & LANGUAGE TOGGLE -->
-<div class="toggles">
-  <div id="darkModeToggle">🌓</div>
-  <div id="langToggle">🌐</div>
-</div>
-
-<!-- NAVIGATION -->
 <nav>
-  <img src="logo.png" alt="Cristo Te Llama Logo" class="logo">
-  <a href="index.html" data-en="Home" data-es="Inicio">Home</a>
-  <a href="index.html#servicios" data-en="Service Times" data-es="Servicios">Service Times</a>
-  <a href="index.html#eventos" data-en="Events" data-es="Eventos">Events</a>
-  <a href="index.html#contacto" data-en="Contact" data-es="Contacto">Contact</a>
-  <a href="index.html#social" data-en="Social" data-es="Social">Social</a>
-  <a href="live.html" data-en="Live" data-es="En Vivo">Live</a>
+  <img src="logo.png" class="logo">
+  <a href="index.html">Home</a>
+  <a href="live.html">Live</a>
 </nav>
 
-<section>
-  <h1 data-en="Calendar" data-es="Calendario">Calendar</h1>
-  <div style="text-align:center; margin:20px;">
-    <button class="arrow-btn" onclick="prevMonth()">&#8592;</button>
-    <span id="monthTitle"></span>
-    <button class="arrow-btn" onclick="nextMonth()">&#8594;</button>
+<section class="calendar-wrapper">
+  <div class="calendar-header">
+    <button class="arrow-btn" onclick="prevMonth()">←</button>
+    <h3 id="monthTitle"></h3>
+    <button class="arrow-btn" onclick="nextMonth()">→</button>
   </div>
-  <div id="calendarGrid" class="calendar-grid"></div>
+  <div class="calendar-grid" id="calendarGrid"></div>
 </section>
-
-<!-- POPUP -->
-<div id="popup" class="popup" onclick="closePopup()">
-  <div class="popup-content">
-    <span class="close" onclick="closePopup()">&times;</span>
-    <p id="popupText"></p>
-  </div>
-</div>
 
 <script src="main.js"></script>
 </body>
