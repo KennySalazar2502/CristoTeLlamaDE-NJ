@@ -1,108 +1,109 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-<meta charset="UTF-8">
-<title>Cristo Te Llama DE/NJ</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-<link rel="manifest" href="manifest.json">
-</head>
-<body>
+// DARK MODE
+const darkModeToggle = document.getElementById('darkModeToggle');
+const body = document.body;
+if(localStorage.getItem('darkMode') === 'true') body.classList.add('dark');
+darkModeToggle.addEventListener('click', () => {
+  body.classList.toggle('dark');
+  localStorage.setItem('darkMode', body.classList.contains('dark'));
+});
 
-<!-- ANNOUNCEMENT BANNER added dynamically via JS -->
+// LANGUAGE TOGGLE
+const langToggle = document.getElementById('langToggle');
+let currentLang = localStorage.getItem('lang') || 'en';
+function updateLanguage(lang){
+  document.querySelectorAll('[data-en]').forEach(el=>{
+    el.innerText = lang==='en'?el.dataset.en:el.dataset.es;
+  });
+  document.querySelectorAll('.day-name').forEach((el,i)=>{
+    const enNames = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
+    const esNames = ["Dom","Lun","Mar","Mié","Jue","Vie","Sáb"];
+    el.innerText = lang==='en'?enNames[i]:esNames[i];
+  });
+  document.querySelectorAll('[data-day]').forEach(el=>{
+    el.innerText = lang==='en'?el.dataset.en:el.dataset.es;
+  });
+  const openCalLink = document.getElementById('openCalendarLink');
+  if(openCalLink) openCalLink.innerText = lang==='en'?openCalLink.dataset.en:openCalLink.dataset.es;
+  currentLang = lang;
+  localStorage.setItem('lang', lang);
+}
+updateLanguage(currentLang);
+langToggle.addEventListener('click',()=>updateLanguage(currentLang==='en'?'es':'en'));
 
-<!-- DARK MODE & LANGUAGE TOGGLE -->
-<div class="toggles">
-  <div id="darkModeToggle">🌓</div>
-  <div id="langToggle">🌐</div>
-</div>
+// ANNOUNCEMENT BANNER
+const announcementText = "Welcome to Cristo Te Llama DE/NJ! Upcoming special event: Servicio de Oracion.";
+const announcement = document.createElement('div');
+announcement.className = 'announcement';
+announcement.innerHTML = `<span title="${announcementText}">🔔 ${announcementText}</span>`;
+announcement.addEventListener('click', ()=>{ 
+  document.getElementById("popupText").innerText = announcementText;
+  document.getElementById("popup").style.display='flex';
+});
+document.body.appendChild(announcement);
 
-<!-- NAVIGATION -->
-<nav>
-  <img src="logo.png" alt="Cristo Te Llama Logo" class="logo">
-  <a href="#inicio" data-en="Home" data-es="Inicio">Home</a>
-  <a href="#servicios" data-en="Service Times" data-es="Servicios">Service Times</a>
-  <a href="#eventos" data-en="Events" data-es="Eventos">Events</a>
-  <a href="#contacto" data-en="Contact" data-es="Contacto">Contact</a>
-  <a href="#social" data-en="Social" data-es="Social">Social</a>
-  <a href="live.html" data-en="Live" data-es="En Vivo">Live</a>
-</nav>
+// POPUP
+function closePopup(){ document.getElementById("popup").style.display='none'; }
 
-<!-- HERO -->
-<section id="inicio" class="hero">
-  <h1 data-en="Welcome to Cristo Te Llama DE/NJ" data-es="Bienvenidos a Cristo Te Llama DE/NJ">Welcome to Cristo Te Llama DE/NJ</h1>
-  <p data-en="A Pentecostal church helping people grow in their walk with Jesus Christ."
-     data-es="Una iglesia Pentecostal ayudando a las personas a crecer en su caminar con Jesucristo.">
-     A Pentecostal church helping people grow in their walk with Jesus Christ.
-  </p>
-  <a href="#eventos" class="cta-btn" data-en="View Calendar" data-es="Ver Calendario">View Calendar</a>
-</section>
+// CALENDAR
+const calendarGrid = document.getElementById('calendarGrid');
+const monthTitle = document.getElementById('monthTitle');
+let date = new Date(2026,0,1);
 
-<!-- SERVICES -->
-<section id="servicios">
-  <h2 data-en="Church Service Times" data-es="Horario de Servicios">Church Service Times</h2>
-  <p><strong data-day data-en="Tuesday:" data-es="Martes:">Tuesday:</strong> 7:00 PM – 9:00 PM</p>
-  <p><strong data-day data-en="Saturday:" data-es="Sábado:">Saturday:</strong> 7:00 PM – 9:00 PM</p>
-  <p><strong data-day data-en="Sunday:" data-es="Domingo:">Sunday:</strong> 10:00 AM – 1:00 PM</p>
-</section>
+const events = [
+  {day:3, title:"Servicio De Adoracion", type:"event"},
+  {day:6, title:"Servicio De Oracion", type:"event"},
+  {day:8, title:"Oracion De Damas 7pm", type:"women"},
+  {day:10, title:"Servicio De Adoracion", type:"event"},
+  {day:11, title:"Ayuno Congregacional", type:"event"},
+  {day:13, title:"Servicio De Oracion", type:"event"},
+  {day:15, title:"Oracion De Damas 7pm", type:"women"},
+  {day:17, title:"Servicio De Adoracion", type:"event"},
+  {day:20, title:"Servicio De Oracion", type:"event"},
+  {day:22, title:"Oracion De Damas 7pm", type:"women"},
+  {day:24, title:"Servicio De Adoracion Retiro Y Servicio De Damas", type:"event"},
+  {day:27, title:"Servicio De Oracion", type:"event"},
+  {day:29, title:"Oracion De Damas 7pm", type:"women"},
+  {day:30, title:"Gran Vigilia Congregacional", type:"event"},
+  {day:31, title:"Servicio De Adoracion", type:"event"}
+];
 
-<!-- EVENTS / CALENDAR -->
-<section id="eventos">
-  <h2 data-en="Upcoming Events" data-es="Próximos Eventos">Upcoming Events</h2>
-  <div class="calendar-wrapper">
-    <div class="calendar-header">
-      <button class="arrow-btn" onclick="prevMonth()">←</button>
-      <h3 id="monthTitle">January 2026</h3>
-      <button class="arrow-btn" onclick="nextMonth()">→</button>
-    </div>
-    <div class="calendar-grid" id="calendarGrid">
-      <!-- Calendar injected via JS -->
-    </div>
-    <div class="legend">
-      <div class="legend-box event"></div><span data-en="General Event" data-es="Evento General">General Event</span>
-      <div class="legend-box women"></div><span data-en="Women's Prayer" data-es="Oración de Damas">Women's Prayer</span>
-    </div>
-    <p><a href="calendar.html" id="openCalendarLink" data-en="Open Full Calendar" data-es="Abrir Calendario Completo">Open Full Calendar</a></p>
-  </div>
-</section>
+function renderCalendar(){
+  if(!calendarGrid) return;
+  calendarGrid.innerHTML="";
+  const year = date.getFullYear();
+  const month = date.getMonth();
+  monthTitle.innerText = date.toLocaleString('default',{month:'long',year:'numeric'});
 
-<!-- CONTACT -->
-<section id="contacto">
-  <h2 data-en="Contact" data-es="Contacto">Contact</h2>
-  <p><strong>📍 Address:</strong> 110 E Maple Ave, Penns Grove, NJ</p>
-  <p><strong>📞 Pastor:</strong> 540-842-2846</p>
-  <iframe src="https://www.google.com/maps?q=110+E+Maple+Ave,+Penns+Grove,+NJ&output=embed"
-          width="100%" height="300" style="border:0; border-radius:10px;" loading="lazy"></iframe>
-</section>
+  const dayNames = currentLang==='en'?["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]:["Dom","Lun","Mar","Mié","Jue","Vie","Sáb"];
+  dayNames.forEach(d=>{
+    const div = document.createElement('div');
+    div.classList.add('day-name');
+    div.innerText=d;
+    calendarGrid.appendChild(div);
+  });
 
-<!-- SOCIAL -->
-<section id="social">
-  <h2 data-en="Social Media" data-es="Redes Sociales">Social Media</h2>
-  <div class="social-icons">
-    <a href="https://facebook.com/IglesiaCristoTeLlamaDelaware" target="_blank">
-      <img src="images/facebook.svg" alt="Facebook">
-    </a>
-    <a href="https://www.youtube.com/@CristoTeLlama" target="_blank">
-      <img src="images/youtube.svg" alt="YouTube">
-    </a>
-  </div>
-</section>
+  const firstDay = new Date(year,month,1).getDay();
+  for(let i=0;i<firstDay;i++){
+    const empty = document.createElement('div'); empty.classList.add('day','empty'); calendarGrid.appendChild(empty);
+  }
 
-<!-- MESSENGER BUTTON -->
-<a href="https://m.me/IglesiaCristoTeLlamaDelaware" class="messenger-btn" target="_blank">
-  💬 Messenger
-</a>
+  const daysInMonth = new Date(year,month+1,0).getDate();
+  for(let d=1; d<=daysInMonth; d++){
+    const dayDiv = document.createElement('div'); dayDiv.classList.add('day');
+    const eventToday = events.find(e=>e.day===d && month===0); // January 2026
+    if(eventToday){
+      dayDiv.classList.add(eventToday.type);
+      dayDiv.innerHTML = `<span>${d}</span><small>${eventToday.title.length>18?eventToday.title.slice(0,18)+'...':eventToday.title}</small>`;
+      dayDiv.addEventListener('click',()=>{ 
+        document.getElementById("popupText").innerText=eventToday.title;
+        document.getElementById("popup").style.display='flex';
+      });
+    } else { dayDiv.innerHTML=`<span>${d}</span>`;}
+    calendarGrid.appendChild(dayDiv);
+  }
+}
 
-<!-- POPUP -->
-<div id="popup" class="popup">
-  <div class="popup-content">
-    <span onclick="closePopup()" class="close">&times;</span>
-    <p id="popupText"></p>
-  </div>
-</div>
-
-<script src="main.js"></script>
-</body>
-</html>
+function nextMonth(){ date.setMonth(date.getMonth()+1); renderCalendar();}
+function prevMonth(){ date.setMonth(date.getMonth()-1); renderCalendar();}
+renderCalendar();
 
