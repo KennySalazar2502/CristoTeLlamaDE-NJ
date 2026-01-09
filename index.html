@@ -20,22 +20,33 @@
 
 <!-- NAVIGATION -->
 <nav>
-  <img src="logo.png" class="nav-logo" alt="Logo">
-  <a href="#inicio" data-en="Home" data-es="Inicio">Home</a>
-  <a href="#servicios" data-en="Service Times" data-es="Servicios">Service Times</a>
-  <a href="#eventos" data-en="Events" data-es="Eventos">Events</a>
-  <a href="#contacto" data-en="Contact" data-es="Contacto">Contact</a>
-  <a href="#social" data-en="Social" data-es="Social">Social</a>
-  <a href="live.html" data-en="Live" data-es="En Vivo">Live</a>
+  <div class="logo-container">
+    <img src="logo.png" alt="Cristo Te Llama Logo" class="logo">
+  </div>
+  <div class="nav-links">
+    <a href="#inicio" data-en="Home" data-es="Inicio">Home</a>
+    <a href="#servicios" data-en="Service Times" data-es="Servicios">Service Times</a>
+    <a href="#eventos" data-en="Events" data-es="Eventos">Events</a>
+    <a href="#contacto" data-en="Contact" data-es="Contacto">Contact</a>
+    <a href="#social" data-en="Social" data-es="Social">Social</a>
+    <a href="live.html" data-en="Live" data-es="En Vivo">Live</a>
+  </div>
+  <div class="hamburger" id="hamburger">&#9776;</div>
 </nav>
 
 <!-- HERO -->
 <section id="inicio" class="hero">
-  <h1 data-en="Welcome to Cristo Te Llama DE/NJ" data-es="Bienvenidos a Cristo Te Llama DE/NJ">Welcome to Cristo Te Llama DE/NJ</h1>
-  <p data-en="A Pentecostal church helping people grow in their walk with Jesus Christ."
-     data-es="Una iglesia Pentecostal ayudando a las personas a crecer en su caminar con Jesucristo.">
-     A Pentecostal church helping people grow in their walk with Jesus Christ.
-  </p>
+  <div class="hero-overlay"></div>
+  <div class="hero-content">
+    <h1 data-en="Welcome to Cristo Te Llama DE/NJ" data-es="Bienvenidos a Cristo Te Llama DE/NJ">
+      Welcome to Cristo Te Llama DE/NJ
+    </h1>
+    <p data-en="A Pentecostal church helping people grow in their walk with Jesus Christ."
+       data-es="Una iglesia Pentecostal ayudando a las personas a crecer en su caminar con Jesucristo.">
+       A Pentecostal church helping people grow in their walk with Jesus Christ.
+    </p>
+    <a href="live.html" class="hero-btn" data-en="Watch Live" data-es="Ver En Vivo">Watch Live</a>
+  </div>
 </section>
 
 <!-- SERVICES -->
@@ -70,7 +81,7 @@
 <section id="contacto">
   <h2 data-en="Contact" data-es="Contacto">Contact</h2>
   <p><strong>📍 Address:</strong> 110 E Maple Ave, Penns Grove, NJ</p>
-  <p><strong>📞 Pastor:</strong> 540-842-2846</p>
+  <p><strong>📞 Pastor:</strong> <a href="tel:5408422846">540-842-2846</a></p>
   <iframe src="https://www.google.com/maps?q=110+E+Maple+Ave,+Penns+Grove,+NJ&output=embed"
           width="100%" height="300" style="border:0; border-radius:10px;" loading="lazy"></iframe>
 </section>
