@@ -12,58 +12,67 @@
 
 <div class="toggles">
   <div id="darkModeToggle">🌓</div>
-  <div id="langToggle">🌐</div>
+  <div id="presentationToggle">📽️</div>
 </div>
 
 <nav>
-  <img src="logo.png" alt="Cristo Te Llama Logo" class="logo">
-  <a href="#inicio" data-en="Home" data-es="Inicio">Home</a>
-  <a href="#servicios" data-en="Service Times" data-es="Servicios">Service Times</a>
-  <a href="#eventos" data-en="Events" data-es="Eventos">Events</a>
-  <a href="#contacto" data-en="Contact" data-es="Contacto">Contact</a>
-  <a href="#social" data-en="Social" data-es="Social">Social</a>
-  <a href="live.html" data-en="Live" data-es="En Vivo">Live</a>
+  <img src="logo.png" class="logo" alt="Cristo Te Llama Logo">
+  <a href="#inicio">Home</a>
+  <a href="#servicios">Service Times</a>
+  <a href="#eventos">Events</a>
+  <a href="#contacto">Contact</a>
+  <a href="#social">Social</a>
+  <a href="live.html">Live</a>
 </nav>
 
 <section id="inicio" class="hero">
-  <h1 data-en="Welcome to Cristo Te Llama DE/NJ" data-es="Bienvenidos a Cristo Te Llama DE/NJ">
-    Welcome to Cristo Te Llama DE/NJ
-  </h1>
+  <h1>Welcome to Cristo Te Llama DE/NJ</h1>
+  <p>A Pentecostal church helping people grow in their walk with Jesus Christ.</p>
 </section>
 
 <section id="servicios">
-  <h2 data-en="Church Service Times" data-es="Horario de Servicios">Church Service Times</h2>
+  <h2>Church Service Times</h2>
   <p><strong>Tuesday:</strong> 7:00 PM – 9:00 PM</p>
   <p><strong>Saturday:</strong> 7:00 PM – 9:00 PM</p>
   <p><strong>Sunday:</strong> 10:00 AM – 1:00 PM</p>
 </section>
 
 <section id="eventos">
-  <h2 data-en="Upcoming Events" data-es="Próximos Eventos">Upcoming Events</h2>
-  <p><a href="calendar.html">Open Full Calendar</a></p>
+  <h2>Upcoming Events</h2>
+  <div class="calendar-wrapper">
+    <div class="calendar-header">
+      <button onclick="prevMonth()">←</button>
+      <h3 id="monthTitle"></h3>
+      <button onclick="nextMonth()">→</button>
+    </div>
+    <div id="calendarGrid" class="calendar-grid"></div>
+    <p><a href="calendar.html">Open Full Calendar</a></p>
+  </div>
 </section>
 
 <section id="contacto">
-  <h2>Contact</h2>
-  <p><strong>📍 Address:</strong> 110 E Maple Ave, Penns Grove, NJ</p>
-  <p><strong>📞 Pastor:</strong> 540-842-2846</p>
+  <h2>Prayer Request</h2>
+  <form class="prayer-form" action="https://formsubmit.co/YOURGMAIL@gmail.com" method="POST">
+    <input type="text" name="name" placeholder="Your Name (optional)">
+    <textarea name="message" required placeholder="Prayer Request"></textarea>
+    <label><input type="checkbox" name="anonymous"> Submit anonymously</label>
+    <button type="submit">Send Prayer Request</button>
+  </form>
 </section>
 
 <section id="social">
   <h2>Social Media</h2>
   <div class="social-icons">
     <a href="https://facebook.com/IglesiaCristoTeLlamaDelaware" target="_blank">
-      <img src="facebook logo.jpg" alt="Facebook">
+      <img src="facebook logo.jpg">
     </a>
     <a href="https://www.youtube.com/@CristoTeLlama" target="_blank">
-      <img src="youtube logo.webp" alt="YouTube">
+      <img src="youtube logo.webp">
     </a>
   </div>
 </section>
 
-<a href="https://m.me/IglesiaCristoTeLlamaDelaware" class="messenger-btn" target="_blank">
-  💬 Messenger
-</a>
+<a href="https://m.me/IglesiaCristoTeLlamaDelaware" class="messenger-btn">💬 Messenger</a>
 
 <script src="main.js"></script>
 </body>
