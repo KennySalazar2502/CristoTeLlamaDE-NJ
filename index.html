@@ -10,69 +10,103 @@
 </head>
 <body>
 
+<!-- DARK MODE & LANGUAGE TOGGLE -->
 <div class="toggles">
   <div id="darkModeToggle">🌓</div>
-  <div id="presentationToggle">📽️</div>
+  <div id="langToggle">🌐</div>
 </div>
 
+<!-- NAVIGATION WITH LOGO -->
 <nav>
-  <img src="logo.png" class="logo" alt="Cristo Te Llama Logo">
-  <a href="#inicio">Home</a>
-  <a href="#servicios">Service Times</a>
-  <a href="#eventos">Events</a>
-  <a href="#contacto">Contact</a>
-  <a href="#social">Social</a>
-  <a href="live.html">Live</a>
+  <img src="logo.png" alt="Cristo Te Llama Logo" class="logo">
+  <a href="#inicio" data-en="Home" data-es="Inicio">Home</a>
+  <a href="#servicios" data-en="Service Times" data-es="Servicios">Service Times</a>
+  <a href="#eventos" data-en="Events" data-es="Eventos">Events</a>
+  <a href="#contacto" data-en="Contact" data-es="Contacto">Contact</a>
+  <a href="#social" data-en="Social" data-es="Social">Social</a>
+  <a href="live.html" data-en="Live" data-es="En Vivo">Live</a>
 </nav>
 
+<!-- HERO -->
 <section id="inicio" class="hero">
-  <h1>Welcome to Cristo Te Llama DE/NJ</h1>
-  <p>A Pentecostal church helping people grow in their walk with Jesus Christ.</p>
+  <h1 data-en="Welcome to Cristo Te Llama DE/NJ" data-es="Bienvenidos a Cristo Te Llama DE/NJ">
+    Welcome to Cristo Te Llama DE/NJ
+  </h1>
+  <p data-en="A Pentecostal church helping people grow in their walk with Jesus Christ."
+     data-es="Una iglesia Pentecostal ayudando a las personas a crecer en su caminar con Jesucristo.">
+     A Pentecostal church helping people grow in their walk with Jesus Christ.
+  </p>
 </section>
 
+<!-- SERVICES -->
 <section id="servicios">
-  <h2>Church Service Times</h2>
-  <p><strong>Tuesday:</strong> 7:00 PM – 9:00 PM</p>
-  <p><strong>Saturday:</strong> 7:00 PM – 9:00 PM</p>
-  <p><strong>Sunday:</strong> 10:00 AM – 1:00 PM</p>
+  <h2 data-en="Church Service Times" data-es="Horario de Servicios">Church Service Times</h2>
+  <p><strong data-day data-en="Tuesday:" data-es="Martes:">Tuesday:</strong> 7:00 PM – 9:00 PM</p>
+  <p><strong data-day data-en="Saturday:" data-es="Sábado:">Saturday:</strong> 7:00 PM – 9:00 PM</p>
+  <p><strong data-day data-en="Sunday:" data-es="Domingo:">Sunday:</strong> 10:00 AM – 1:00 PM</p>
 </section>
 
+<!-- EVENTS / CALENDAR -->
 <section id="eventos">
-  <h2>Upcoming Events</h2>
+  <h2 data-en="Upcoming Events" data-es="Próximos Eventos">Upcoming Events</h2>
   <div class="calendar-wrapper">
     <div class="calendar-header">
-      <button onclick="prevMonth()">←</button>
-      <h3 id="monthTitle"></h3>
-      <button onclick="nextMonth()">→</button>
+      <button class="arrow-btn" onclick="prevMonth()">←</button>
+      <h3 id="monthTitle">January 2026</h3>
+      <button class="arrow-btn" onclick="nextMonth()">→</button>
     </div>
-    <div id="calendarGrid" class="calendar-grid"></div>
-    <p><a href="calendar.html">Open Full Calendar</a></p>
+    <div class="calendar-grid" id="calendarGrid"></div>
+    <div class="legend">
+      <div class="legend-box event"></div><span data-en="General Event" data-es="Evento General">General Event</span>
+      <div class="legend-box women"></div><span data-en="Women's Prayer" data-es="Oración de Damas">Women's Prayer</span>
+    </div>
+    <p><a href="calendar.html" id="openCalendarLink" data-en="Open Full Calendar" data-es="Abrir Calendario Completo">Open Full Calendar</a></p>
   </div>
 </section>
 
-<section id="contacto">
-  <h2>Prayer Request</h2>
-  <form class="prayer-form" action="https://formsubmit.co/YOURGMAIL@gmail.com" method="POST">
-    <input type="text" name="name" placeholder="Your Name (optional)">
-    <textarea name="message" required placeholder="Prayer Request"></textarea>
-    <label><input type="checkbox" name="anonymous"> Submit anonymously</label>
-    <button type="submit">Send Prayer Request</button>
+<!-- PRAYER REQUEST FORM -->
+<section id="prayerRequest">
+  <h2 data-en="Prayer Request" data-es="Solicitud de Oración">Prayer Request</h2>
+  <form id="prayerForm">
+    <input type="text" name="name" placeholder="Name" required>
+    <input type="email" name="email" placeholder="Email" value="Cristotellamadelaware@gmail.com" required>
+    <textarea name="request" placeholder="Your prayer request..." required></textarea>
+    <button type="submit">Submit</button>
   </form>
 </section>
 
+<!-- CONTACT -->
+<section id="contacto">
+  <h2 data-en="Contact" data-es="Contacto">Contact</h2>
+  <p><strong>📍 Address:</strong> 110 E Maple Ave, Penns Grove, NJ</p>
+  <p><strong>📞 Pastor:</strong> 540-842-2846</p>
+  <iframe src="https://www.google.com/maps?q=110+E+Maple+Ave,+Penns+Grove,+NJ&output=embed"
+          width="100%" height="300" style="border:0; border-radius:10px;" loading="lazy"></iframe>
+</section>
+
+<!-- SOCIAL -->
 <section id="social">
-  <h2>Social Media</h2>
+  <h2 data-en="Social Media" data-es="Redes Sociales">Social Media</h2>
   <div class="social-icons">
     <a href="https://facebook.com/IglesiaCristoTeLlamaDelaware" target="_blank">
-      <img src="facebook logo.jpg">
+      <img src="facebook logo.jpg" alt="Facebook">
     </a>
     <a href="https://www.youtube.com/@CristoTeLlama" target="_blank">
-      <img src="youtube logo.webp">
+      <img src="youtube logo.webp" alt="YouTube">
     </a>
   </div>
 </section>
 
-<a href="https://m.me/IglesiaCristoTeLlamaDelaware" class="messenger-btn">💬 Messenger</a>
+<!-- MESSENGER BUTTON -->
+<a href="https://m.me/IglesiaCristoTeLlamaDelaware" class="messenger-btn" target="_blank">💬 Messenger</a>
+
+<!-- POPUP -->
+<div id="popup" class="popup">
+  <div class="popup-content">
+    <span onclick="closePopup()" class="close">&times;</span>
+    <p id="popupText"></p>
+  </div>
+</div>
 
 <script src="main.js"></script>
 </body>
