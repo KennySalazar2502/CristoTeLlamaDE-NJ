@@ -14,27 +14,23 @@ function updateLanguage(lang){
   document.querySelectorAll('[data-en]').forEach(el=>{
     el.innerText = lang==='en'?el.dataset.en:el.dataset.es;
   });
-  // Update calendar weekday names
   document.querySelectorAll('.day-name').forEach((el,i)=>{
     const enNames = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
     const esNames = ["Dom","Lun","Mar","Mié","Jue","Vie","Sáb"];
     el.innerText = lang==='en'?enNames[i]:esNames[i];
   });
-  // Update service days
   document.querySelectorAll('[data-day]').forEach(el=>{
     el.innerText = lang==='en'?el.dataset.en:el.dataset.es;
   });
-  // Update Open Calendar link
   const openCalLink = document.getElementById('openCalendarLink');
   if(openCalLink) openCalLink.innerText = lang==='en'?openCalLink.dataset.en:openCalLink.dataset.es;
-
   currentLang = lang;
   localStorage.setItem('lang', lang);
 }
 updateLanguage(currentLang);
 langToggle.addEventListener('click',()=>updateLanguage(currentLang==='en'?'es':'en'));
 
-// ANNOUNCEMENT BANNER
+// ANNOUNCEMENT
 const announcementText = "Welcome to Cristo Te Llama DE/NJ! Upcoming special event: Servicio de Oracion.";
 const announcement = document.createElement('div');
 announcement.className = 'announcement';
@@ -48,10 +44,20 @@ document.body.appendChild(announcement);
 // POPUP
 function closePopup(){ document.getElementById("popup").style.display='none'; }
 
+// SCROLL SHRINK FOR NAVBAR & LOGO
+const navbar = document.querySelector('.navbar-wrapper');
+window.addEventListener('scroll', ()=>{
+  if(window.scrollY > 50){
+    navbar.classList.add('shrink');
+  } else {
+    navbar.classList.remove('shrink');
+  }
+});
+
 // CALENDAR
 const calendarGrid = document.getElementById('calendarGrid');
 const monthTitle = document.getElementById('monthTitle');
-let date = new Date(2026,0,1); // January 2026
+let date = new Date(2026,0,1);
 
 const events = [
   {day:3, title:"Servicio De Adoracion", type:"event"},
@@ -77,7 +83,6 @@ function renderCalendar(){
   const year = date.getFullYear();
   const month = date.getMonth();
   monthTitle.innerText = date.toLocaleString('default',{month:'long',year:'numeric'});
-
   const dayNames = currentLang==='en'?["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]:["Dom","Lun","Mar","Mié","Jue","Vie","Sáb"];
   dayNames.forEach(d=>{
     const div = document.createElement('div');
@@ -94,7 +99,7 @@ function renderCalendar(){
   const daysInMonth = new Date(year,month+1,0).getDate();
   for(let d=1; d<=daysInMonth; d++){
     const dayDiv = document.createElement('div'); dayDiv.classList.add('day');
-    const eventToday = events.find(e=>e.day===d && month===0); // only January 2026
+    const eventToday = events.find(e=>e.day===d && month===0);
     if(eventToday){
       dayDiv.classList.add(eventToday.type);
       dayDiv.innerHTML = `<span>${d}</span><small>${eventToday.title.length>18?eventToday.title.slice(0,18)+'...':eventToday.title}</small>`;
@@ -110,4 +115,5 @@ function renderCalendar(){
 function nextMonth(){ date.setMonth(date.getMonth()+1); renderCalendar();}
 function prevMonth(){ date.setMonth(date.getMonth()-1); renderCalendar();}
 renderCalendar();
+
 
