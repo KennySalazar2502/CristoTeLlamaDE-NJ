@@ -23,11 +23,11 @@ nav {
   box-shadow:0 2px 5px rgba(0,0,0,0.1);
 }
 nav .logo {
-  height:40px;
-  max-height:40px;
+  height:30px; /* smaller logo */
+  max-height:30px;
   width:auto;
   object-fit:contain;
-  margin-right:20px;
+  margin-right:15px;
 }
 nav a { 
   text-decoration:none; 
@@ -100,7 +100,7 @@ section { padding:50px 20px;text-align:center; transition: all 0.3s; }
 /* RESPONSIVE */
 @media(max-width:600px){
   nav { flex-direction:column; gap:10px; }
-  nav .logo { margin-bottom:10px; height:35px; max-height:35px; }
+  nav .logo { margin-bottom:10px; height:25px; max-height:25px; }
   .calendar-wrapper { padding:5px; }
   .day { min-height:50px; font-size:0.7rem; padding:4px; }
   .social-icons img { width:40px; height:40px; }
