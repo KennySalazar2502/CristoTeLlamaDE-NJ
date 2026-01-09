@@ -1,8 +1,12 @@
 {
   "name": "Cristo Te Llama DE/NJ",
-  "short_name": "Cristo",
+  "short_name": "CristoDE/NJ",
   "start_url": "./index.html",
   "display": "standalone",
+  "background_color": "#F6F1EB",
   "theme_color": "#0084ff",
-  "background_color": "#F6F1EB"
+  "icons": [
+    { "src": "images/icon-192.png", "sizes": "192x192", "type": "image/png" },
+    { "src": "images/icon-512.png", "sizes": "512x512", "type": "image/png" }
+  ]
 }
