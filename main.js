@@ -104,3 +104,4 @@ function renderCalendar(){
 function nextMonth(){ date.setMonth(date.getMonth()+1); renderCalendar();}
 function prevMonth(){ date.setMonth(date.getMonth()-1); renderCalendar();}
 renderCalendar();
+
