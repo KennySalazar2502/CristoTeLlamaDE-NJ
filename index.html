@@ -8,7 +8,7 @@
 <link rel="stylesheet" href="style.css">
 <link rel="manifest" href="manifest.json">
 </head>
-<body>
+<body id="top">
 
 <!-- ANNOUNCEMENT BANNER added dynamically via JS -->
 
@@ -20,12 +20,14 @@
 
 <!-- NAVIGATION -->
 <nav>
-  <img src="logo.png" alt="Cristo Te Llama Logo" class="logo">
-  <a href="#inicio" data-en="Home" data-es="Inicio">Home</a>
-  <a href="#servicios" data-en="Service Times" data-es="Servicios">Service Times</a>
-  <a href="#eventos" data-en="Events" data-es="Eventos">Events</a>
-  <a href="#contacto" data-en="Contact" data-es="Contacto">Contact</a>
-  <a href="#social" data-en="Social" data-es="Social">Social</a>
+  <div class="nav-left">
+    <img src="logo.png" alt="Cristo Te Llama Logo" class="nav-logo">
+    <a href="#inicio" data-en="Home" data-es="Inicio">Home</a>
+    <a href="#servicios" data-en="Service Times" data-es="Servicios">Service Times</a>
+    <a href="#eventos" data-en="Events" data-es="Eventos">Events</a>
+    <a href="#contacto" data-en="Contact" data-es="Contacto">Contact</a>
+    <a href="#social" data-en="Social" data-es="Social">Social</a>
+  </div>
   <a href="live.html" data-en="Live" data-es="En Vivo">Live</a>
 </nav>
 
@@ -93,6 +95,9 @@
   💬 Messenger
 </a>
 
+<!-- BACK TO TOP -->
+<a href="#top" id="backToTop">↑ Top</a>
+
 <!-- POPUP -->
 <div id="popup" class="popup">
   <div class="popup-content">
@@ -104,6 +109,5 @@
 <script src="main.js"></script>
 </body>
 </html>
-
 
 
