@@ -16,7 +16,7 @@
   <div id="langToggle">🌐</div>
 </div>
 
-<!-- NAVIGATION WITH LOGO -->
+<!-- NAVIGATION + LOGO -->
 <nav>
   <img src="logo.png" alt="Cristo Te Llama Logo" class="logo">
   <a href="#inicio" data-en="Home" data-es="Inicio">Home</a>
@@ -29,9 +29,7 @@
 
 <!-- HERO -->
 <section id="inicio" class="hero">
-  <h1 data-en="Welcome to Cristo Te Llama DE/NJ" data-es="Bienvenidos a Cristo Te Llama DE/NJ">
-    Welcome to Cristo Te Llama DE/NJ
-  </h1>
+  <h1 data-en="Welcome to Cristo Te Llama DE/NJ" data-es="Bienvenidos a Cristo Te Llama DE/NJ">Welcome to Cristo Te Llama DE/NJ</h1>
   <p data-en="A Pentecostal church helping people grow in their walk with Jesus Christ."
      data-es="Una iglesia Pentecostal ayudando a las personas a crecer en su caminar con Jesucristo.">
      A Pentecostal church helping people grow in their walk with Jesus Christ.
@@ -55,7 +53,9 @@
       <h3 id="monthTitle">January 2026</h3>
       <button class="arrow-btn" onclick="nextMonth()">→</button>
     </div>
-    <div class="calendar-grid" id="calendarGrid"></div>
+    <div class="calendar-grid" id="calendarGrid">
+      <!-- Calendar injected via JS -->
+    </div>
     <div class="legend">
       <div class="legend-box event"></div><span data-en="General Event" data-es="Evento General">General Event</span>
       <div class="legend-box women"></div><span data-en="Women's Prayer" data-es="Oración de Damas">Women's Prayer</span>
@@ -64,24 +64,28 @@
   </div>
 </section>
 
-<!-- PRAYER REQUEST FORM -->
-<section id="prayerRequest">
-  <h2 data-en="Prayer Request" data-es="Solicitud de Oración">Prayer Request</h2>
-  <form id="prayerForm">
-    <input type="text" name="name" placeholder="Name" required>
-    <input type="email" name="email" placeholder="Email" value="Cristotellamadelaware@gmail.com" required>
-    <textarea name="request" placeholder="Your prayer request..." required></textarea>
-    <button type="submit">Submit</button>
-  </form>
-</section>
-
-<!-- CONTACT -->
+<!-- CONTACT + PRAYER FORM -->
 <section id="contacto">
   <h2 data-en="Contact" data-es="Contacto">Contact</h2>
   <p><strong>📍 Address:</strong> 110 E Maple Ave, Penns Grove, NJ</p>
   <p><strong>📞 Pastor:</strong> 540-842-2846</p>
   <iframe src="https://www.google.com/maps?q=110+E+Maple+Ave,+Penns+Grove,+NJ&output=embed"
           width="100%" height="300" style="border:0; border-radius:10px;" loading="lazy"></iframe>
+
+  <h2 data-en="Prayer Request" data-es="Solicitud de Oración">Prayer Request</h2>
+  <form id="prayerForm">
+    <label for="name" data-en="Name" data-es="Nombre">Name</label>
+    <input type="text" id="name" name="name" required>
+
+    <label for="email" data-en="Email" data-es="Correo Electrónico">Email</label>
+    <input type="email" id="email" name="email" value="Cristotellamadelaware@gmail.com" required>
+
+    <label for="request" data-en="Prayer Request" data-es="Solicitud de Oración">Prayer Request</label>
+    <textarea id="request" name="request" rows="4" required></textarea>
+
+    <button type="submit" data-en="Submit" data-es="Enviar">Submit</button>
+  </form>
+  <p id="formMessage" style="margin-top:10px; font-weight:bold;"></p>
 </section>
 
 <!-- SOCIAL -->
@@ -98,7 +102,9 @@
 </section>
 
 <!-- MESSENGER BUTTON -->
-<a href="https://m.me/IglesiaCristoTeLlamaDelaware" class="messenger-btn" target="_blank">💬 Messenger</a>
+<a href="https://m.me/IglesiaCristoTeLlamaDelaware" class="messenger-btn" target="_blank">
+  💬 Messenger
+</a>
 
 <!-- POPUP -->
 <div id="popup" class="popup">
@@ -111,3 +117,4 @@
 <script src="main.js"></script>
 </body>
 </html>
+
