@@ -20,7 +20,7 @@
 
 <!-- NAVIGATION -->
 <nav>
-  <img src="logo.png" class="nav-logo" alt="Cristo Te Llama Logo">
+  <img src="logo.png" alt="Cristo Te Llama Logo" class="logo">
   <a href="index.html" data-en="Home" data-es="Inicio">Home</a>
   <a href="index.html#servicios" data-en="Service Times" data-es="Servicios">Service Times</a>
   <a href="index.html#eventos" data-en="Events" data-es="Eventos">Events</a>
@@ -44,8 +44,7 @@
 <script src="main.js"></script>
 <script>
   const liveContainer = document.getElementById('liveStream');
-  const youtubeChannelId = 'UCB-beIq8bOOnmi78a8uEvWQ'; // your channel ID
-
+  const youtubeChannelId = 'UCB-beIq8bOOnmi78a8uEvWQ';
   liveContainer.innerHTML = `
     <iframe width="100%" height="400" 
       src="https://www.youtube.com/embed/live_stream?channel=${youtubeChannelId}&autoplay=0"
@@ -55,4 +54,3 @@
 </script>
 </body>
 </html>
-
