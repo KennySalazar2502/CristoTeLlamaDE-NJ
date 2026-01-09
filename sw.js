@@ -1,13 +1,18 @@
-const CACHE_NAME = "cristo-v3";
-const urls = [
-  "index.html",
-  "calendar.html",
-  "live.html",
-  "style.css",
-  "main.js",
-  "logo.png"
+const CACHE="cristo-v3";
+const FILES=[
+  "./",
+  "./index.html",
+  "./calendar.html",
+  "./live.html",
+  "./style.css",
+  "./main.js",
+  "./logo.png"
 ];
 
-self.addEventListener("install", e=>{
-  e.waitUntil(caches.open(CACHE_NAME).then(c=>c.addAll(urls)));
+self.addEventListener("install",e=>{
+  e.waitUntil(caches.open(CACHE).then(c=>c.addAll(FILES)));
+});
+
+self.addEventListener("fetch",e=>{
+  e.respondWith(caches.match(e.request).then(r=>r||fetch(e.request)));
 });
