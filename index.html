@@ -50,7 +50,7 @@
   <div class="calendar-wrapper">
     <div class="calendar-header">
       <button class="arrow-btn" onclick="prevMonth()">←</button>
-      <h3 id="monthTitle">January 2026</h3>
+      <h3 id="monthTitle"></h3>
       <button class="arrow-btn" onclick="nextMonth()">→</button>
     </div>
     <div class="calendar-grid" id="calendarGrid">
@@ -64,28 +64,14 @@
   </div>
 </section>
 
-<!-- CONTACT + PRAYER FORM -->
+<!-- CONTACT -->
 <section id="contacto">
   <h2 data-en="Contact" data-es="Contacto">Contact</h2>
   <p><strong>📍 Address:</strong> 110 E Maple Ave, Penns Grove, NJ</p>
+  <p><strong>📧 Email:</strong> Cristotellamadelaware@gmail.com</p>
   <p><strong>📞 Pastor:</strong> 540-842-2846</p>
   <iframe src="https://www.google.com/maps?q=110+E+Maple+Ave,+Penns+Grove,+NJ&output=embed"
           width="100%" height="300" style="border:0; border-radius:10px;" loading="lazy"></iframe>
-
-  <h2 data-en="Prayer Request" data-es="Solicitud de Oración">Prayer Request</h2>
-  <form id="prayerForm">
-    <label for="name" data-en="Name" data-es="Nombre">Name</label>
-    <input type="text" id="name" name="name" required>
-
-    <label for="email" data-en="Email" data-es="Correo Electrónico">Email</label>
-    <input type="email" id="email" name="email" value="Cristotellamadelaware@gmail.com" required>
-
-    <label for="request" data-en="Prayer Request" data-es="Solicitud de Oración">Prayer Request</label>
-    <textarea id="request" name="request" rows="4" required></textarea>
-
-    <button type="submit" data-en="Submit" data-es="Enviar">Submit</button>
-  </form>
-  <p id="formMessage" style="margin-top:10px; font-weight:bold;"></p>
 </section>
 
 <!-- SOCIAL -->
@@ -115,6 +101,14 @@
 </div>
 
 <script src="main.js"></script>
+<script>
+  if ('serviceWorker' in navigator) {
+    navigator.serviceWorker.register('/sw.js')
+      .then(reg => console.log('Service Worker Registered', reg))
+      .catch(err => console.error('SW Registration Failed', err));
+  }
+</script>
 </body>
 </html>
+
 
