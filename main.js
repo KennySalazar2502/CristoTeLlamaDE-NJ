@@ -47,7 +47,7 @@ function closePopup(){ document.getElementById("popup").style.display='none'; }
 // CALENDAR
 const calendarGrid = document.getElementById('calendarGrid');
 const monthTitle = document.getElementById('monthTitle');
-let date = new Date(2026,0,1);
+let date = new Date(2026,0,1); 
 
 const events = [
   {day:3, title:"Servicio De Adoracion", type:"event"},
@@ -76,9 +76,7 @@ function renderCalendar(){
 
   const dayNames = currentLang==='en'?["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]:["Dom","Lun","Mar","Mié","Jue","Vie","Sáb"];
   dayNames.forEach(d=>{
-    const div = document.createElement('div');
-    div.classList.add('day-name');
-    div.innerText=d;
+    const div = document.createElement('div'); div.classList.add('day-name'); div.innerText=d;
     calendarGrid.appendChild(div);
   });
 
@@ -90,7 +88,7 @@ function renderCalendar(){
   const daysInMonth = new Date(year,month+1,0).getDate();
   for(let d=1; d<=daysInMonth; d++){
     const dayDiv = document.createElement('div'); dayDiv.classList.add('day');
-    const eventToday = events.find(e=>e.day===d && month===0); // January 2026
+    const eventToday = events.find(e=>e.day===d && month===0);
     if(eventToday){
       dayDiv.classList.add(eventToday.type);
       dayDiv.innerHTML = `<span>${d}</span><small>${eventToday.title.length>18?eventToday.title.slice(0,18)+'...':eventToday.title}</small>`;
