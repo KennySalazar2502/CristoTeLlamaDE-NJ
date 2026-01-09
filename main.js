@@ -2,7 +2,6 @@
 const darkModeToggle = document.getElementById('darkModeToggle');
 const body = document.body;
 if(localStorage.getItem('darkMode') === 'true') body.classList.add('dark');
-
 darkModeToggle.addEventListener('click', () => {
   body.classList.toggle('dark');
   localStorage.setItem('darkMode', body.classList.contains('dark'));
@@ -11,32 +10,23 @@ darkModeToggle.addEventListener('click', () => {
 // LANGUAGE TOGGLE
 const langToggle = document.getElementById('langToggle');
 let currentLang = localStorage.getItem('lang') || 'en';
-
 function updateLanguage(lang){
   document.querySelectorAll('[data-en]').forEach(el=>{
     el.innerText = lang==='en'?el.dataset.en:el.dataset.es;
   });
-
-  // Update calendar weekday names
   document.querySelectorAll('.day-name').forEach((el,i)=>{
     const enNames = ["Sun","Mon","Tue","Wed","Thu","Fri","Sat"];
     const esNames = ["Dom","Lun","Mar","Mié","Jue","Vie","Sáb"];
     el.innerText = lang==='en'?enNames[i]:esNames[i];
   });
-
-  // Update service days
   document.querySelectorAll('[data-day]').forEach(el=>{
     el.innerText = lang==='en'?el.dataset.en:el.dataset.es;
   });
-
-  // Update Open Calendar link
   const openCalLink = document.getElementById('openCalendarLink');
   if(openCalLink) openCalLink.innerText = lang==='en'?openCalLink.dataset.en:openCalLink.dataset.es;
-
   currentLang = lang;
   localStorage.setItem('lang', lang);
 }
-
 updateLanguage(currentLang);
 langToggle.addEventListener('click',()=>updateLanguage(currentLang==='en'?'es':'en'));
 
@@ -52,15 +42,12 @@ announcement.addEventListener('click', ()=>{
 document.body.appendChild(announcement);
 
 // POPUP
-function closePopup(){ 
-  document.getElementById("popup").style.display='none'; 
-}
+function closePopup(){ document.getElementById("popup").style.display='none'; }
 
 // CALENDAR
 const calendarGrid = document.getElementById('calendarGrid');
 const monthTitle = document.getElementById('monthTitle');
 let date = new Date(2026,0,1); // January 2026
-
 const events = [
   {day:3, title:"Servicio De Adoracion", type:"event"},
   {day:6, title:"Servicio De Oracion", type:"event"},
@@ -96,15 +83,12 @@ function renderCalendar(){
 
   const firstDay = new Date(year,month,1).getDay();
   for(let i=0;i<firstDay;i++){
-    const empty = document.createElement('div'); 
-    empty.classList.add('day','empty'); 
-    calendarGrid.appendChild(empty);
+    const empty = document.createElement('div'); empty.classList.add('day','empty'); calendarGrid.appendChild(empty);
   }
 
   const daysInMonth = new Date(year,month+1,0).getDate();
   for(let d=1; d<=daysInMonth; d++){
-    const dayDiv = document.createElement('div'); 
-    dayDiv.classList.add('day');
+    const dayDiv = document.createElement('div'); dayDiv.classList.add('day');
     const eventToday = events.find(e=>e.day===d && month===0); // only January 2026
     if(eventToday){
       dayDiv.classList.add(eventToday.type);
@@ -121,16 +105,4 @@ function renderCalendar(){
 function nextMonth(){ date.setMonth(date.getMonth()+1); renderCalendar();}
 function prevMonth(){ date.setMonth(date.getMonth()-1); renderCalendar();}
 renderCalendar();
-
-// LIVE PAGE IFRAME (if on live.html)
-const liveContainer = document.getElementById('liveStream');
-if(liveContainer){
-  const youtubeChannelId = 'UCB-beIq8bOOnmi78a8uEvWQ';
-  liveContainer.innerHTML = `
-    <iframe width="100%" height="400" 
-      src="https://www.youtube.com/embed/live_stream?channel=${youtubeChannelId}&autoplay=0"
-      allow="autoplay; encrypted-media" allowfullscreen>
-    </iframe>
-  `;
-}
 
