@@ -1,4 +1,10 @@
-// Calendar events
+// ---------------- CALENDAR ----------------
+const calendarGrid = document.getElementById("calendarGrid");
+const monthTitle = document.getElementById("monthTitle");
+
+let date = new Date();
+
+// EVENTS
 const events = [
   {day:3, title:"Servicio De Adoracion", type:"event"},
   {day:6, title:"Servicio De Oracion", type:"event"},
@@ -17,10 +23,6 @@ const events = [
   {day:31, title:"Servicio De Adoracion", type:"event"}
 ];
 
-const calendarGrid = document.getElementById("calendarGrid");
-const monthTitle = document.getElementById("monthTitle");
-let date = new Date();
-
 function renderCalendar() {
   calendarGrid.innerHTML = "";
   const year = date.getFullYear();
@@ -36,43 +38,64 @@ function renderCalendar() {
   }
 
   for (let d = 1; d <= days; d++) {
-    const event = events.find(e => e.day === d);
-    const type = event ? event.type : '';
-    const title = event ? event.title : '';
-    calendarGrid.innerHTML += `<div class="day ${type}" title="${title}">${d}${title ? `<br><small>${title}</small>` : ''}</div>`;
+    const eventForDay = events.find(ev => ev.day === d);
+    let typeClass = eventForDay ? eventForDay.type : "";
+    let title = eventForDay ? `<br><small>${eventForDay.title}</small>` : "";
+    calendarGrid.innerHTML += `<div class="day ${typeClass}">${d}${title}</div>`;
   }
 }
 
-function nextMonth() { date.setMonth(date.getMonth() + 1); renderCalendar(); }
-function prevMonth() { date.setMonth(date.getMonth() - 1); renderCalendar(); }
+function nextMonth() {
+  date.setMonth(date.getMonth() + 1);
+  renderCalendar();
+}
+
+function prevMonth() {
+  date.setMonth(date.getMonth() - 1);
+  renderCalendar();
+}
+
 renderCalendar();
 
-// Dark Mode
-document.getElementById("darkModeToggle").addEventListener("click", () => document.body.classList.toggle("dark"));
+// ---------------- DARK MODE ----------------
+function toggleDark() {
+  document.body.classList.toggle("dark");
+}
+document.getElementById("darkModeToggle").addEventListener("click", toggleDark);
 
-// Language Toggle
-document.getElementById("langToggle").addEventListener("click", () => {
+// ---------------- LANGUAGE TOGGLE ----------------
+function toggleLang() {
   document.querySelectorAll("[data-en]").forEach(el => {
     el.innerText = el.innerText === el.dataset.en ? el.dataset.es : el.dataset.en;
   });
-});
+}
+document.getElementById("langToggle").addEventListener("click", toggleLang);
 
-// Popup
+// ---------------- POPUP ----------------
 const popup = document.getElementById("popup");
 const popupText = document.getElementById("popupText");
-function openPopup(message) { popupText.innerText = message; popup.style.display="flex"; }
-function closePopup() { popup.style.display="none"; }
+function openPopup(message) {
+  popupText.innerText = message;
+  popup.style.display = "flex";
+}
+function closePopup() { popup.style.display = "none"; }
 
-// Prayer Form Submission
-document.getElementById("prayerForm").addEventListener("submit", function(e){
-  e.preventDefault();
-  alert("Your prayer request has been submitted! 🙏");
-  this.reset();
-});
-
-// Live Stream Embed (if used on live.html)
-const liveContainer = document.getElementById('liveStream');
-if(liveContainer){
-  const youtubeChannelId = 'UCB-beIq8bOOnmi78a8uEvWQ';
-  liveContainer.innerHTML = `<iframe width="100%" height="400" src="https://www.youtube.com/embed/live_stream?channel=${youtubeChannelId}&autoplay=0" allow="autoplay; encrypted-media" allowfullscreen></iframe>`;
+// ---------------- PRAYER FORM ----------------
+const prayerForm = document.getElementById("prayerForm");
+const formMessage = document.getElementById("formMessage");
+if (prayerForm) {
+  prayerForm.addEventListener("submit", function(e) {
+    e.preventDefault();
+    const name = document.getElementById("name").value.trim();
+    const email = document.getElementById("email").value.trim();
+    const request = document.getElementById("request").value.trim();
+    if (!name || !email || !request) {
+      formMessage.style.color = "red";
+      formMessage.innerText = "Please fill out all fields / Por favor complete todos los campos";
+      return;
+    }
+    formMessage.style.color = "green";
+    formMessage.innerText = "Prayer request submitted! / Solicitud enviada!";
+    prayerForm.reset();
+  });
 }
