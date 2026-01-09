@@ -10,19 +10,12 @@ body.dark { background:#121212; color:#EEE; }
 .toggles { position:fixed; top:15px; right:15px; display:flex; gap:10px; z-index:1000; cursor:pointer; }
 
 nav {
-  display:flex; justify-content:center; align-items:center; gap:15px; flex-wrap:wrap;
-  padding:15px 0; position:sticky; top:50px; z-index:1000; background:#fff; box-shadow:0 2px 5px rgba(0,0,0,0.1);
+  display:flex; align-items:center; justify-content:flex-start; gap:15px; flex-wrap:wrap;
+  padding:10px 20px; position:sticky; top:0; z-index:1000; background:#fff; box-shadow:0 2px 5px rgba(0,0,0,0.1);
 }
-nav a { text-decoration:none; padding:10px 20px; border-radius:25px; border:2px solid #0084ff; color:#0084ff; font-weight:bold; transition: all 0.3s; }
+nav a { text-decoration:none; padding:8px 15px; border-radius:25px; border:2px solid #0084ff; color:#0084ff; font-weight:bold; transition: all 0.3s; }
 nav a:hover { background:#0084ff; color:#fff; transform:scale(1.1); }
-
-/* LOGO */
-nav .nav-logo {
-  max-height:30px !important;
-  width:auto !important;
-  margin-right:10px;
-  vertical-align:middle;
-}
+nav .logo { height:40px; margin-right:10px; }
 
 .announcement {
   position:fixed; top:0; left:0; width:100%; background:#0084ff; color:#fff;
@@ -40,6 +33,10 @@ nav .nav-logo {
 .messenger-btn:hover { transform: scale(1.05); }
 
 section { padding:50px 20px;text-align:center; transition: all 0.3s; }
+
+.hero { background:linear-gradient(135deg, #d6f0ff, #ffffff); border-radius:10px; margin:20px auto; max-width:900px; padding:40px 20px; }
+.hero .cta-btn { display:inline-block; margin-top:20px; padding:10px 20px; border-radius:25px; background:#0084ff; color:#fff; text-decoration:none; font-weight:bold; transition: transform 0.2s; }
+.hero .cta-btn:hover { transform:scale(1.05); }
 
 .calendar-wrapper { max-width:720px;margin:20px auto;border:2px solid #0084ff;border-radius:12px;padding:10px; }
 .calendar-header { display:flex; justify-content:space-between; align-items:center; margin-bottom:10px; }
