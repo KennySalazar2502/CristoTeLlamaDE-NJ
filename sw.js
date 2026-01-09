@@ -1,13 +1,17 @@
-const CACHE_NAME = "cristo-cache-v1";
+const CACHE_NAME = "cristo-cache-v2"; // updated version to avoid conflicts
 const urlsToCache = [
   "/index.html",
   "/calendar.html",
   "/live.html",
   "/style.css",
   "/main.js",
+  "/script.js",
   "/manifest.json",
+  "/logo.png",
   "/images/icon-192.png",
-  "/images/icon-512.png"
+  "/images/icon-512.png",
+  "/images/youtube logo.webp",
+  "/images/facebook logo.jpg"
 ];
 
 self.addEventListener("install", event => {
@@ -20,7 +24,9 @@ self.addEventListener("install", event => {
 self.addEventListener("activate", event => {
   event.waitUntil(
     caches.keys().then(keys =>
-      Promise.all(keys.map(key => key !== CACHE_NAME ? caches.delete(key) : null))
+      Promise.all(
+        keys.map(key => key !== CACHE_NAME ? caches.delete(key) : null)
+      )
     )
   );
 });
