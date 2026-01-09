@@ -24,7 +24,6 @@ function updateLanguage(lang){
   });
   const openCalLink = document.getElementById('openCalendarLink');
   if(openCalLink) openCalLink.innerText = lang==='en'?openCalLink.dataset.en:openCalLink.dataset.es;
-
   currentLang = lang;
   localStorage.setItem('lang', lang);
 }
@@ -34,7 +33,7 @@ langToggle.addEventListener('click',()=>updateLanguage(currentLang==='en'?'es':'
 // ANNOUNCEMENT BANNER
 const announcementText = "Welcome to Cristo Te Llama DE/NJ! Upcoming special event: Servicio de Oracion.";
 const announcement = document.createElement('div');
-announcement.className = 'announcement';
+announcement.className = 'announcement show';
 announcement.innerHTML = `<span title="${announcementText}">🔔 ${announcementText}</span>`;
 announcement.addEventListener('click', ()=>{ 
   document.getElementById("popupText").innerText = announcementText;
@@ -48,7 +47,7 @@ function closePopup(){ document.getElementById("popup").style.display='none'; }
 // CALENDAR
 const calendarGrid = document.getElementById('calendarGrid');
 const monthTitle = document.getElementById('monthTitle');
-let date = new Date(2026,0,1); // January 2026
+let date = new Date(2026,0,1);
 
 const events = [
   {day:3, title:"Servicio De Adoracion", type:"event"},
@@ -74,7 +73,6 @@ function renderCalendar(){
   const year = date.getFullYear();
   const month = date.getMonth();
   monthTitle.innerText = date.toLocaleString('default',{month:'long',year:'numeric'});
-
   const dayNames = currentLang==='en'?["Sun","Mon","Tue","Wed","Thu","Fri","Sat"]:["Dom","Lun","Mar","Mié","Jue","Vie","Sáb"];
   dayNames.forEach(d=>{
     const div = document.createElement('div');
@@ -82,12 +80,10 @@ function renderCalendar(){
     div.innerText=d;
     calendarGrid.appendChild(div);
   });
-
   const firstDay = new Date(year,month,1).getDay();
   for(let i=0;i<firstDay;i++){
     const empty = document.createElement('div'); empty.classList.add('day','empty'); calendarGrid.appendChild(empty);
   }
-
   const daysInMonth = new Date(year,month+1,0).getDate();
   for(let d=1; d<=daysInMonth; d++){
     const dayDiv = document.createElement('div'); dayDiv.classList.add('day');
@@ -102,27 +98,35 @@ function renderCalendar(){
     } else { dayDiv.innerHTML=`<span>${d}</span>`;}
     calendarGrid.appendChild(dayDiv);
   }
-
-  // Trigger fade-in for calendar days
-  document.querySelectorAll('.day').forEach((el,i)=>{
-    setTimeout(()=>{ el.classList.add('visible'); }, i*50);
-  });
 }
 
 function nextMonth(){ date.setMonth(date.getMonth()+1); renderCalendar();}
 function prevMonth(){ date.setMonth(date.getMonth()-1); renderCalendar();}
 renderCalendar();
 
-// SCROLL ANIMATIONS
-function scrollReveal() {
-  const fadeElems = document.querySelectorAll('.fade-in');
-  fadeElems.forEach(el => {
-    const rect = el.getBoundingClientRect();
-    if(rect.top < window.innerHeight - 100) {
-      el.classList.add('visible');
+// FADE IN SECTIONS
+const sections = document.querySelectorAll('section');
+function checkVisible() {
+  sections.forEach(sec=>{
+    const rect = sec.getBoundingClientRect();
+    if(rect.top < window.innerHeight-50){
+      sec.classList.add('visible');
     }
   });
 }
-window.addEventListener('scroll', scrollReveal);
-window.addEventListener('load', scrollReveal);
+window.addEventListener('scroll', checkVisible);
+checkVisible();
 
+// BACK TO TOP BUTTON
+const backToTop = document.getElementById('backToTop');
+window.addEventListener('scroll', ()=>{
+  if(window.scrollY>300){ backToTop.classList.add('show'); }
+  else{ backToTop.classList.remove('show'); }
+});
+
+// NAV SCROLL SHADOW
+const nav = document.querySelector('nav');
+window.addEventListener('scroll', ()=>{
+  if(window.scrollY>20){ nav.classList.add('scrolled'); }
+  else{ nav.classList.remove('scrolled'); }
+});
