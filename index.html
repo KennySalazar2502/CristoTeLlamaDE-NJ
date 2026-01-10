@@ -1,115 +1,103 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-<meta charset="UTF-8">
-<title>Cristo Te Llama DE/NJ</title>
-<meta name="viewport" content="width=device-width, initial-scale=1.0">
-<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
-<link rel="stylesheet" href="style.css">
-<link rel="manifest" href="manifest.json">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Cristo Te Llama DE/NJ</title>
+  <link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+  <link rel="stylesheet" href="style.css">
+  <link rel="manifest" href="manifest.json">
 </head>
 <body>
-
-<!-- EVENT BANNER -->
-<div id="eventBanner"></div>
-
-<!-- DARK MODE & LANGUAGE TOGGLE -->
-<div class="toggles">
-  <div id="darkModeToggle">🌓</div>
-  <div id="langToggle">🌐</div>
-</div>
-
-<!-- NAVIGATION + LOGO -->
-<nav>
-  <img src="logo.png" alt="Cristo Te Llama Logo" class="logo">
-  <a href="#inicio" data-en="Home" data-es="Inicio">Home</a>
-  <a href="#servicios" data-en="Service Times" data-es="Servicios">Service Times</a>
-  <a href="#eventos" data-en="Events" data-es="Eventos">Events</a>
-  <a href="#contacto" data-en="Contact" data-es="Contacto">Contact</a>
-  <a href="#social" data-en="Social" data-es="Social">Social</a>
-  <a href="live.html" data-en="Live" data-es="En Vivo">Live</a>
-</nav>
-
-<!-- HERO -->
-<section id="inicio" class="hero">
-  <h1 data-en="Welcome to Cristo Te Llama DE/NJ" data-es="Bienvenidos a Cristo Te Llama DE/NJ">Welcome to Cristo Te Llama DE/NJ</h1>
-  <p data-en="A Pentecostal church helping people grow in their walk with Jesus Christ."
-     data-es="Una iglesia Pentecostal ayudando a las personas a crecer en su caminar con Jesucristo.">
-     A Pentecostal church helping people grow in their walk with Jesus Christ.
-  </p>
-</section>
-
-<!-- SERVICES -->
-<section id="servicios">
-  <h2 data-en="Church Service Times" data-es="Horario de Servicios">Church Service Times</h2>
-  <p><strong data-day data-en="Tuesday:" data-es="Martes:">Tuesday:</strong> 7:00 PM – 9:00 PM</p>
-  <p><strong data-day data-en="Saturday:" data-es="Sábado:">Saturday:</strong> 7:00 PM – 9:00 PM</p>
-  <p><strong data-day data-en="Sunday:" data-es="Domingo:">Sunday:</strong> 10:00 AM – 1:00 PM</p>
-</section>
-
-<!-- EVENTS / CALENDAR -->
-<section id="eventos">
-  <h2 data-en="Upcoming Events" data-es="Próximos Eventos">Upcoming Events</h2>
-  <div class="calendar-wrapper">
-    <div class="calendar-header">
-      <button class="arrow-btn" onclick="prevMonth()">←</button>
-      <h3 id="monthTitle"></h3>
-      <button class="arrow-btn" onclick="nextMonth()">→</button>
-    </div>
-    <div class="calendar-grid" id="calendarGrid">
-      <!-- Calendar injected via JS -->
-    </div>
-    <div class="legend">
-      <div class="legend-box event"></div><span data-en="General Event" data-es="Evento General">General Event</span>
-      <div class="legend-box women"></div><span data-en="Women's Prayer" data-es="Oración de Damas">Women's Prayer</span>
-    </div>
-    <p><a href="calendar.html" id="openCalendarLink" data-en="Open Full Calendar" data-es="Abrir Calendario Completo">Open Full Calendar</a></p>
+  <!-- DARK MODE & LANGUAGE TOGGLE -->
+  <div class="toggles">
+    <div id="darkModeToggle">🌓</div>
+    <div id="langToggle">🌐</div>
   </div>
-</section>
 
-<!-- CONTACT -->
-<section id="contacto">
-  <h2 data-en="Contact" data-es="Contacto">Contact</h2>
-  <p><strong>📍 Address:</strong> 110 E Maple Ave, Penns Grove, NJ</p>
-  <p><strong>📧 Email:</strong> Cristotellamadelaware@gmail.com</p>
-  <p><strong>📞 Pastor:</strong> 540-842-2846</p>
-  <iframe src="https://www.google.com/maps?q=110+E+Maple+Ave,+Penns+Grove,+NJ&output=embed"
-          width="100%" height="300" style="border:0; border-radius:10px;" loading="lazy"></iframe>
-</section>
+  <!-- NAVIGATION WITH LOGO -->
+  <nav>
+    <img src="logo.png" alt="Cristo Te Llama Logo" class="logo">
+    <a href="index.html" data-en="Home" data-es="Inicio">Home</a>
+    <a href="index.html#servicios" data-en="Service Times" data-es="Servicios">Service Times</a>
+    <a href="index.html#eventos" data-en="Events" data-es="Eventos">Events</a>
+    <a href="index.html#contacto" data-en="Contact" data-es="Contacto">Contact</a>
+    <a href="index.html#social" data-en="Social" data-es="Social">Social</a>
+    <a href="live.html" data-en="Live" data-es="En Vivo">Live</a>
+  </nav>
 
-<!-- SOCIAL -->
-<section id="social">
-  <h2 data-en="Social Media" data-es="Redes Sociales">Social Media</h2>
-  <div class="social-icons">
-    <a href="https://facebook.com/IglesiaCristoTeLlamaDelaware" target="_blank">
-      <img src="images/facebook logo.jpg" alt="Facebook">
-    </a>
-    <a href="https://www.youtube.com/@CristoTeLlama" target="_blank">
-      <img src="images/youtube logo.webp" alt="YouTube">
-    </a>
+  <!-- HERO SECTION -->
+  <section class="hero">
+    <h1 data-en="Welcome to Cristo Te Llama DE/NJ" data-es="Bienvenidos a Cristo Te Llama DE/NJ">Welcome to Cristo Te Llama DE/NJ</h1>
+    <p data-en="Join us for services, events, and community outreach!" data-es="¡Únase a nosotros para servicios, eventos y alcance comunitario!">Join us for services, events, and community outreach!</p>
+  </section>
+
+  <!-- SERVICE TIMES SECTION -->
+  <section id="servicios">
+    <h2 data-en="Service Times" data-es="Horarios de Servicio">Service Times</h2>
+    <p data-en="We meet for worship and prayer. See our schedule below." data-es="Nos reunimos para adoración y oración. Vea nuestro horario a continuación.">We meet for worship and prayer. See our schedule below.</p>
+    <!-- You can add actual times here -->
+  </section>
+
+  <!-- EVENTS SECTION -->
+  <section id="eventos">
+    <h2 data-en="Upcoming Events" data-es="Próximos Eventos">Upcoming Events</h2>
+    <div class="event-list">
+      <!-- Example event -->
+      <div class="event">
+        <h3 data-en="Worship Service" data-es="Servicio de Adoración">Worship Service</h3>
+        <p data-en="Join us for our weekly worship service!" data-es="¡Únase a nosotros para nuestro servicio de adoración semanal!">Join us for our weekly worship service!</p>
+        <p><strong>Sunday, 10 AM</strong></p>
+      </div>
+      <!-- Add more events as needed -->
+    </div>
+  </section>
+
+  <!-- CALENDAR SECTION -->
+  <section id="calendarSection">
+    <h2 data-en="Events Calendar" data-es="Calendario de Eventos">Events Calendar</h2>
+    <div class="calendar-wrapper">
+      <div class="calendar-header">
+        <button class="arrow-btn" onclick="prevMonth()">&#8592;</button>
+        <h3 id="monthTitle"></h3>
+        <button class="arrow-btn" onclick="nextMonth()">&#8594;</button>
+      </div>
+      <div class="calendar-grid" id="calendarGrid"></div>
+      <div class="legend">
+        <div class="legend-box event"></div><span>Event</span>
+        <div class="legend-box women"></div><span>Women's Prayer</span>
+      </div>
+    </div>
+  </section>
+
+  <!-- PRAYER REQUEST FORM -->
+  <section id="prayer">
+    <h2 data-en="Prayer Request" data-es="Solicitud de Oración">Prayer Request</h2>
+    <form id="prayerForm">
+      <input type="text" name="name" placeholder="Your Name" required>
+      <input type="email" name="email" value="Cristotellamadelaware@gmail.com" required>
+      <textarea name="request" placeholder="Your Prayer Request" required></textarea>
+      <button type="submit" data-en="Submit" data-es="Enviar">Submit</button>
+    </form>
+  </section>
+
+  <!-- SOCIAL MEDIA SECTION -->
+  <section id="social">
+    <h2 data-en="Follow Us" data-es="Síguenos">Follow Us</h2>
+    <div class="social-icons">
+      <a href="#"><img src="images/facebook logo.jpg" alt="Facebook"></a>
+      <a href="#"><img src="images/youtube logo.webp" alt="YouTube"></a>
+    </div>
+  </section>
+
+  <!-- POPUP FOR EVENT BANNER -->
+  <div class="popup" id="popup">
+    <div class="popup-content">
+      <span class="close" onclick="closePopup()">&times;</span>
+      <p id="popupText"></p>
+    </div>
   </div>
-</section>
 
-<!-- MESSENGER BUTTON -->
-<a href="https://m.me/IglesiaCristoTeLlamaDelaware" class="messenger-btn" target="_blank">
-  💬 Messenger
-</a>
-
-<!-- POPUP -->
-<div id="popup" class="popup">
-  <div class="popup-content">
-    <span onclick="closePopup()" class="close">&times;</span>
-    <p id="popupText"></p>
-  </div>
-</div>
-
-<script src="main.js"></script>
-<script>
-  if ('serviceWorker' in navigator) {
-    navigator.serviceWorker.register('/sw.js')
-      .then(reg => console.log('Service Worker Registered', reg))
-      .catch(err => console.error('SW Registration Failed', err));
-  }
-</script>
+  <script src="main.js"></script>
 </body>
 </html>
