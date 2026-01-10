@@ -33,9 +33,7 @@ function renderCalendar() {
   const firstDay = new Date(year, month, 1).getDay();
   const days = new Date(year, month + 1, 0).getDate();
 
-  for (let i = 0; i < firstDay; i++) {
-    calendarGrid.innerHTML += `<div class="day empty"></div>`;
-  }
+  for (let i = 0; i < firstDay; i++) calendarGrid.innerHTML += `<div class="day empty"></div>`;
 
   for (let d = 1; d <= days; d++) {
     const dayEvent = events.find(e => e.day === d);
@@ -72,9 +70,7 @@ function highlightEventDay(day) {
   const allDays = document.querySelectorAll(".calendar-grid .day");
   allDays.forEach(d => d.classList.remove("highlight"));
   allDays.forEach(d => {
-    if (!d.classList.contains("empty") && parseInt(d.textContent) === day) {
-      d.classList.add("highlight");
-    }
+    if (!d.classList.contains("empty") && parseInt(d.textContent) === day) d.classList.add("highlight");
   });
   setTimeout(() => allDays.forEach(d => d.classList.remove("highlight")), 10000);
 }
@@ -83,16 +79,13 @@ function hideBanner() { eventBanner.classList.remove("show"); }
 
 function showNextEvent() {
   if (events.length === 0) return;
-
   let attempts = 0;
   let event;
-
   do {
     event = events[currentEventIndex];
     currentEventIndex = (currentEventIndex + 1) % events.length;
     attempts++;
   } while (sessionStorage.getItem(`dismissed-${event.day}`) && attempts <= events.length);
-
   if (!event) return;
 
   const today = new Date().getDate();
@@ -103,9 +96,7 @@ function showNextEvent() {
 
   setTimeout(() => {
     let bannerText = `${event.title}`;
-    if (today === event.day && todayCount > 1) {
-      bannerText += ` (and ${todayCount - 1} more event${todayCount - 1 > 1 ? "s" : ""} today!)`;
-    }
+    if (today === event.day && todayCount > 1) bannerText += ` (and ${todayCount - 1} more event${todayCount - 1 > 1 ? "s" : ""} today!)`;
 
     eventBanner.innerHTML = `
       <div id="todayEventPulse"></div>
@@ -113,7 +104,6 @@ function showNextEvent() {
       <span class="calendarHint">→ View Calendar</span>
       <span id="closeBanner">&times;</span>
     `;
-
     eventBanner.classList.remove("bounce", "now");
     if (event.day === today) eventBanner.classList.add("now");
     void eventBanner.offsetWidth;
