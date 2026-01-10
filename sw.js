@@ -1,7 +1,6 @@
 const CACHE_NAME = "cristo-cache-v2";
 const urlsToCache = [
   "/index.html",
-  "/calendar.html",
   "/live.html",
   "/style.css",
   "/main.js",
