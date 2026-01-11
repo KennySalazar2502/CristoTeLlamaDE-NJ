@@ -8,10 +8,10 @@
 </head>
 <body>
 
-<!-- EVENT BANNER -->
-<div id="eventBanner"></div>
+<!-- EVENT NOTIFICATION -->
+<div id="eventBanner"><span class="dot"></span><span id="eventText"></span></div>
 
-<!-- TOGGLES -->
+<!-- DARK MODE & LANGUAGE TOGGLE -->
 <div class="toggles">
   <div id="darkModeToggle">🌓</div>
   <div id="langToggle">🌐</div>
@@ -42,6 +42,14 @@
     </div>
   </div>
 </section>
+
+<!-- POPUP -->
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <span class="close" onclick="closePopup()">&times;</span>
+    <p id="popupText"></p>
+  </div>
+</div>
 
 <script src="main.js"></script>
 </body>
