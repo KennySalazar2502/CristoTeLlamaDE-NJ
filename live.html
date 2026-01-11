@@ -9,9 +9,18 @@
 </head>
 <body>
 
+<!-- EVENT NOTIFICATION -->
+<div id="eventBanner"><span class="dot"></span><span id="eventText"></span></div>
+
+<!-- DARK MODE & LANGUAGE TOGGLE -->
+<div class="toggles">
+  <div id="darkModeToggle">🌓</div>
+  <div id="langToggle">🌐</div>
+</div>
+
 <!-- NAV -->
 <nav>
-  <img src="logo.png" alt="Logo" class="logo">
+  <img src="logo.png" alt="Cristo Te Llama Logo" class="logo">
   <a href="index.html">Home</a>
   <a href="index.html#servicios">Service Times</a>
   <a href="index.html#eventos">Events</a>
@@ -19,6 +28,7 @@
   <a href="live.html">Live</a>
 </nav>
 
+<!-- HERO -->
 <section class="hero">
   <h1>Live Stream</h1>
   <p>Watch our live broadcast here</p>
@@ -30,12 +40,20 @@
     <button onclick="showLive('youtube')">YouTube Live</button>
     <button onclick="showLive('facebook')">Facebook Live</button>
   </div>
+
   <div id="youtubeLive" class="live-content">
-    <iframe width="100%" height="400" src="https://www.youtube.com/embed?listType=user_uploads&list=Cristo-te-llama" frameborder="0" allowfullscreen></iframe>
+    <iframe width="100%" height="400" 
+      src="https://www.youtube.com/embed?listType=user_uploads&list=Cristo-te-llama" 
+      frameborder="0" allowfullscreen>
+    </iframe>
   </div>
+
   <div id="facebookLive" class="live-content" style="display:none;">
-    <iframe src="https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/IglesiaCristoTeLlamaDelaware/live/" width="100%" height="400" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen></iframe>
+    <iframe src="https://www.facebook.com/plugins/video.php?href=https://www.facebook.com/IglesiaCristoTeLlamaDelaware/live/" 
+      width="100%" height="400" style="border:none;overflow:hidden" scrolling="no" frameborder="0" allowfullscreen>
+    </iframe>
   </div>
+
   <div id="offlineMsg" style="display:none; text-align:center; padding:20px;">
     Sorry we aren't live. Come back next service.
     <br><a href="index.html#servicios">Click here to see our service times</a>
@@ -48,6 +66,6 @@ function showLive(platform){
   document.getElementById('facebookLive').style.display = platform==='facebook' ? 'block' : 'none';
 }
 </script>
-
+<script src="main.js"></script>
 </body>
 </html>
