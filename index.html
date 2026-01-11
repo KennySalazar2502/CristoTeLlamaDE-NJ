@@ -9,95 +9,99 @@
   <link rel="manifest" href="manifest.json">
 </head>
 <body>
-  <!-- DARK MODE & LANGUAGE TOGGLE -->
-  <div class="toggles">
-    <div id="darkModeToggle">🌓</div>
-    <div id="langToggle">🌐</div>
-  </div>
 
-  <!-- NAVIGATION WITH LOGO -->
-  <nav>
-    <img src="logo.png" alt="Cristo Te Llama Logo" class="logo">
-    <a href="index.html" data-en="Home" data-es="Inicio">Home</a>
-    <a href="index.html#servicios" data-en="Service Times" data-es="Servicios">Service Times</a>
-    <a href="index.html#eventos" data-en="Events" data-es="Eventos">Events</a>
-    <a href="index.html#contacto" data-en="Contact" data-es="Contacto">Contact</a>
-    <a href="index.html#social" data-en="Social" data-es="Social">Social</a>
-    <a href="live.html" data-en="Live" data-es="En Vivo">Live</a>
-  </nav>
+<!-- EVENT NOTIFICATION -->
+<div id="eventBanner"><span class="dot"></span><span id="eventText"></span></div>
 
-  <!-- HERO SECTION -->
-  <section class="hero">
-    <h1 data-en="Welcome to Cristo Te Llama DE/NJ" data-es="Bienvenidos a Cristo Te Llama DE/NJ">Welcome to Cristo Te Llama DE/NJ</h1>
-    <p data-en="Join us for services, events, and community outreach!" data-es="¡Únase a nosotros para servicios, eventos y alcance comunitario!">Join us for services, events, and community outreach!</p>
-  </section>
+<!-- DARK MODE & LANGUAGE TOGGLE -->
+<div class="toggles">
+  <div id="darkModeToggle">🌓</div>
+  <div id="langToggle">🌐</div>
+</div>
 
-  <!-- SERVICE TIMES SECTION -->
-  <section id="servicios">
-    <h2 data-en="Service Times" data-es="Horarios de Servicio">Service Times</h2>
-    <p data-en="We meet for worship and prayer. See our schedule below." data-es="Nos reunimos para adoración y oración. Vea nuestro horario a continuación.">We meet for worship and prayer. See our schedule below.</p>
-    <!-- You can add actual times here -->
-  </section>
+<!-- NAV -->
+<nav>
+  <img src="logo.png" alt="Cristo Te Llama Logo" class="logo">
+  <a href="index.html" data-en="Home" data-es="Inicio">Home</a>
+  <a href="index.html#servicios" data-en="Service Times" data-es="Servicios">Service Times</a>
+  <a href="index.html#eventos" data-en="Events" data-es="Eventos">Events</a>
+  <a href="index.html#contacto" data-en="Contact" data-es="Contacto">Contact</a>
+  <a href="index.html#social" data-en="Social" data-es="Social">Social</a>
+  <a href="live.html" data-en="Live" data-es="En Vivo">Live</a>
+</nav>
 
-  <!-- EVENTS SECTION -->
-  <section id="eventos">
-    <h2 data-en="Upcoming Events" data-es="Próximos Eventos">Upcoming Events</h2>
-    <div class="event-list">
-      <!-- Example event -->
-      <div class="event">
-        <h3 data-en="Worship Service" data-es="Servicio de Adoración">Worship Service</h3>
-        <p data-en="Join us for our weekly worship service!" data-es="¡Únase a nosotros para nuestro servicio de adoración semanal!">Join us for our weekly worship service!</p>
-        <p><strong>Sunday, 10 AM</strong></p>
-      </div>
-      <!-- Add more events as needed -->
-    </div>
-  </section>
+<!-- HERO -->
+<section class="hero">
+  <img src="Main Pic.jpg" alt="Main Hero" class="hero-img">
+  <h1 data-en="Welcome to Cristo Te Llama DE/NJ" data-es="Bienvenidos a Cristo Te Llama DE/NJ">Welcome to Cristo Te Llama DE/NJ</h1>
+  <p data-en="Join us for services, events, and community outreach!" data-es="¡Únase a nosotros para servicios, eventos y alcance comunitario!">Join us for services, events, and community outreach!</p>
+</section>
 
-  <!-- CALENDAR SECTION -->
-  <section id="calendarSection">
-    <h2 data-en="Events Calendar" data-es="Calendario de Eventos">Events Calendar</h2>
-    <div class="calendar-wrapper">
-      <div class="calendar-header">
-        <button class="arrow-btn" onclick="prevMonth()">&#8592;</button>
-        <h3 id="monthTitle"></h3>
-        <button class="arrow-btn" onclick="nextMonth()">&#8594;</button>
-      </div>
-      <div class="calendar-grid" id="calendarGrid"></div>
-      <div class="legend">
-        <div class="legend-box event"></div><span>Event</span>
-        <div class="legend-box women"></div><span>Women's Prayer</span>
-      </div>
-    </div>
-  </section>
+<!-- SERVICE TIMES -->
+<section id="servicios">
+  <h2 data-en="Service Times" data-es="Horarios de Servicio">Service Times</h2>
+  <p>Every Tuesday 7PM - 9PM</p>
+  <p>Every Saturday 7PM - 9PM</p>
+  <p>Every Sunday 10AM - 1PM</p>
+</section>
 
-  <!-- PRAYER REQUEST FORM -->
-  <section id="prayer">
-    <h2 data-en="Prayer Request" data-es="Solicitud de Oración">Prayer Request</h2>
-    <form id="prayerForm">
-      <input type="text" name="name" placeholder="Your Name" required>
-      <input type="email" name="email" value="Cristotellamadelaware@gmail.com" required>
-      <textarea name="request" placeholder="Your Prayer Request" required></textarea>
-      <button type="submit" data-en="Submit" data-es="Enviar">Submit</button>
-    </form>
-  </section>
-
-  <!-- SOCIAL MEDIA SECTION -->
-  <section id="social">
-    <h2 data-en="Follow Us" data-es="Síguenos">Follow Us</h2>
-    <div class="social-icons">
-      <a href="#"><img src="images/facebook logo.jpg" alt="Facebook"></a>
-      <a href="#"><img src="images/youtube logo.webp" alt="YouTube"></a>
-    </div>
-  </section>
-
-  <!-- POPUP FOR EVENT BANNER -->
-  <div class="popup" id="popup">
-    <div class="popup-content">
-      <span class="close" onclick="closePopup()">&times;</span>
-      <p id="popupText"></p>
+<!-- EVENTS -->
+<section id="eventos">
+  <h2 data-en="Upcoming Events" data-es="Próximos Eventos">Upcoming Events</h2>
+  <div class="event-list">
+    <div class="event">
+      <h3 data-en="Worship Service" data-es="Servicio de Adoración">Worship Service</h3>
+      <p data-en="Join us for our weekly worship service!" data-es="¡Únase a nosotros para nuestro servicio de adoración semanal!">Join us for our weekly worship service!</p>
+      <p><strong>Sunday, 10 AM</strong></p>
     </div>
   </div>
+</section>
 
-  <script src="main.js"></script>
+<!-- CALENDAR -->
+<section id="calendarSection">
+  <h2 data-en="Events Calendar" data-es="Calendario de Eventos">Events Calendar</h2>
+  <div class="calendar-wrapper">
+    <div class="calendar-header">
+      <button class="arrow-btn" onclick="prevMonth()">&#8592;</button>
+      <h3 id="monthTitle"></h3>
+      <button class="arrow-btn" onclick="nextMonth()">&#8594;</button>
+    </div>
+    <div class="calendar-grid" id="calendarGrid"></div>
+    <div class="legend">
+      <div class="legend-box event"></div><span>General Event</span>
+      <div class="legend-box women"></div><span>Women's Prayer</span>
+    </div>
+  </div>
+</section>
+
+<!-- PRAYER FORM -->
+<section id="prayer">
+  <h2 data-en="Prayer Request" data-es="Solicitud de Oración">Prayer Request</h2>
+  <form id="prayerForm">
+    <input type="text" name="name" placeholder="Your Name" required>
+    <input type="email" name="email" value="Cristotellamadelaware@gmail.com" required>
+    <textarea name="request" placeholder="Your Prayer Request" required></textarea>
+    <button type="submit" data-en="Submit" data-es="Enviar">Submit</button>
+  </form>
+</section>
+
+<!-- SOCIAL -->
+<section id="social">
+  <h2 data-en="Follow Us" data-es="Síguenos">Follow Us</h2>
+  <div class="social-icons">
+    <a href="#"><img src="facebook logo.jpg" alt="Facebook"></a>
+    <a href="#"><img src="youtube logo.webp" alt="YouTube"></a>
+  </div>
+</section>
+
+<!-- POPUP -->
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <span class="close" onclick="closePopup()">&times;</span>
+    <p id="popupText"></p>
+  </div>
+</div>
+
+<script src="main.js"></script>
 </body>
 </html>
