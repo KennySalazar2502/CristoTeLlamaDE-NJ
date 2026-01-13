@@ -18,7 +18,6 @@ function renderCalendar(){
   calendarGrid.innerHTML="";
   const year=date.getFullYear();
   const month=date.getMonth();
-
   monthTitle.innerText=date.toLocaleString("default",{month:"long",year:"numeric"});
 
   const firstDay=new Date(year,month,1).getDay();
@@ -29,16 +28,18 @@ function renderCalendar(){
   }
 
   for(let d=1;d<=days;d++){
-    const e=(month===0)?events.find(ev=>ev.day===d):null; // only show events in January
-    const cls=e?e.type:"";
-    const title=e?`<br><small>${e.title}</small>`:"";
-    const todayCls = (d===date.getDate() && month===date.getMonth() && year===date.getFullYear()) ? "today" : "";
-    calendarGrid.innerHTML+=`<div class="day ${cls} ${todayCls}" style="animation-delay:${d*20}ms">${d}${title}</div>`;
+    const today = new Date();
+    const isToday = today.getDate()===d && today.getMonth()===month && today.getFullYear()===year;
+    const e=events.find(ev=>ev.day===d && month===0); // only January
+    const cls = e ? e.type : '';
+    const title = e ? `<br><small>${e.title}</small>` : '';
+    const todayCls = isToday ? ' today' : '';
+    calendarGrid.innerHTML+=`<div class="day ${cls}${todayCls}" style="animation-delay:${d*20}ms">${d}${title}</div>`;
   }
 }
 
-function nextMonth(){date.setMonth(date.getMonth()+1);renderCalendar();}
-function prevMonth(){date.setMonth(date.getMonth()-1);renderCalendar();}
+function nextMonth(){date.setMonth(date.getMonth()+1);renderCalendar()}
+function prevMonth(){date.setMonth(date.getMonth()-1);renderCalendar()}
 
 /* DARK MODE */
 document.getElementById("darkModeToggle")?.addEventListener("click",()=>{
@@ -57,6 +58,7 @@ function showNextEvent(){
   if(!eventBanner||events.length===0)return;
   const e=events[currentEventIndex];
   currentEventIndex=(currentEventIndex+1)%events.length;
+
   eventBanner.innerText=e.title;
   eventBanner.classList.add("show");
   setTimeout(()=>eventBanner.classList.remove("show"),30000);
@@ -64,5 +66,4 @@ function showNextEvent(){
 
 renderCalendar();
 showNextEvent();
-setInterval(showNextEvent,10000); // 10s
-
+setInterval(showNextEvent,10000); // switch every 10 seconds
