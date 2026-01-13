@@ -1,118 +1,131 @@
 <!DOCTYPE html>
 <html lang="en">
 <head>
-  <meta charset="UTF-8">
-  <meta name="viewport" content="width=device-width, initial-scale=1.0">
-  <title>Cristo Te Llama DE/NJ</title>
-  <link rel="stylesheet" href="/CristoTeLlamaDE-NJ/style.css">
-  <link rel="manifest" href="/CristoTeLlamaDE-NJ/manifest.json">
+<meta charset="UTF-8">
+<title>Cristo Te Llama DE/NJ</title>
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@500;700&display=swap" rel="stylesheet">
+<link rel="stylesheet" href="style.css">
+<link rel="manifest" href="manifest.json">
 </head>
 <body>
 
-  <!-- NAVIGATION -->
-  <nav>
-    <img src="/CristoTeLlamaDE-NJ/logo.png" alt="Logo" class="logo">
-    <a href="/CristoTeLlamaDE-NJ/index.html">Home</a>
-    <a href="#serviceTimes">Service Times</a>
-    <a href="#calendar">Calendar</a>
-    <a href="#live">Live</a>
-    <a href="#contact">Contact</a>
-    <a href="#faq">FAQ</a>
-  </nav>
+<!-- TOGGLES -->
+<div class="toggles">
+  <div id="darkModeToggle">🌓</div>
+  <div id="langToggle">🌐</div>
+</div>
 
-  <!-- HERO IMAGE -->
-  <section class="hero">
-    <img src="/CristoTeLlamaDE-NJ/Main Pic.jpg" alt="Main Picture" class="main-pic">
-  </section>
+<!-- NAVIGATION -->
+<nav>
+  <img src="logo.png" alt="Cristo Te Llama Logo" class="logo">
+  <a href="#home" data-en="Home" data-es="Inicio">Home</a>
+  <a href="#services" data-en="Service Times" data-es="Servicios">Service Times</a>
+  <a href="#events" data-en="Events" data-es="Eventos">Events</a>
+  <a href="#schedule" data-en="This Week's Schedule" data-es="Horario de esta semana">Schedule</a>
+  <a href="#contact" data-en="Contact Us" data-es="Contáctanos">Contact</a>
+  <a href="#social" data-en="Social" data-es="Social">Social</a>
+  <a href="live.html" data-en="Live" data-es="En Vivo">Live</a>
+</nav>
 
-  <!-- SERVICE TIMES -->
-  <section id="serviceTimes" class="section">
-    <h2>Service Times</h2>
-    <ul>
-      <li>Tuesday 7PM-9PM</li>
-      <li>Saturday 7PM-9PM</li>
-    </ul>
-  </section>
+<!-- HERO -->
+<section id="home" class="hero">
+  <img src="Main Pic.jpg" alt="Main Image" class="hero-img">
+  <h1 data-en="Cristo Te Llama DE/NJ" data-es="Cristo Te Llama DE/NJ">Cristo Te Llama DE/NJ</h1>
+  <p data-en="Join us in worship and fellowship." data-es="Únete a nosotros en adoración y compañerismo.">Join us in worship and fellowship.</p>
+</section>
 
-  <!-- CALENDAR -->
-  <section id="calendar" class="section">
-    <h2>Calendar</h2>
-    <div class="calendar-wrapper">
-      <div class="calendar-header">
-        <button class="arrow-btn" onclick="prevMonth()">&#8592;</button>
-        <h3 id="monthTitle"></h3>
-        <button class="arrow-btn" onclick="nextMonth()">&#8594;</button>
-      </div>
-      <div id="calendarGrid" class="calendar-grid"></div>
+<!-- SERVICE TIMES -->
+<section id="services">
+  <h2 data-en="Service Times" data-es="Servicios">Service Times</h2>
+  <ul>
+    <li data-en="Sunday: 10am - 1pm" data-es="Domingo: 10am - 1pm">Sunday: 10am - 1pm</li>
+    <li data-en="Tuesday: 7pm - 9pm" data-es="Martes: 7pm - 9pm">Tuesday: 7pm - 9pm</li>
+    <li data-en="Saturday: 7pm - 9pm" data-es="Sábado: 7pm - 9pm">Saturday: 7pm - 9pm</li>
+  </ul>
+</section>
+
+<!-- EVENTS -->
+<section id="events">
+  <h2 data-en="Events Calendar" data-es="Calendario de Eventos">Events Calendar</h2>
+  <div class="calendar-wrapper">
+    <div class="calendar-header">
+      <button class="arrow-btn" onclick="prevMonth()">&#8592;</button>
+      <h3 id="monthTitle"></h3>
+      <button class="arrow-btn" onclick="nextMonth()">&#8594;</button>
     </div>
-  </section>
-
-  <!-- LIVE SECTION -->
-  <section id="live" class="section">
-    <h2>Live</h2>
-    <div id="youtubeLive"></div>
-    <div id="facebookLive"></div>
-  </section>
-
-  <!-- CONTACT / DONATION -->
-  <section id="contact" class="section">
-    <h2>Contact Us</h2>
-
-    <div>
-      <h3>Prayer Request</h3>
-      <form>
-        <input type="text" placeholder="Name" required>
-        <input type="email" placeholder="Email" required>
-        <textarea placeholder="Your prayer request"></textarea>
-        <button type="submit">Send</button>
-      </form>
+    <div class="calendar-grid" id="calendarGrid"></div>
+    <div class="legend">
+      <div class="legend-box women"></div><span data-en="Women's Prayer" data-es="Oración de Damas">Women's Prayer</span>
+      <div class="legend-box event"></div><span data-en="Event" data-es="Evento">Event</span>
     </div>
+  </div>
+</section>
 
-    <div>
-      <h3>Donations / Tithe / Offering</h3>
-      <p>Zelle us at: <a href="mailto:cristotellama24@gmail.com">cristotellama24@gmail.com</a></p>
-    </div>
-  </section>
+<!-- SCHEDULE -->
+<section id="schedule">
+  <h2 data-en="This Week's Schedule" data-es="Horario de esta semana">This Week's Schedule</h2>
 
-  <!-- FAQ -->
-  <section id="faq" class="section">
-    <h2>FAQ / About Us</h2>
-    <p>Details about the church and answers to common questions will go here.</p>
-  </section>
-
-  <!-- THIS WEEK SCHEDULE -->
-  <section id="weeklySchedule" class="section">
-    <h2>This Week's Schedule</h2>
-
-    <h3>This Saturday</h3>
+  <div class="day-schedule">
+    <h3 data-en="This Saturday" data-es="Este Sábado">This Saturday</h3>
     <ul>
-      <li>Preside: (Name TBD)</li>
-      <li>Alabanzas: (Name TBD)</li>
-      <li>Coros: (Name TBD)</li>
-      <li>Especial: (Name TBD)</li>
-      <li>Predica: (Name TBD)</li>
+      <li>Preside: ______</li>
+      <li>Alabanzas: ______</li>
+      <li>Coros: ______</li>
+      <li>Especial: ______</li>
+      <li>Predica: ______</li>
     </ul>
-
-    <h3>This Sunday</h3>
-    <ul>
-      <li>Preside: (Name TBD)</li>
-      <li>Alabanzas: (Name TBD)</li>
-      <li>Coros: (Name TBD)</li>
-      <li>Especial: (Name TBD)</li>
-      <li>Predica: (Name TBD)</li>
-    </ul>
-  </section>
-
-  <!-- EVENT BANNER -->
-  <div id="eventBanner"></div>
-
-  <!-- TOGGLES -->
-  <div class="toggles">
-    <button id="darkModeToggle">Dark Mode</button>
-    <button id="langToggle" data-en="EN" data-es="ES">EN</button>
   </div>
 
-  <script src="/CristoTeLlamaDE-NJ/main.js"></script>
+  <div class="day-schedule">
+    <h3 data-en="This Sunday" data-es="Este Domingo">This Sunday</h3>
+    <ul>
+      <li>Preside: ______</li>
+      <li>Alabanzas: ______</li>
+      <li>Coros: ______</li>
+      <li>Especial: ______</li>
+      <li>Predica: ______</li>
+    </ul>
+  </div>
+</section>
+
+<!-- CONTACT -->
+<section id="contact">
+  <h2 data-en="Contact / Prayer / Donations" data-es="Contacto / Oración / Diezmo">Contact / Prayer / Donations</h2>
+  <form id="prayerForm">
+    <input type="text" name="name" placeholder="Your Name / Nombre" required>
+    <input type="email" name="email" placeholder="Email / Correo" required>
+    <textarea name="request" placeholder="Prayer Request / Solicitud de Oración" required></textarea>
+    <button type="submit" data-en="Submit" data-es="Enviar">Submit</button>
+  </form>
+
+  <div class="donations">
+    <h3 data-en="Donations / Tithe" data-es="Diezmo / Donaciones">Donations / Tithe</h3>
+    <p data-en="Send via Zelle to cristotellama24@gmail.com" data-es="Enviar via Zelle a cristotellama24@gmail.com">Send via Zelle to cristotellama24@gmail.com</p>
+  </div>
+</section>
+
+<!-- SOCIAL -->
+<section id="social">
+  <h2 data-en="Follow Us" data-es="Síguenos">Follow Us</h2>
+  <div class="social-icons">
+    <a href="https://www.facebook.com/YOUR_FACEBOOK_PAGE" target="_blank"><img src="images/facebook logo.jpg" alt="Facebook"></a>
+    <a href="https://www.youtube.com/channel/YOUR_YOUTUBE_CHANNEL" target="_blank"><img src="images/youtube logo.webp" alt="YouTube"></a>
+  </div>
+</section>
+
+<!-- EVENT BANNER -->
+<div id="eventBanner"></div>
+
+<!-- POPUP -->
+<div class="popup" id="popup">
+  <div class="popup-content">
+    <span class="close" onclick="closePopup()">&times;</span>
+    <p id="popupText"></p>
+  </div>
+</div>
+
+<script src="main.js"></script>
 </body>
 </html>
 
